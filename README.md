@@ -24,5 +24,5 @@
 - **screen breakpoint**
   1. use **md** prefix for desktop breakpoint
 - **color**
-  1. use **specified color keywords** instead of default tailwind keywords such as `bg-text-dark` instead of `bg-gray-800` because we'll using thememode switching
+  1. use **specified color keywords** instead of default tailwind keywords such as `bg-text-dark` instead of `bg-gray-800` because we'll use thememode switching
 
