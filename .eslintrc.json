@@ -1,6 +1,7 @@
 {
-    "env":{
-        "es6": true
+    "env": {
+        "browser": true,
+        "es2021": true
     },
     "extends": [
         "eslint:recommended",
@@ -14,6 +15,7 @@
         "import/resolver": {
             "alias": {
                 "map": [
+                    ["@/slices", "./src/redux/slices"],
                     ["@/redux", "./src/redux"],
                     ["@/components", "./src/components"],
                     ["@/sections", "./src/sections"],
