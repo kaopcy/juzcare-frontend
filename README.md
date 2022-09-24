@@ -1,7 +1,9 @@
 ## -- **REMINDER** --
+- [ ] Configure **use-hook-form** and **yup**
+- [ ] Configure **GraphQL**
 - [ ] Configure **manifest.json** file
 - [ ] Change icon path in **manifext.json** file
-- [ ] Change page description in **_document.js** file
+- [x] Change page description in **_document.js** file
 
 ---
 
