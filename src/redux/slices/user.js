@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import errorMessageUtils from '@/utils/errorMessageUtils'
 import { dispatch } from '../store';
 
 const initialState = {
@@ -29,7 +30,7 @@ const userSlice = createSlice({
             state.user = action.payload.user;
         });
         builder.addCase(initialUserDispatch.rejected, (state, action) => {
-            state.error = action.error;
+            state.error = errorMessageUtils('INITIAL' , action.error);
             state.isAuthenticated = false;
             state.isLoading = false;
             state.isInitialized = false;
@@ -41,8 +42,8 @@ const userSlice = createSlice({
 const initialUserDispatch = createAsyncThunk('user/initial', async () => {
     const data = await new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve({ firstName: 'piyachai', lastName: 'kaewchum', email: 'kao@hotmail.com' });
-            // reject(new Error('kuay i yed mae'));
+            // resolve({ firstName: 'piyachai', lastName: 'kaewchum', email: 'kao@hotmail.com' });
+            reject(new Error('User not exists'));
         }, 1000);
     });
     console.log(data);
