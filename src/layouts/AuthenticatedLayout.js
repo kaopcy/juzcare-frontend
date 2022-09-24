@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 
 const AuthenticatedLayout = ({ children }) => {
-    return <div className="">
-        {children}
-    </div>;
+     console.log('hello from authenticated')
+    return <main className="w-full h-full bg-red-500 p-10">{children}</main>;
 };
 
 AuthenticatedLayout.propTypes = {
