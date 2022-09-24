@@ -1,4 +1,5 @@
 ## -- **REMINDER** --
+- [ ] Configure **route** config file
 - [ ] Configure **use-hook-form** and **yup**
 - [ ] Configure **GraphQL**
 - [ ] Configure **manifest.json** file
