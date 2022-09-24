@@ -1,4 +1,7 @@
 ## -- **REMINDER** --
+- [ ] Configure **modal** via 2 options:
+  1. manually setup react portal
+  2. use headlessui that built from tailwindcss
 - [ ] Configure **route** config file
 - [ ] Configure **use-hook-form** and **yup**
 - [ ] Configure **GraphQL**
