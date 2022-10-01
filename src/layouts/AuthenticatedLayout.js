@@ -1,8 +1,14 @@
 import PropTypes from 'prop-types';
+import NavBar from '@/components/navbar';
 
 const AuthenticatedLayout = ({ children }) => {
-     console.log('hello from authenticated')
-    return <main className="w-full h-full bg-red-500 p-10">{children}</main>;
+    console.log('hello from authenticated');
+    return (
+        <>
+            <NavBar />
+            <main className="w-full min-h-screen p-10">{children}</main>
+        </>
+    );
 };
 
 AuthenticatedLayout.propTypes = {

@@ -9,8 +9,13 @@ module.exports = {
             xl: '1440px',
         },
         extend: {
-            spacing: {},
+            spacing: {
+                navbar: '70px',
+            },
             textColor: {},
+            boxShadow: {
+                card: '0px 7px 29px 0px rgba(100, 100, 111, 0.2) ',
+            },
             colors: {
                 text: {
                     darkest: '#000',
