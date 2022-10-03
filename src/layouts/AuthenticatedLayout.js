@@ -6,7 +6,7 @@ const AuthenticatedLayout = ({ children }) => {
     return (
         <>
             <NavBar />
-            <main className="w-full min-h-screen p-10">{children}</main>
+            <main className="w-full min-h-screen p-10 bg-orange-400/10 dark:bg-black">{children}</main>
         </>
     );
 };

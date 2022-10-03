@@ -30,11 +30,11 @@ const QUERY = gql`
 
 export default function RickAndMorty({ data: rickandmorty, page }) {
     return (
-        <section className="bg-purple-100 w-full h-full flex flex-wrap p-5 gap-y-5">
+        <section className="bg-transparent w-full h-full flex flex-wrap p-5 gap-y-5 overflow-x-hidden">
             {rickandmorty.characters.results.map((e) => (
                 <Link key={e.id} href={`/rickandmorty/${e.name}`}>
                     <div className=" hover:bg-red-200 w-48 m-auto px-4 py-2 shadow-card rounded-md bg-paper h-[300px] flex flex-col items-center">
-                        <div className="font-bold py-2 text-lg">{e.name}</div>
+                        <div className="font-bold py-2 text-lg ">{e.name}</div>
                         <div className="w-full relative aspect-square  ">
                             <Image priority src={e.image} alt={e.name} layout="fill" objectFit="cover" />
                         </div>
@@ -68,7 +68,7 @@ const Pagination = ({ totalPage, page }) => {
             {[...Array(totalPage)].map((_, index) => (
                 <div
                     key={index + 1}
-                    className={`p-2 ${isMatch(index + 1) && 'bg-red-500'}`}
+                    className={`w-7 text-center h-7 dark:text-paper ${isMatch(index + 1) && 'bg-red-500 '}`}
                     onClick={() => onClick(index + 1)}
                 >
                     {index + 1}
@@ -92,8 +92,6 @@ export const getServerSideProps = async (ctx) => {
             clientPage: page,
         },
     });
-
-    console.log(`called from serverside: ${ctx.query.page}`);
 
     return {
         props: {

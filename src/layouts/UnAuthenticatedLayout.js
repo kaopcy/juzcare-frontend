@@ -4,7 +4,7 @@ const UnAuthenticatedLayout = ({ children }) => {
     console.log('hello from authenticated');
     return (
         <>
-            <main className="w-full h-full bg-paper p-10">{children}</main>
+            <main className="w-full relative min-h-screen ">{children}</main>
         </>
     );
 };
