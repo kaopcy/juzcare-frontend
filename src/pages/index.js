@@ -7,6 +7,7 @@ import Layout from '@/layouts/index';
 import { gql } from '@apollo/client';
 import client from '@/graphql/apollo-client';
 
+
 export default function Home({ results }) {
     const rickandmortys = results.characters.results;
     console.log(rickandmortys);
