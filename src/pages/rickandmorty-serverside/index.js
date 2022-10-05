@@ -30,14 +30,14 @@ const QUERY = gql`
 
 export default function RickAndMorty({ data: rickandmorty, page }) {
     return (
-        <section className="bg-transparent w-full h-full flex flex-wrap p-5 gap-2 overflow-x-hidden">
+        <section className="bg-transparent w-full h-full flex flex-wrap gap-y-4 overflow-x-hidden">
             {rickandmorty.characters.results.map((e, index) => (
                 <Link key={e.id} href={`/rickandmorty/${e.name}`}>
                     <motion.div
                         initial={{ opacity: 0, translateX: -50, scale: 0.9 }}
                         animate={{ opacity: 1, translateX: 0, scale: 1 }}
                         transition={{ duration: 0.4, delay: index * 0.05 }}
-                        className=" hover:bg-red-200 w-48 m-auto p-4 shadow-card rounded-md bg-paper h-[300px] flex flex-col items-center"
+                        className=" hover:bg-red-200 mx-auto basis-[100%] xs:basis-[46%]  sm:basis-[31%] lg:basis-[18%] p-4 shadow-card rounded-md bg-paper min-h-[300px] flex flex-col items-center"
                     >
                         <div className="w-full relative aspect-square  rounded-md overflow-hidden">
                             <Image priority src={e.image} alt={e.name} layout="fill" objectFit="cover" />

@@ -13,8 +13,6 @@
 }
 
 @layer utilities {
-    
-
     ::-webkit-scrollbar {
         width: 10px;
         height: 10px;
@@ -40,13 +38,13 @@
         @apply text-text;
     }
     h1 {
-        @apply font-black text-3xl;
+        @apply font-black text-xl md:text-3xl ;
     }
     h2 {
-        @apply font-bold text-2xl;
+        @apply font-bold md:text-2xl text-lg;
     }
     h3 {
-        @apply font-semibold text-xl;
+        @apply font-semibold md:text-xl text-base;
     }
     input[type='text'] {
         @apply border border-text-lighter text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  outline-none;

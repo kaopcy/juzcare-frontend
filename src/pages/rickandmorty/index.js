@@ -13,13 +13,13 @@ export default function RickAndMorty({ page: initPage }) {
     const { rickandmorty, loading, totalPage, setPage, page } = useRickandMorty(initPage);
 
     return (
-        <section className="bg-purple-100 w-full h-full flex flex-wrap p-5 gap-y-5">
+        <section className="bg-purple-100 w-full h-full flex flex-wrap ">
             {loading && <div className="">loading</div>}
 
             {rickandmorty &&
                 rickandmorty.characters.results.map((e) => (
                     <Link key={e.id} href={`/rickandmorty/${e.name}`}>
-                        <div className=" hover:bg-red-200 w-48 m-auto px-4 py-2 shadow-card rounded-md bg-paper h-[300px] flex flex-col items-center">
+                        <div className=" hover:bg-red-200 basis-48  px-4 py-2 shadow-card rounded-md bg-paper h-[300px] flex flex-col items-center">
                             <div className="font-bold py-2 text-lg">{e.name}</div>
                             <div className="w-full relative aspect-square  ">
                                 <Image priority src={e.image} alt={e.name} layout="fill" objectFit="cover" />

@@ -37,7 +37,7 @@ const Sidebar = ({ isSidebar, setIsSidebar }) => {
                             leaveFrom="opacity-100 translate-x-0 scale-100"
                             leaveTo="opacity-0 scale-95 -translate-x-full"
                         >
-                            <Dialog.Panel className="w-full flex flex-col  max-w-sm h-screen transform overflow-hidden  bg-white p-6 text-left align-middle shadow-xl transition-all">
+                            <Dialog.Panel className="w-full flex flex-col  max-w-xs md:max-w-sm h-screen transform overflow-hidden  bg-white p-6 text-left align-middle shadow-xl transition-all">
                                 <Dialog.Title as="div" className="flex items-center  w-full">
                                     <h1 className="">JuzCare</h1>
 
@@ -75,7 +75,7 @@ const Sidebar = ({ isSidebar, setIsSidebar }) => {
                                     {navItems.map((navItem) => (
                                         <Link key={navItem.id} href={navItem.href}>
                                             {({ isMatch }) => (
-                                                <div className="cursor-pointer w-full px-4 py-3 rounded-md flex items-center justify-between">
+                                                <div onClick={()=> setIsSidebar(false)} className="cursor-pointer w-full px-4 py-3 rounded-md flex items-center justify-between">
                                                     <h3 className={`${isMatch && 'underline'}`} >{navItem.name}</h3>
                                                     <Icon className="w-6 h-6" icon={navItem.icon} />
                                                 </div>
