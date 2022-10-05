@@ -1,6 +1,7 @@
 
 # **Note** 🗒️
 ## -- **REMINDER** --
+- [x] Configure **Animation** using **Framermotion**
 - [x] Configure **modal** via 2 options:
   1. manually setup react portal
   2. use headlessui that built from tailwindcss

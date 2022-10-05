@@ -20,11 +20,11 @@ const Register = () => {
     };
 
     const resolver = yup.object().shape({
-        email: yup.string().required('email is required').email('email not in correct form'),
-        firstName: yup.string().required('firstname is required'),
-        lastName: yup.string().required('lastname is required'),
-        username: yup.string().required('username is required'),
-        password: yup.string().required('password is required').min(8),
+        email: yup.string().required('กรุณากรอกอีเมล์').email('กรุณาใช้อีเมล์ที่ถูกต้อง'),
+        firstName: yup.string().required('กรุณากรอกชื่อ'),
+        lastName: yup.string().required('กรุณากรอกนามสกุล'),
+        username: yup.string().required('กรุณากรอกชื่อผู้ใช้'),
+        password: yup.string().required('กรุณากรอกรหัสผ่าน').min(8, 'รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร'),
     });
 
     const methods = useForm({
@@ -42,11 +42,11 @@ const Register = () => {
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
                     <section className="flex flex-col  items-center justify-center gap-y-4 w-[250px]">
-                        <InputText label='โย่วๆ' name="username" />
-                        <InputText label='โย่วๆ' name="email" />
-                        <InputText label='โย่วๆ' name="password" />
-                        <InputText label='โย่วๆ' name="firstName" />
-                        <InputText label='โย่วๆ' name="lastName" />
+                        <InputText label="โย่วๆ" name="username" />
+                        <InputText label="โย่วๆ" name="email" />
+                        <InputText label="โย่วๆ" name="password" />
+                        <InputText label="โย่วๆ" name="firstName" />
+                        <InputText label="โย่วๆ" name="lastName" />
                         <div className="flex items-center justify-between w-full my-4">
                             <button className="text-base" type="button">
                                 ย้อนกลับ

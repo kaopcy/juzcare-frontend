@@ -28,7 +28,6 @@ const QUERY = gql`
 export default function useRickandMorty(initPage) {
     const [page, setPage] = useState(initPage);
     const router = useRouter();
-    console.log(`page : ${page}`);
     const { loading, data, error, fetchMore } = useQuery(QUERY, {
         ssr: false,
         variables: {

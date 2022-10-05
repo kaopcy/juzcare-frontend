@@ -7,14 +7,16 @@ import Layout from '@/layouts/index';
 import { gql } from '@apollo/client';
 import client from '@/graphql/apollo-client';
 
+// framermotion
+import { motion, AnimatePresence } from 'framer-motion';
+import { useRef, useState } from 'react';
 
 export default function Home({ results }) {
     const rickandmortys = results.characters.results;
-    console.log(rickandmortys);
     const { user, error: userError, isLoading: userLoading, isAuthenticated } = useSelector((state) => state.user);
 
     return (
-        <section className="bg-paper-neutral">
+        <section className="bg-paper-neutral flex flex-col">
             <h1 className="">{isAuthenticated ? 'authed' : 'unauth'}</h1>
             {userError ? (
                 <section className="">{userError}</section>
@@ -23,13 +25,73 @@ export default function Home({ results }) {
             ) : (
                 <section className="">hello {JSON.stringify(user)}</section>
             )}
-            <article className="">
-                {rickandmortys.map((rickandmorty) => (
-                    <Card key={rickandmorty.id} rickandmorty={rickandmorty} />
-                ))}
+            <article className="flex">
+                <div className="overflow-hidden">
+                    <motion.div
+                        initial={{ translateY: '-100%' }}
+                        animate={{ translateY: 0 }}
+                        transition={{ duration: 0.4, ease: [0.30, 0.17, 0.80, 1] }}
+                        className="text-6xl font-black"
+                    >
+                        JUZCARE
+                    </motion.div>
+                </div>
             </article>
+
+            <Test />
+
         </section>
     );
+}
+
+const Test = () => {
+    const [selected, setSelected] = useState(0)
+    const prevId = useRef(0)
+    return (
+        <div className=" bg-paper flex flex-col self-start">
+            <div className="flex items-center gap-x-3">
+                {
+                    [...Array(3)].map((_, id) =>
+                        <button className={`w-20 py-4 bg-green-300/30  rounded-md ${id === selected && 'bg-red-300/30'}`} key={id} onClick={() => {
+
+                            setSelected(e => {
+                                prevId.current = e
+                                return id
+                            })
+                        }} >
+                            {id}
+                        </button>
+                    )
+                }
+            </div>
+            <div
+
+                className="flex items-center overflow-hidden">
+                {
+                    [...Array(3)].map((_, id) => (
+                        id == selected &&
+                        <button
+
+                            className='w-full flex flex-col' key={`tab-${id}`} onClick={() => setSelected(id)} >
+                            {[...Array(10)].map((_, cIndex) => (
+                                <motion.div
+                                    initial={{
+                                        opacity: 0, translateX: prevId.current > id ? '-100%' : '100%'
+                                    }}
+                                    animate={{ opacity: 1, translateX: 0 }}
+                                    transition={{ duration: 0.4, delay: cIndex * 0.05 }}
+                                    key={`button-${id}-${cIndex}`} className="w-full shrink-0 py-4 my-2 bg-black/10">
+                                    awdwadaw
+                                </motion.div>
+                            ))
+
+                            }
+                        </button>
+                    ))
+                }
+            </div>
+        </div>
+    )
 }
 
 Home.propTypes = {

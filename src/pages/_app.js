@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import Head from 'next/head';
 import '../styles/globals.css';
+import '../styles/nprogress.css';
 
 // redux
 import { store } from '@/redux/store';
@@ -14,6 +15,9 @@ import { ApolloProvider } from '@apollo/client';
 
 // context
 import { ThemeModeProvider } from '@/contexts/ThemeMode';
+
+// components
+import ProgressBar from '@/components/ProgressBar';
 
 const App = (props) => {
     const { Component, pageProps } = props;
@@ -30,7 +34,10 @@ const App = (props) => {
             </Head>
             <ApolloProvider client={client}>
                 <StoreProvider store={store}>
-                    <ThemeModeProvider>{getLayout(<Component {...pageProps} />)}</ThemeModeProvider>
+                    <ThemeModeProvider>
+                        <ProgressBar />
+                        {getLayout(<Component {...pageProps} />)}
+                    </ThemeModeProvider>
                 </StoreProvider>
             </ApolloProvider>
         </>

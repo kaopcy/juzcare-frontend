@@ -44,7 +44,6 @@ RickAndMorty.getLayout = (pages) => (
 
 const Pagination = ({ totalPage, setPage, page }) => {
     if (!totalPage) return null;
-    console.log('rerendered');
     const isMatch = (e) => e == page;
 
     return (
