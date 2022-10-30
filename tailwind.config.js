@@ -3,11 +3,6 @@ module.exports = {
    darkMode: 'class',
    content: ['./src/{pages,layouts,guards,components,sections}/**/*.{js,ts,jsx,tsx}'],
    theme: {
-      zIndex: {
-         navbar: 100,
-         sidebar: 102,
-         'sidebar-overlay': 101,
-      },
       fontFamily: {
          main: ['IBM Plex Sans Thai', 'sans-serif'],
       },
@@ -19,6 +14,11 @@ module.exports = {
          xl: '1440px',
       },
       extend: {
+         zIndex: {
+            navbar: 100,
+            sidebar: 102,
+            'sidebar-overlay': 101,
+         },
          spacing: {
             navbar: '70px',
          },

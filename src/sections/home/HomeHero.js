@@ -3,8 +3,8 @@ import Logo from '@/svg/Logo';
 
 function HomeHero() {
    return (
-      <section className="flex h-80 w-full items-start justify-center gap-x-16">
-         <article className="mt-10 flex flex-col items-start">
+      <section className="flex min-h-[600px] w-full items-center justify-center gap-x-16">
+         <article className="-mt-10 flex flex-col items-start">
             <h1 className="mb-3">ให้เราช่วยเหลือคุณสิ!</h1>
             <div className="flex items-end">
                <p className="text-lg mr-2">ปัญหาภายในมหาลัย สามารถแจ้งผ่าน</p>
