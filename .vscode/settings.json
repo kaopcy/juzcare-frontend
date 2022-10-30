@@ -1,5 +1,5 @@
 {
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
-  "editor.tabSize": 4
+  "editor.tabSize": 3
 }
