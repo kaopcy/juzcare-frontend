@@ -8,7 +8,6 @@
             "@/slices/*": ["src/redux/slices/*"],
             "@/hooks/*": ["src/hooks/*"],
             "@/components/*": ["src/components/*"],
-            "@/assets/*": ["src/assets/*"],
             "@/layouts/*": ["src/layouts/*"],
             "@/configs/*": ["src/configs/*"],
             "@/theme/*": ["src/theme/*"],

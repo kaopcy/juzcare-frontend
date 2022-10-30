@@ -47,7 +47,10 @@
       @apply block w-full rounded-lg border border-text-lighter p-2.5 text-sm outline-none focus:border-blue-500  focus:ring-blue-500;
    }
    button {
-      @apply text-base font-semibold;
+      @apply text-base font-semibold transition-colors ;
+   }
+   p {
+      @apply text-text text-base font-medium
    }
    button:focus-visible {
       @apply border-none outline-none;
