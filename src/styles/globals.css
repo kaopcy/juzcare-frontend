@@ -2,70 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-    --scrollbar-track: #f7f7f7;
-    --scrollbar-thumb: #a0a0a0;
+:root {
+   --scrollbar-track: #f7f7f7;
+   --scrollbar-thumb: #a0a0a0;
 }
 
 .dark {
-    --scrollbar-track: #c0c0c0;
-    --scrollbar-thumb: #505050;
+   --scrollbar-track: #c0c0c0;
+   --scrollbar-thumb: #505050;
 }
 
 @layer utilities {
-    ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-    }
+   ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+   }
 
-    ::-webkit-scrollbar-track {
-        border-radius: 100vh;
-        background: var(--scrollbar-track);
-    }
+   ::-webkit-scrollbar-track {
+      border-radius: 100vh;
+      background: var(--scrollbar-track);
+   }
 
-    ::-webkit-scrollbar-thumb {
-        background: var(--scrollbar-thumb);
-        border-radius: 100vh;
-    }
+   ::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-thumb);
+      border-radius: 100vh;
+   }
 
-    ::-webkit-scrollbar-thumb:hover {
-        background: #303030;
-    }
+   ::-webkit-scrollbar-thumb:hover {
+      background: #303030;
+   }
 }
 
 @layer base {
-    * {
-        @apply text-text;
-    }
-    h1 {
-        @apply font-black text-xl md:text-3xl ;
-    }
-    h2 {
-        @apply font-bold md:text-2xl text-lg;
-    }
-    h3 {
-        @apply font-semibold md:text-xl text-base;
-    }
-    input[type='text'] {
-        @apply border border-text-lighter text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  outline-none;
-    }
-    button {
-        @apply border-none border-b-2 border-text font-semibold text-base;
-    }
-    button:focus {
-        @apply border-text-darker;
-    }
+   h1 {
+      @apply text-xl font-black md:text-3xl;
+   }
+   h2 {
+      @apply text-lg font-bold md:text-2xl;
+   }
+   h3 {
+      @apply text-base font-semibold md:text-xl;
+   }
+   input[type='text'] {
+      @apply block w-full rounded-lg border border-text-lighter p-2.5 text-sm outline-none focus:border-blue-500  focus:ring-blue-500;
+   }
+   button {
+      @apply border-b-2 border-none border-text text-base font-semibold;
+   }
+   button:focus-visible {
+      @apply border-none outline-none;
+   }
+}
+
+@layer components {
+   .ellipsis {
+      @apply overflow-hidden text-ellipsis;
+   }
 }
 
 html,
 body {
-    padding: 0;
-    margin: 0;
-    font-family: 'IBM Plex Sans Thai', sans-serif;
+   padding: 0;
+   margin: 0;
+   font-family: 'IBM Plex Sans Thai', sans-serif;
 }
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
 }

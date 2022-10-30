@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import { useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
@@ -11,7 +11,7 @@ const Link = ({ href, children, ...other }) => {
         [router.asPath, href]
     );
     return (
-        <NextLink  href={href} {...other}>
+        <NextLink passHref href={href} {...other}>
             {typeof children === 'function' ? children({ isMatch }) : children}
         </NextLink>
     );
@@ -19,7 +19,7 @@ const Link = ({ href, children, ...other }) => {
 
 Link.propTypes = {
     href: PropTypes.string,
-    children: PropTypes.node
-}
+    children: PropTypes.oneOf(PropTypes.node, PropTypes.string),
+};
 
 export default Link;

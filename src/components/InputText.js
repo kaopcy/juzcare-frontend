@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 import { Controller, useFormContext } from 'react-hook-form';
 
-const InputText = ({ name, label }) => {
-    const { control } = useFormContext();
+const InputText = ({ name, label , ...other }) => {
+    const { control  } = useFormContext();
     return (
         <Controller
             name={name}
             control={control}
             render={({ field, fieldState: { error } }) => (
-                <div className="flex flex-col relative w-full">
+                <div  {...other} className="flex flex-col relative w-full">
                     {label && <div className="text-sm mb-1">{label}</div>}
                     <input type={'text'} {...field} className="" />
-                    {error && <div className="text-error text-sm">{error.message}</div>}
+                    {error && <div className="ml-auto text-error text-sm">{error.message}</div>}
                 </div>
             )}
         />
