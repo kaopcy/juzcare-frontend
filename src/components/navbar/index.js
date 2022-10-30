@@ -3,7 +3,7 @@ import { useState } from 'react';
 // icon
 import Logo from '../../svg/Logo';
 // components
-import Notification from './Notification';
+import Notification from './notification';
 import ProfileIcon from './profileIcon';
 import Sidebar from './Sidebar';
 // config
