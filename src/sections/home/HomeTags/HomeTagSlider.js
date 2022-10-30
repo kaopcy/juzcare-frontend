@@ -80,7 +80,7 @@ function HomeTagSlider() {
    };
 
    return (
-      <section className="relative w-full">
+      <section className="relative w-full mb-20">
          <button onClick={slideToLeft} className="absolute top-1/2 right-full -translate-x-full  -translate-y-1/2">
             <Icon className=" h-5 w-5 text-text-light/70 hover:text-text" icon="akar-icons:circle-chevron-left-fill" />
          </button>
