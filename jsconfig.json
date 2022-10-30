@@ -10,6 +10,7 @@
             "@/components/*": ["src/components/*"],
             "@/layouts/*": ["src/layouts/*"],
             "@/configs/*": ["src/configs/*"],
+            "@/svg/*": ["src/svg/*"],
             "@/theme/*": ["src/theme/*"],
             "@/guards/*": ["src/guards/*"],
             "@/sections/*": ["src/sections/*"],

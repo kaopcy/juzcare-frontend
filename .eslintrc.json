@@ -23,6 +23,7 @@
                ["@/components", "./src/components"],
                ["@/sections", "./src/sections"],
                ["@/contexts", "./src/contexts"],
+               ["@/svg", "./src/svg"],
                ["@/layouts", "./src/layouts"],
                ["@/guards", "./src/guards"],
                ["@/configs", "./src/configs"],
