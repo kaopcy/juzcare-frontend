@@ -14,7 +14,7 @@ const Sidebar = ({ isSidebar, setIsSidebar }) => {
     const { theme, toggleTheme } = useTheme();
     return (
         <Transition appear show={isSidebar} as={Fragment}>
-            <Dialog as="div" className="relative z-10" onClose={() => setIsSidebar(false)}>
+            <Dialog as="div" className="relative z-sidebar" onClose={() => setIsSidebar(false)}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
@@ -24,7 +24,7 @@ const Sidebar = ({ isSidebar, setIsSidebar }) => {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                 >
-                    <Dialog.Backdrop className="fixed inset-0 bg-black bg-opacity-60" />
+                    <Dialog.Backdrop className="fixed inset-0 bg-black bg-opacity-60 z-sidebar-overlay" />
                 </Transition.Child>
                 <div className="fixed inset-0 overflow-y-auto">
                     <div className="flex min-h-full items-center justify-start text-center">

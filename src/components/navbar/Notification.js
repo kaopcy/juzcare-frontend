@@ -5,15 +5,24 @@ import { Popover, Transition, Tab } from '@headlessui/react';
 import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
 
+function NotificationNumberIndicator() {
+    return (
+        <div className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-paper p-[3px]">
+            <div className="h-full w-full rounded-full bg-red-500" />
+        </div>
+    );
+}
+
 const Notification = () => {
     const [isNotification, setIsNotification] = useState(false);
     return (
         <>
-            <Popover className="relative w-6 h-6">
+            <Popover className="relative flex items-center">
                 {({ open }) => (
                     <>
                         <Popover.Button>
-                            <Icon className="w-6 h-6" icon="ic:twotone-notifications-active" />
+                            <NotificationNumberIndicator />
+                            <Icon className="h-8 w-8  text-text" icon="ci:notification" />
                         </Popover.Button>
                         <Transition
                             as={Fragment}
@@ -24,7 +33,7 @@ const Notification = () => {
                             leaveFrom="opacity-100 translate-y-0"
                             leaveTo="opacity-0 translate-y-1"
                         >
-                            <Popover.Panel className=" absolute right-0 z-10 mt-3 w-screen max-w-sm  transform px-4 sm:px-0 ">
+                            <Popover.Panel className=" z-10 absolute top-10 right-0 mt-3 w-screen max-w-sm  transform px-4 sm:px-0 ">
                                 <Panel />
                             </Popover.Panel>
                         </Transition>
@@ -36,7 +45,7 @@ const Notification = () => {
 };
 
 const Panel = () => {
-    const prevId = useRef(0)
+    const prevId = useRef(0);
     const [categories] = useState({
         Recent: [
             {
@@ -116,7 +125,7 @@ const Panel = () => {
         ],
     });
     return (
-        <div className="overflow-x-hidden p-3 overflow-y-scroll max-h-[400px] rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className=" max-h-[400px] overflow-x-hidden overflow-y-scroll rounded-lg bg-white p-3 shadow-lg ring-1 ring-black ring-opacity-5">
             <Tab.Group>
                 <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
                     {Object.keys(categories).map((category) => (
@@ -164,7 +173,7 @@ const Panel = () => {
                                             href="#"
                                             className={
                                                 ('absolute inset-0 rounded-md',
-                                                'ring-blue-400 focus:z-10 focus:outline-none focus:ring-2')
+                                                'focus:z-10 ring-blue-400 focus:outline-none focus:ring-2')
                                             }
                                         />
                                     </li>

@@ -1,46 +1,40 @@
-import { useState } from 'react';
 import Link from '@/components/Link';
+import { useState } from 'react';
 // icon
-import { Icon } from '@iconify/react';
-// context
-import { useTheme } from '@/contexts/ThemeMode';
+import Logo from '../../svg/Logo';
 // components
-import Sidebar from './Sidebar';
 import Notification from './Notification';
+import ProfileIcon from './profileIcon';
+import Sidebar from './Sidebar';
 // config
-import { navItems } from './navbar.config'
 import { PATH } from '@/routes/index';
 
 const NavBar = () => {
-    const { theme, toggleTheme } = useTheme();
-    const [isSidebar, setIsSidebar] = useState(false);
-    
-    return (
-        <>
-            <Sidebar isSidebar={isSidebar} setIsSidebar={setIsSidebar} />
-            <nav className="bg-paper-neutral w-full h-[60px] md:h-navbar flex items-center px-4 gap-x-4">
-                <div className="w-full md:w-auto lg:w-full ">
-                    <Icon icon="ic:twotone-menu" onClick={() => setIsSidebar(true)} className="w-6 h-6" />
-                </div>
-                <Link href={PATH.home} >
-                    <h1 className="">JUZCARE</h1>
-                </Link>
-                <section className="flex  items-center gap-x-6 w-full justify-end">
-                    {navItems.map((navItem) => (
-                        <Link key={navItem.id} href={navItem.href}>
-                            {({ isMatch }) => <h3 className={`hidden md:block cursor-pointer ${isMatch && ' underline '}`}>{navItem.name}</h3>}
-                        </Link>
-                    ))}
-                    <Notification />
-                    <Icon
-                        onClick={() => toggleTheme()}
-                        icon={theme === 'light' ? 'ic:twotone-dark-mode' : 'ic:twotone-light-mode'}
-                        className="w-6 h-6"
-                    />
-                </section>
-            </nav>
-        </>
-    );
+   const [isSidebar, setIsSidebar] = useState(false);
+
+   return (
+      <>
+         <Sidebar isSidebar={isSidebar} setIsSidebar={setIsSidebar} />
+         <nav className="fixed z-navbar flex h-[60px] w-full items-center gap-x-4 border-b bg-paper px-4 md:h-navbar ">
+            <div className="flex h-full items-center ">
+               <div onClick={() => setIsSidebar(true)} className="mr-5 flex h-full w-[25px]  shrink-0 items-center">
+                  <div className="relative block h-[2.5px] w-full shrink-0 rounded-full bg-text before:absolute before:-top-2 before:block before:h-[2.5px] before:w-full before:rounded-full before:bg-text after:absolute after:top-2 after:block after:h-[2.5px] after:w-full after:rounded-full after:bg-text" />
+               </div>
+               <div className="shrink-0">
+                  <Link href={PATH.home}>
+                     <div className="flex w-[90px] items-center">
+                        <Logo />
+                     </div>
+                  </Link>
+               </div>
+            </div>
+            <section className="flex h-full w-full items-center justify-end gap-x-6">
+               <Notification />
+               <ProfileIcon />
+            </section>
+         </nav>
+      </>
+   );
 };
 
 export default NavBar;
