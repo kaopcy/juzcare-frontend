@@ -47,7 +47,7 @@
       @apply block w-full rounded-lg border border-text-lighter p-2.5 text-sm outline-none focus:border-blue-500  focus:ring-blue-500;
    }
    button {
-      @apply border-b-2 border-none border-text text-base font-semibold;
+      @apply text-base font-semibold;
    }
    button:focus-visible {
       @apply border-none outline-none;

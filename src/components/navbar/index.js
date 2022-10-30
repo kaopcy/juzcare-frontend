@@ -16,18 +16,21 @@ const NavBar = () => {
       <>
          <Sidebar isSidebar={isSidebar} setIsSidebar={setIsSidebar} />
          <nav className="fixed z-navbar flex h-[60px] w-full items-center gap-x-4 border-b bg-paper px-4 md:h-navbar ">
-            <div className="flex h-full items-center ">
-               <div onClick={() => setIsSidebar(true)} className="mr-5 flex h-full w-[25px]  shrink-0 items-center">
-                  <div className="relative block h-[2.5px] w-full shrink-0 rounded-full bg-text before:absolute before:-top-2 before:block before:h-[2.5px] before:w-full before:rounded-full before:bg-text after:absolute after:top-2 after:block after:h-[2.5px] after:w-full after:rounded-full after:bg-text" />
-               </div>
+            <section className="flex h-full items-center ">
+               <button
+                  onClick={() => setIsSidebar(true)}
+                  className="mr-5 ml-4 flex h-full w-[25px] shrink-0  cursor-pointer items-center"
+               >
+                  <div className="relative block h-[2.2px] w-full shrink-0 rounded-full bg-text before:absolute before:-top-2 before:block before:h-[2.2px] before:w-full before:rounded-full before:bg-text after:absolute after:top-2 after:block after:h-[2.2px] after:w-full after:rounded-full after:bg-text" />
+               </button>
                <div className="shrink-0">
                   <Link href={PATH.home}>
-                     <div className="flex w-[90px] items-center">
+                     <div className="flex w-[98px] items-center">
                         <Logo />
                      </div>
                   </Link>
                </div>
-            </div>
+            </section>
             <section className="flex h-full w-full items-center justify-end gap-x-6">
                <Notification />
                <ProfileIcon />

@@ -4,7 +4,7 @@ import NavBar from '@/components/navbar';
 const AuthenticatedLayout = ({ children }) => (
    <>
       <NavBar />
-      <main className="min-h-screen w-full p-4 md:p-10 ">{children}</main>
+      <main className="min-h-screen w-full p-4 md:p-10 text-text">{children}</main>
    </>
 );
 
