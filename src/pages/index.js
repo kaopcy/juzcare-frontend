@@ -7,7 +7,7 @@ import HomeTags from '@/sections/home/HomeTags';
 
 function Home() {
    return (
-      <section className="w-full">
+      <section className="w-full flex flex-col">
          <HomeSummary />
          <HomeHero />
          <HomeTags />
