@@ -12,24 +12,28 @@ function NotificationPanel() {
          label: 'มีคนมาไลค์กระทู้คุณ',
          href: '/',
          type: 'like',
+         createdAt: 'Sun Oct 30 2022 22:25:01 GMT+0700 (Indochina Time)'
       },
       {
          id: 2,
          label: 'มีคนคอมเมนท์กระทู้คุณ',
          href: '/',
          type: 'comment',
+         createdAt: 'Sun Oct 30 2022 22:25:01 GMT+0700 (Indochina Time)'
       },
       {
          id: 3,
          label: 'กระทู้คุณอยู่ในลำดับที่ 1 ในการโหวต',
          href: '/',
          type: 'trend',
+         createdAt: 'Sun Oct 30 2022 22:25:01 GMT+0700 (Indochina Time)'
       },
       {
          id: 4,
          label: 'มีคนมาไลค์กระทู้คุณ',
          href: '/',
          type: 'like',
+         createdAt: 'Sun Oct 30 2022 22:25:01 GMT+0700 (Indochina Time)'
       },
    ];
    return (

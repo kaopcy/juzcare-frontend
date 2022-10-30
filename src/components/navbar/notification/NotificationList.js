@@ -1,22 +1,27 @@
 import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import { forwardRef , useState } from 'react';
 // icons
 import { Icon } from '@iconify/react';
 // utils
 import { getIconFromType } from '@/utils/notificationUtils';
+import Moment from 'react-moment'
+import 'moment/locale/th'
 // components
 import Link from '@/components/Link';
 
 const NotificationList = forwardRef(({ notification }, ref) => (
-   <Link href={notification.href}>
-      <a ref={ref} className="flex items-center px-4 py-2">
-         <div className="mr-3 h-10 w-10 overflow-hidden rounded-full bg-[#FBFBFB] p-2 border-[1.5px]">
-            <Icon className="h-full w-full text-primary" icon={getIconFromType(notification.type)} />
-         </div>
-         <h4 className="font-medium text-black">{notification.label}</h4>
-      </a>
-   </Link>
-));
+      <Link href={notification.href}>
+         <a ref={ref} className="flex items-center px-4 py-2 border-b last:border-none">
+            <div className="mr-3 h-9 w-9 overflow-hidden rounded-full bg-[#FBFBFB] p-2 border-[1.5px]">
+               <Icon className="h-full w-full text-primary" icon={getIconFromType(notification.type)} />
+            </div>
+            <p className="font-medium text-black">{notification.label}</p>
+            <Moment fromNow locale='th' className='ml-auto text-xs text-text-light font-light' >
+               {notification.createdAt}
+            </Moment>
+         </a>
+      </Link>
+   ));
 
 NotificationList.propTypes = {
    notification: PropTypes.object,
