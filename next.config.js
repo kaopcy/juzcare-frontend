@@ -3,7 +3,7 @@ const nextConfig = {
     reactStrictMode: false,
     swcMinify: true,
     images: {
-        domains: ['rickandmortyapi.com'],
+        domains: ['rickandmortyapi.com' , 'avatars.dicebear.com'],
     },
 };
 

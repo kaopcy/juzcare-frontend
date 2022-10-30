@@ -3,6 +3,11 @@ module.exports = {
     darkMode: 'class',
     content: ['./src/{pages,layouts,guards,components,sections}/**/*.{js,ts,jsx,tsx}'],
     theme: {
+        zIndex: {
+            navbar: 100,
+            sidebar: 102,
+            'sidebar-overlay': 101,
+        },
         fontFamily: {
             main: ['IBM Plex Sans Thai', 'sans-serif'],
         },
@@ -25,6 +30,9 @@ module.exports = {
             boxShadow: {
                 card: '0px 7px 29px 0px rgba(100, 100, 111, 0.2) ',
             },
+            fontWeight: {
+                black: 700,
+            },
             colors: {
                 error: '#EF4444',
                 text: {
@@ -33,7 +41,8 @@ module.exports = {
                     dark: '#202020',
                     DEFAULT: '#383838',
                     light: '#D1D0D0',
-                    lighter: '#0000001a',
+                    lighter: '#D1D0D0',
+                    lightest: '#D1D0D010',
                 },
                 paper: {
                     DEFAULT: '#fff',
@@ -42,7 +51,7 @@ module.exports = {
                 primary: {
                     darkest: '#000',
                     darker: '#100000',
-                    dark: '#202020',
+                    dark: '#F24E1E',
                     DEFAULT: '#F7931E',
                     light: '#FFBB6B',
                     lighter: '#FFDCB2',

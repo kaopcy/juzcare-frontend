@@ -1,7 +1,7 @@
 
 # **Note** 🗒️
 ## -- **REMINDER** --
-- [ ] Configure **MinIO** for storing images in server. [[MinIO](https://betterprogramming.pub/upload-and-retrieve-images-by-integrating-minio-with-nestjs-419e4e629b5d)] [[Object-Storage-Server](https://www.google.com/search?q=object+storage+server+%E0%B8%84%E0%B8%B7%E0%B8%AD&rlz=1C1ONGR_enTH1026TH1026&oq=object+storage+server+%E0%B8%84%E0%B8%B7%E0%B8%AD&aqs=chrome..69i57j33i160.2169j0j7&sourceid=chrome&ie=UTF-8)]
+- [ ] Configure **MinIO** for storing images in server. [[MinIO](https://betterprogramming.pub/upload-and-retrieve-images-by-integrating-minio-with-nestjs-419e4e629b5d)] [[Object-Storage-Server](https://www.google.com/search?q=object+storage+server+%E0%B8%84%E0%B8%B7%E0%B8%AD&rlz=1C1ONGR_enTH1026TH1026&oq=object+storage+server+%E0%B8%84%E0%B8%B7%E0%B8%AD&aqs=chrome..69i57j33i160.2169j0j7&sourceid=chrome&ie=UTF-8)] [[deploy-nestjs](https://stackoverflow.com/questions/53939919/what-is-the-right-way-of-production-deployment-of-nestjs-application)]  similar to **Amazon S3**
 - [x] Configure **Animation** using **Framermotion**
 - [x] Configure **modal** via 2 options:
   1. manually setup react portal
@@ -24,7 +24,6 @@
 - use **Headless UI** as much as possible, self-implement/hardcode may lead to the bug.
 - use **React Hook Form** for implementing a form.
 - use **Iconify** for icons source.
-
 
 ---
 ## -- **Tailwind note** --
