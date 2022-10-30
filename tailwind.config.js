@@ -41,8 +41,8 @@ module.exports = {
                darker: '#100000',
                dark: '#202020',
                DEFAULT: '#383838',
-               light: '#D1D0D0',
-               lighter: '#D1D0D0',
+               light: '#ACACAC',
+               lighter: '#D9D9D9',
                lightest: '#D1D0D010',
             },
             paper: {
