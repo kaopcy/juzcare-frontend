@@ -23,7 +23,7 @@ function NotificationPanel() {
       },
       {
          id: 3,
-         label: 'กระทู้คุณอยู่ในลำดับที่ 1 ในการโหวต',
+         label: 'กระทู้คุณอยู่ในลำดับที่ 1 ในการโหวตawdawd',
          href: '/',
          type: 'trend',
          createdAt: 'Sun Oct 30 2022 22:25:01 GMT+0700 (Indochina Time)'
