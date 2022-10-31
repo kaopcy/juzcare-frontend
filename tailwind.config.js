@@ -4,7 +4,7 @@ module.exports = {
    content: ['./src/{pages,layouts,guards,components,sections}/**/*.{js,ts,jsx,tsx}'],
    theme: {
       fontFamily: {
-         main: ['IBM Plex Sans Thai', 'sans-serif'],
+         primary: ['IBM Plex Sans Thai', 'sans-serif'],
       },
       screens: {
          xs: '360px',
