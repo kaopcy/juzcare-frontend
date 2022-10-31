@@ -9,6 +9,12 @@ import Layout from '@/layouts/index';
 
 // components
 import InputText from '@/components/InputText';
+import Background from '@/sections/Register/BackgroundReg';
+import Logo from '@/sections/login/Logo';
+
+// Path
+import Link from 'next/link';
+import { PATH } from '@/routes/index';
 
 const Register = () => {
     const defaultValues = {
@@ -17,6 +23,7 @@ const Register = () => {
         lastName: '',
         username: '',
         password: '',
+        phone: '',
     };
 
     const resolver = yup.object().shape({
@@ -25,6 +32,7 @@ const Register = () => {
         lastName: yup.string().required('กรุณากรอกนามสกุล'),
         username: yup.string().required('กรุณากรอกชื่อผู้ใช้'),
         password: yup.string().required('กรุณากรอกรหัสผ่าน').min(8, 'รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร'),
+        phone: yup.string().required('กรุณากรอกเบอร์โทร'),
     });
 
     const methods = useForm({
@@ -37,27 +45,49 @@ const Register = () => {
     };
 
     return (
-        <div className="bg-paper-neutral w-full h-screen flex flex-col items-center justify-center">
-            <h1 className="mb-6">สมัครใช้งาน</h1>
+        <div className="flex items-center justify-center w-full h-screen scale-90 bg-paper-neutral">
+            <div className="relative flex mr-44">
+            <section className="absolute right-0 z-10 p-8 bg-paper-neutral ">
+            <Logo className="absolute w-[300px] right-full mr-28 mt-10" />
+            <h1 className="mb-6 ml-28 ">ลงทะเบียน</h1>
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
-                    <section className="flex flex-col  items-center justify-center gap-y-4 w-[250px]">
-                        <InputText label="โย่วๆ" name="username" />
-                        <InputText label="โย่วๆ" name="email" />
-                        <InputText label="โย่วๆ" name="password" />
-                        <InputText label="โย่วๆ" name="firstName" />
-                        <InputText label="โย่วๆ" name="lastName" />
-                        <div className="flex items-center justify-between w-full my-4">
-                            <button className="text-base" type="button">
+                    <section className="flex flex-col  items-center justify-center gap-y-4 w-[380px]">
+                        <InputText label="ชื่อผู้ใช้งาน" name="username" />
+                        <InputText label="ชื่อ" name="firstName" />
+                        <InputText label="นามสกุล" name="lastName" />
+                        <InputText label="อีเมลล์" name="email" />
+                        <InputText label="รหัสผ่าน" name="password" type='password' />
+                        <InputText label="เบอร์โทร" name="phone" />
+
+                        <button
+                                    className="w-full py-2.5 my-3 text-base rounded-sm bg-primary 
+                                    text-paper drop-shadow-md hover:bg-paper-neutral hover:text-primary 
+                                    border-solid border-2 border-primary
+                                    active:border-primary"
+                                    type="submit"
+                                >
+                                    ลงทะเบียน
+                                </button>
+
+
+
+                        <div className="w-full">
+                        <Link href={PATH.auth.login}>
+                            <button className="font-normal text-black underline text-md hover:text-primary" type="button">
                                 ย้อนกลับ
                             </button>
-                            <button className="px-8 py-1 bg-primary rounded-md text-white font-semibold" type="submit">
-                                สมัคร
-                            </button>
+                        </Link>
+                        
                         </div>
                     </section>
                 </form>
             </FormProvider>
+            </section>
+            <div className="w-[1260px] h-full opacity-70">
+                    <Background />
+                </div>
+                </div>
         </div>
     );
 };

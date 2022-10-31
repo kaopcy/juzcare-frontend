@@ -9,8 +9,14 @@ import Layout from '@/layouts/index';
 
 // components
 import InputText from '@/components/InputText';
-import Background from '@/sections/login/Background';
 import GoogleLoginButton from '@/sections/login/GoogleLoginButton';
+import Background from '@/sections/login/BackgroundLog';
+import Logo from '@/sections/login/Logo';
+import IconGoogle from '@/sections/login/IconGoogle';
+
+// Path
+import Link from 'next/link';
+import { PATH } from '@/routes/index';
 
 const Login = () => {
     const defaultValues = {
@@ -35,34 +41,48 @@ const Login = () => {
     const { formState } = methods;
 
     return (
-        <div className="relative  flex h-screen w-full items-center  justify-center  overflow-hidden bg-paper">
-            <div className="absolute left-1/2 bottom-10  z-10 w-[1100px] -translate-x-1/2 opacity-60 blur-[1px]">
-                <Background />
-            </div>
-            <div className="absolute top-1/2 left-1/2 z-20 -translate-x-[100%] -translate-y-[35%] items-end">
-                <section className="flex flex-col  rounded-md p-10  ">
-                    <h2 className="mb-3 self-center font-black">เข้าสู่ระบบ</h2>
+        <div className="flex items-center justify-center w-full h-screen scale-90 bg-paper-neutral">
+            <div className="relative flex items-end ml-32">
+                <section className="absolute z-10 flex flex-col p-10 rounded-md bg-paper-neutral top-5">
+                    <Logo className="w-[300px] h-full mx-auto " />
+                    <h1 className="self-center my-6 text-2xl">เข้าสู่ระบบ</h1>
                     <FormProvider {...methods}>
                         <form onSubmit={methods.handleSubmit(onSubmit)}>
-                            <section className="flex w-[300px]  flex-col items-center  justify-center gap-y-2">
+                            <section className="flex flex-col items-center justify-center gap-y-6 w-[350px] ">
                                 <InputText label="อีเมล์" name="email" />
-                                <InputText label="รหัสผ่าน" name="password" />
-                                <div className="my-4 mb-10 flex w-full flex-col items-center justify-between gap-y-4">
-                                    <button
-                                        className="w-full rounded-md bg-primary py-3 text-base text-paper"
-                                        type="submit"
-                                    >
-                                        เข้าสู่ระบบ
-                                    </button>
-                                </div>
-                                <GoogleLoginButton />
-                                <button className="mt-4 text-sm font-normal text underline " type="button">
-                                    สมัครใช้งาน
+                                <InputText label="รหัสผ่าน" name="password" type="password" />
+
+                                <button
+                                    className="w-full py-2.5 my-3 text-base rounded-sm bg-primary 
+                                    text-paper drop-shadow-md hover:bg-paper-neutral hover:text-primary 
+                                    border-solid border-2 border-primary
+                                    active:border-primary"
+                                    type="submit"
+                                >
+                                    เข้าสู่ระบบ
                                 </button>
                             </section>
                         </form>
+
+                        <div className="flex flex-col items-center justify-between w-full my-6 gap-y-6">
+        
+                            <GoogleLoginButton />
+                         
+                      
+                            <Link href={PATH.auth.register}>
+                                <button
+                                    className="font-normal text-black underline text-md hover:text-primary"
+                                    type="button"
+                                >
+                                    สมัครใช้งาน
+                                </button>
+                            </Link>
+                        </div>
                     </FormProvider>
                 </section>
+                <div className="w-[1260px] h-full opacity-70">
+                    <Background />
+                </div>
             </div>
         </div>
     );
