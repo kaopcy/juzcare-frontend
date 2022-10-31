@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import '../styles/globals.css';
 import '../styles/nprogress.css';
+import '../styles/apexchart.css';
 
 // redux
 import { store } from '@/redux/store';
@@ -20,33 +21,33 @@ import { ThemeModeProvider } from '@/contexts/ThemeMode';
 import ProgressBar from '@/components/ProgressBar';
 
 const App = (props) => {
-    const { Component, pageProps } = props;
-    const getLayout = Component.getLayout || ((page) => page);
+   const { Component, pageProps } = props;
+   const getLayout = Component.getLayout || ((page) => page);
 
-    useEffect(() => {
-        initialUser();
-    }, []);
+   useEffect(() => {
+      initialUser();
+   }, []);
 
-    return (
-        <>
-            <Head>
-                <meta name="viewport" content="initial-scale=1, width=device-width" />
-            </Head>
-            <ApolloProvider client={client}>
-                <StoreProvider store={store}>
-                    <ThemeModeProvider>
-                        <ProgressBar />
-                        {getLayout(<Component {...pageProps} />)}
-                    </ThemeModeProvider>
-                </StoreProvider>
-            </ApolloProvider>
-        </>
-    );
+   return (
+      <>
+         <Head>
+            <meta name="viewport" content="initial-scale=1, width=device-width" />
+         </Head>
+         <ApolloProvider client={client}>
+            <StoreProvider store={store}>
+               <ThemeModeProvider>
+                  <ProgressBar />
+                  {getLayout(<Component {...pageProps} />)}
+               </ThemeModeProvider>
+            </StoreProvider>
+         </ApolloProvider>
+      </>
+   );
 };
 
 App.propTypes = {
-    Component: PropTypes.func,
-    pageProps: PropTypes.object,
+   Component: PropTypes.func,
+   pageProps: PropTypes.object,
 };
 
 export default App;

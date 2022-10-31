@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import NavBar from '@/components/navbar';
+import FloatingToolbar from '@/components/floatingToolbar'
 
 
 const AuthenticatedLayout = ({ children }) => (
    <>
       <NavBar />
+      <FloatingToolbar />
       <main className="min-h-screen w-full  text-text ">
          <div className="h-navbar w-full" />
          {children}
@@ -16,4 +18,4 @@ AuthenticatedLayout.propTypes = {
    children: PropTypes.node,
 };
 
-export default AuthenticatedLayout;
+export default AuthenticatedLayout;   
