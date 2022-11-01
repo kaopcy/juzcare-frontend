@@ -72,7 +72,6 @@ function HomeTagSlider() {
       const currentTranslateX = slider.style.translate ? parseInt(slider.style.translate.slice(0, -2)) : 0;
 
       const maxTranslateX = -(slider.clientWidth - sliderContainer.clientWidth);
-      console.log(maxTranslateX, currentTranslateX);
 
       if (currentTranslateX - SLIDE_AMOUNT > maxTranslateX)
          slider.style.translate = `${currentTranslateX - SLIDE_AMOUNT}px`;

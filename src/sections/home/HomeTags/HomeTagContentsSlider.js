@@ -6,7 +6,6 @@ import { useReports } from '@/contexts/Home/ReportsContext';
 
 function HomeTagContentsSlider() {
    const { reports } = useReports();
-   console.log(reports);
    return (
       <section className="">
          {reports.map((report) => (
