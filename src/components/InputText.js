@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Controller, useFormContext } from 'react-hook-form';
+import IconError from '@/sections/login/IconError';
 
 const InputText = ({ name, label , type='text' , ...other}) => {
     const { control  } = useFormContext();
@@ -11,7 +12,8 @@ const InputText = ({ name, label , type='text' , ...other}) => {
                 <div  {...other} className="relative flex flex-col w-full">
                     {label && <div className="mb-1 text-sm">{label}</div>}
                     <input type={type} {...field} className="" />
-                    {error && <div className="ml-auto text-sm text-error">{error.message}</div>}
+                    {error && <div className="absolute right-0 mt-1 text-sm top-16 flex-end text-error">{error.message}</div>}
+                    {error && <IconError className="absolute right-0 mr-1 top-8 "/>}
                 </div>
             )}
         />
