@@ -2,7 +2,9 @@ import Link from '@/components/Link';
 // configs
 import { floatingToolbarConfig } from '@/configs/floatingToolbar.config';
 // icons
-import { Icon } from '@iconify/react';
+import Icon from '@/components/Icon'
+// icon bundles
+
 
 function FloatingToolbar() {
    return (
@@ -12,7 +14,7 @@ function FloatingToolbar() {
                <Link key={floating.id} href={floating.href}>
                   {({ isMatch }) => (
                      <a className={`rounded-full p-2 ${isMatch && 'bg-primary/10'}`}>
-                        <Icon className="h-7 w-7" icon={floating.icon} />
+                        <Icon  className="h-7 w-7" icon={floating.icon} />
                      </a>
                   )}
                </Link>

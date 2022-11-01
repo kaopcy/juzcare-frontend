@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 // headlessui
 import { Popover, Transition } from '@headlessui/react';
 // icons
-import { Icon } from '@iconify/react';
+import Icon from '@/components/Icon'
 // components
 import NotificationPanel from './NotificationPanel';
 

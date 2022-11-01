@@ -7,7 +7,8 @@
         "dev": "next dev -p 3030",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "bundle-icon":"node src/services/offlineIcon.service.js"
     },
     "dependencies": {
         "@apollo/client": "^3.6.9",
@@ -16,6 +17,7 @@
         "@iconify/react": "^3.2.2",
         "@reduxjs/toolkit": "^1.8.3",
         "apexcharts": "^3.36.0",
+        "axios": "^1.1.3",
         "framer-motion": "^7.5.1",
         "graphql": "^16.6.0",
         "lodash": "^4.17.21",
