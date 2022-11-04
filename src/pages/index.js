@@ -5,9 +5,12 @@ import HomeHero from '@/sections/home/HomeHero';
 import HomeSummary from '@/sections/home/HomeSummary';
 import HomeTags from '@/sections/home/HomeTags';
 
+import Icon from '@/components/Icon';
+
 function Home() {
    return (
-      <section className="w-full flex flex-col">
+      <section className="flex flex-col w-full">
+         <Icon icon={"ant-design:home-filled"} />
          <HomeSummary />
          <HomeHero />
          <HomeTags />
