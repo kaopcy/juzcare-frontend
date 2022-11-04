@@ -55,8 +55,6 @@ import Logo from '@/svg/Logo';
 import HomeSummaryMainProblem from './HomeSummaryMainProblem';
 import HomeSummarySideProblem from './HomeSummarySideProblem';
 
-import something from '@/something'
-
 function HomeSummary() {
    const bgRef = useRef();
 
