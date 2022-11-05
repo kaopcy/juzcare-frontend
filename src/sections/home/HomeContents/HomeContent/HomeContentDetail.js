@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 // icon
 import { Icon } from '@iconify/react';
 
-HomeTagContentDetail.propTypes = {
+HomeContentDetail.propTypes = {
    report: PropTypes.object,
 };
 
-function HomeTagContentDetail({ report }) {
+function HomeContentDetail({ report }) {
    return (
       <section className="flex w-[355px] flex-col rounded-md border-2 border-text-lighter px-3 py-5 ">
          <p className="h-full   font-medium tracking-wide ">{report.detail}</p>
@@ -25,4 +25,4 @@ function HomeTagContentDetail({ report }) {
    );
 }
 
-export default HomeTagContentDetail;
+export default HomeContentDetail;

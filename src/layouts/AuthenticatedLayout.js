@@ -7,7 +7,7 @@ const AuthenticatedLayout = ({ children }) => (
    <>
       <NavBar />
       <FloatingToolbar />
-      <main className="min-h-screen w-full  text-text ">
+      <main className="min-h-screen w-full  text-text overflow-x-hidden">
          <div className="h-navbar w-full" />
          {children}
       </main>

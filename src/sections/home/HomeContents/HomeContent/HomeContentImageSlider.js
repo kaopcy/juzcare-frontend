@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
 import NextImage from 'next/image';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 
-HomeTagContentImageSlider.propTypes = {
+HomeContentImageSlider.propTypes = {
    report: PropTypes.object,
 };
 
-function HomeTagContentImageSlider({ report }) {
+function HomeContentImageSlider({ report }) {
    const [active] = useState(2);
    return (
-      <section className=" flex h-full w-[220px] flex-col justify-between self-start">
+      <section className="hidden h-full w-[220px] flex-col justify-between self-start md:flex">
          <div className="relative aspect-square  w-full overflow-hidden rounded-md">
             <NextImage
                objectFit="cover"
@@ -17,11 +17,11 @@ function HomeTagContentImageSlider({ report }) {
                src="https://images.unsplash.com/photo-1589824783837-6169889fa20f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
             />
          </div>
-         <div className="flex items-center justify-between">
+         <div className="flex items-center justify-center gap-x-2 overflow-hidden ">
             {[...Array(10)].map((_, index) => (
                <div
                   key={index}
-                  className={`h-3 w-3 rounded-full   ${active == index ? 'bg-primary-dark' : 'bg-text-lighter'} `}
+                  className={`h-2 w-2 rounded-full   ${active == index ? 'bg-primary-dark' : 'bg-text-lighter'} `}
                />
             ))}
          </div>
@@ -29,4 +29,4 @@ function HomeTagContentImageSlider({ report }) {
    );
 }
 
-export default HomeTagContentImageSlider;
+export default HomeContentImageSlider;
