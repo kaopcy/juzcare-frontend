@@ -3,7 +3,7 @@ import HomeContent from './HomeContent';
 import HomeContentProgressBar from './HomeContentProgressBar';
 // contexts
 import { useReports } from '@/contexts/Home/ReportsContext';
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import Icon from '@/components/Icon';
 
 const SLIDER_AUTOSCROLL_TIMEOUT = 3500;
@@ -21,6 +21,7 @@ function HomeContents() {
       timeout.current = null;
    };
 
+   // slider
    useEffect(() => {
       const { current: sliderEl } = sliderRef;
       const scrollAmount = sliderEl.clientWidth * currentReport;
@@ -50,16 +51,31 @@ function HomeContents() {
       };
    }, [currentReport, reports]);
 
-   const autoScrollTimeout = useRef();
    // autoscroll
+   const autoScrollTimeout = useRef();
    useEffect(() => {
-      if (!autoScrollTimeout.current) {
-         autoScrollTimeout.current = setTimeout(() => {
-            setCurrentReport((old) => (old + 1) % reports.length);
-         }, SLIDER_AUTOSCROLL_TIMEOUT);
-      }
+      const { current: sliderEl } = sliderRef;
 
-      return () => clearTimeoutRef(autoScrollTimeout);
+      const mouseOutEvent = () => {
+         if (!autoScrollTimeout.current) {
+            autoScrollTimeout.current = setTimeout(() => {
+               setCurrentReport((old) => (old + 1) % reports.length);
+            }, SLIDER_AUTOSCROLL_TIMEOUT);
+         }
+      };
+
+      const mouseInEvent = () => {
+         clearTimeoutRef(autoScrollTimeout);
+      };
+
+      sliderEl.addEventListener('mouseleave', mouseOutEvent, { passive: true });
+      sliderEl.addEventListener('mouseenter', mouseInEvent, { passive: true });
+
+      return () => {
+         sliderEl.removeEventListener('mouseenter', mouseInEvent);
+         sliderEl.removeEventListener('mouseleave', mouseOutEvent);
+         clearTimeoutRef(autoScrollTimeout);
+      };
    }, [reports, currentReport]);
 
    return (
@@ -95,4 +111,4 @@ function HomeContents() {
    );
 }
 
-export default HomeContents;
+export default memo(HomeContents);

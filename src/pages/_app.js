@@ -4,6 +4,8 @@ import Head from 'next/head';
 import '../styles/globals.css';
 import '../styles/nprogress.css';
 import '../styles/apexchart.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 // redux
 import { store } from '@/redux/store';
 import { Provider as StoreProvider } from 'react-redux';
