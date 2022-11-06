@@ -9,6 +9,8 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
+      - name: test
+        run: echo "${{ secrets.VPS_SSH_HOST }} work!"
       - name: deploy to vps
         uses: appleboy/ssh-action@master
         with:
