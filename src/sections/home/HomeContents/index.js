@@ -6,7 +6,7 @@ import { useReports } from '@/contexts/Home/ReportsContext';
 import { memo, useEffect, useRef, useState } from 'react';
 import Icon from '@/components/Icon';
 
-const SLIDER_AUTOSCROLL_TIMEOUT = 3500;
+const SLIDER_AUTOSCROLL_TIMEOUT = 3000;
 
 function HomeContents() {
    const { reports } = useReports();
@@ -68,6 +68,8 @@ function HomeContents() {
          clearTimeoutRef(autoScrollTimeout);
       };
 
+      mouseOutEvent();
+
       sliderEl.addEventListener('mouseleave', mouseOutEvent, { passive: true });
       sliderEl.addEventListener('mouseenter', mouseInEvent, { passive: true });
 
@@ -89,7 +91,7 @@ function HomeContents() {
          </div>
          <button
             onClick={() => setCurrentReport((old) => (old - 1 < 0 ? reports.length - 1 : (old - 1) % reports.length))}
-            className="group absolute bottom-0 right-full w-20 translate-x-full -translate-y-1/2 "
+            className="group absolute bottom-0 right-full w-1/2  translate-x-full -translate-y-1/2 "
          >
             <Icon
                className=" mr-auto h-5 w-5 text-text-light/70 group-hover:text-text"
@@ -99,7 +101,7 @@ function HomeContents() {
 
          <button
             onClick={() => setCurrentReport((old) => (old + 1) % reports.length)}
-            className="group absolute bottom-0 left-full w-20 -translate-x-full -translate-y-1/2"
+            className="group absolute bottom-0 left-full w-1/2 -translate-x-full -translate-y-1/2"
          >
             <Icon
                className=" ml-auto h-5 w-5 text-text-light/70 group-hover:text-text"
