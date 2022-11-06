@@ -1,26 +1,25 @@
 name: ci/cd-pipeline
 
-on: 
+on:
   push:
     branches: [main]
 
 jobs:
-  deploy:
-    name: Lint
+  connect-open-vpn:
     runs-on: ubuntu-latest
     steps:
-      - name: test
-        run: echo "${{ secrets.VPS_SSH_HOST }} work!"
-      - name: deploy to vps
-        uses: appleboy/ssh-action@master
+      - uses: actions/checkout@v1
+      - name: Install Open VPN
+        run: sudo apt-get install openvpn
+      - name: Connect VPN
+        uses: golfzaptw/action-connect-ovpn@master
+        id: connect_vpn
         with:
-          host: ${{ secrets.VPS_SSH_HOST }}
-          username: ${{ secrets.VPS_SSH_USERNAME }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          password: ${{ secrets.VPS_SSH_PASSWORD }}
-          port: 22
-          script: |
-            cd ${{ secrets.PROJECT_PATH }}
-            git pull origin main
-            docker-compose up --force-recreate --build --detach
-            docker image prune -a -f
+          PING_URL: '127.0.0.1'
+          FILE_OVPN: '.github/vpn/NWL-Lab.ovpn'
+          SECRET: ${{ secrets.VPN_SECRET_USERNAME_PASSWORD }}
+      - name: Check Connect VPN
+        run: echo ${{ steps.connect_vpn.outputs.STATUS }}
+      - name: kill vpn
+        if: always()
+        run: sudo killall openvpn          
