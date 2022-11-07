@@ -1,41 +1,44 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 
-import AuthenticatedLayout from './AuthenticatedLayout';
-import UnAuthenticatedLayout from './UnAuthenticatedLayout';
+import ProtectedLayout from './ProtectedLayout';
+import AuthLayout from './AuthLayout';
+import UnProtectedLayout from './UnProtectedLayout';
 
-const Layout = ({ variant = 'authenticated', title, children, ...other }) => (
-    <PageWrapper title={title} {...other}>
-        {() => {
-            switch (variant) {
-                case 'authenticated':
-                    return <AuthenticatedLayout {...other}>{children}</AuthenticatedLayout>;
-                case 'unauthenticated':
-                    return <UnAuthenticatedLayout {...other}>{children}</UnAuthenticatedLayout>;
-                default:
-                    return children;
-            }
-        }}
-    </PageWrapper>
+const Layout = ({ variant = 'protected', title, children, ...other }) => (
+   <PageWrapper title={title} {...other}>
+      {() => {
+         switch (variant) {
+            case 'protected':
+               return <ProtectedLayout {...other}>{children}</ProtectedLayout>;
+            case 'unprotected':
+               return <UnProtectedLayout {...other}>{children}</UnProtectedLayout>;
+            case 'auth':
+               return <AuthLayout {...other}>{children}</AuthLayout>;
+            default:
+               return children;
+         }
+      }}
+   </PageWrapper>
 );
 const PageWrapper = ({ title, children }) => (
-    <>
-        <Head>
-            <title>{`${title} | JuzCare`}</title>
-        </Head>
-        {children()}
-    </>
+   <>
+      <Head>
+         <title>{`${title} | JuzCare`}</title>
+      </Head>
+      {children()}
+   </>
 );
 
 PageWrapper.propTypes = {
-    title: PropTypes.string.isRequired,
-    children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+   title: PropTypes.string.isRequired,
+   children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
 };
 
 Layout.propTypes = {
-    children: PropTypes.node,
-    title: PropTypes.string.isRequired,
-    variant: PropTypes.oneOf(['authenticated', 'unauthenticated']),
+   children: PropTypes.node,
+   title: PropTypes.string.isRequired,
+   variant: PropTypes.oneOf(['protected', 'auth', 'unprotected']),
 };
 
 export default Layout;

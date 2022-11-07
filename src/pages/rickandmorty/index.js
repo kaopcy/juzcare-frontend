@@ -37,7 +37,7 @@ RickAndMorty.propTypes = {
     page: PropTypes.number,
 };
 RickAndMorty.getLayout = (pages) => (
-    <Layout title="หน้าหลัก" variant="authenticated">
+    <Layout title="หน้าหลัก" variant="protected">
         {pages}
     </Layout>
 );

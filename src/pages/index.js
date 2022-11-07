@@ -24,7 +24,7 @@ function Home() {
 }
 
 Home.getLayout = (page) => (
-   <Layout variant="authenticated" title="หน้าหลัก">
+   <Layout variant="unprotected" title="หน้าหลัก">
       {page}
    </Layout>
 );
