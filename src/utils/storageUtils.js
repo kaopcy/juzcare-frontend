@@ -8,7 +8,6 @@ export const setStoredToken = (token) => {
    window.localStorage.setItem(process.env.NEXT_PUBLIC_ACCESSTOKEN_STORAGE_KEY, token);
 };
 
-export const removeStoredToken = (token) => {
-   if (!token) return;
-   window.localStorage.setItem(process.env.NEXT_PUBLIC_ACCESSTOKEN_STORAGE_KEY, token);
+export const removeStoredToken = () => {
+   window.localStorage.removeItem(process.env.NEXT_PUBLIC_ACCESSTOKEN_STORAGE_KEY);
 };
