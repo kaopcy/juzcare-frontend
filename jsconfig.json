@@ -1,24 +1,26 @@
 {
-    "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-            "@/graphql/*": ["src/graphql/*"],
-            "@/routes/*": ["src/routes/*"],
-            "@/redux/*": ["src/redux/*"],
-            "@/slices/*": ["src/redux/slices/*"],
-            "@/hooks/*": ["src/hooks/*"],
-            "@/components/*": ["src/components/*"],
-            "@/layouts/*": ["src/layouts/*"],
-            "@/configs/*": ["src/configs/*"],
-            "@/svg/*": ["src/svg/*"],
-            "@/theme/*": ["src/theme/*"],
-            "@/guards/*": ["src/guards/*"],
-            "@/sections/*": ["src/sections/*"],
-            "@/pages/*": ["src/pages/*"],
-            "@/contexts/*": ["src/contexts/*"],
-            "@/utils/*": ["src/utils/*"]
-        }
-    },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules"]
+   "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+         "@/graphql/*": ["src/graphql/*"],
+         "@/routes/*": ["src/routes/*"],
+         "@/redux/*": ["src/redux/*"],
+         "@/slices/*": ["src/redux/slices/*"],
+         "@/hooks/*": ["src/hooks/*"],
+         "@/components/*": ["src/components/*"],
+         "@/layouts/*": ["src/layouts/*"],
+         "@/configs/*": ["src/configs/*"],
+         "@/svg/*": ["src/svg/*"],
+         "@/theme/*": ["src/theme/*"],
+         "@/guards/*": ["src/guards/*"],
+         "@/sections/*": ["src/sections/*"],
+         "@/pages/*": ["src/pages/*"],
+         "@/contexts/*": ["src/contexts/*"],
+         "@/utils/*": ["src/utils/*"],
+         "@/services/*": ["src/services/*"],
+         "@/_mock/*": ["src/_mock/*"]
+      }
+   },
+   "include": ["src/**/*"],
+   "exclude": ["node_modules"]
 }

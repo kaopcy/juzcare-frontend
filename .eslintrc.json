@@ -29,7 +29,9 @@
                ["@/configs", "./src/configs"],
                ["@/pages", "./src/pages"],
                ["@/utils", "./src/utils"],
-               ["@/hooks", "./src/hooks"]
+               ["@/hooks", "./src/hooks"],
+               ["@/services", "./src/services"],
+               ["@/_mock", "./src/_mock"]
             ],
             "extensions": [".js", ".jsx"]
          }
