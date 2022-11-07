@@ -7,9 +7,7 @@ const AuthLayout = ({ children }) => {
    const user = useUser();
    const router = useRouter();
    useEffect(() => {
-      console.log(user);
       if (user?._id) {
-         console.log('get replaced');
          router.replace('/');
       }
    }, [user, router]);
