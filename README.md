@@ -25,7 +25,7 @@
 - use **Headless UI** as much as possible, self-implement/hardcode may lead to the bug.
 - use **React Hook Form** for implementing a form.
 - use **Iconify** for icons source.
-- Must use **Redux-saga** instead of Redux-thunk.
+- Must use **Redux-saga** instead for handle effect of redux-action.
 
 ---
 ## -- **Tailwind note** --

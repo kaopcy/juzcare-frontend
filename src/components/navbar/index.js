@@ -15,7 +15,7 @@ const NavBar = () => {
    return (
       <>
          <Sidebar isSidebar={isSidebar} setIsSidebar={setIsSidebar} />
-         <nav className="fixed z-navbar flex h-[60px] w-full items-center gap-x-4 border-b bg-paper px-4 md:h-navbar ">
+         <nav className="fixed z-navbar flex h-[60px] w-full items-center gap-x-4 border-b bg-paper px-4 text-text md:h-navbar">
             <section className="flex h-full items-center ">
                <button
                   onClick={() => setIsSidebar(true)}

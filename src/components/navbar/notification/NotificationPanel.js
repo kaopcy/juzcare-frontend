@@ -19,7 +19,7 @@ function NotificationPanel() {
          label: 'มีคนคอมเมนท์กระทู้คุณ',
          href: '/',
          type: 'comment',
-         createdAt: 'Sun Oct 30 2022 22:25:01 GMT+0700 (Indochina Time)'
+         createdAt: 'Tue Nov 08 2022 00:32:21 GMT+0700 (เวลาอินโดจีน)'
       },
       {
          id: 3,

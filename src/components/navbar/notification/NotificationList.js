@@ -15,9 +15,9 @@ const NotificationList = forwardRef(({ notification }, ref) => (
             <div className="mr-3 h-9 w-9 overflow-hidden rounded-full bg-[#FBFBFB] p-2 border-[1.5px]">
                <Icon className="h-full w-full text-primary" icon={getIconFromType(notification.type)} />
             </div>
-            <p className="font-medium text-black ellipsis whitespace-nowrap">{notification.label}</p>
+            <p className="font-normal text-black ellipsis whitespace-nowrap">{notification.label}</p>
             <Moment fromNow locale='th' className='ml-auto text-xs text-text-light font-light whitespace-nowrap pl-1' >
-               {notification.createdAt}
+               {new Date(notification.createdAt)}
             </Moment>
          </a>
       </Link>

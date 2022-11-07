@@ -26,7 +26,7 @@ const Sidebar = ({ isSidebar, setIsSidebar }) => (
             <Dialog.Backdrop className="fixed inset-0 z-sidebar-overlay bg-black bg-opacity-60" />
          </Transition.Child>
          <aside className="fixed inset-0 overflow-y-auto text-text">
-            <div className="flex min-h-full items-center justify-start text-center">
+            <div className="flex h-full items-center justify-start text-center">
                <Transition.Child
                   as={Fragment}
                   enter="ease-out duration-300"
@@ -36,7 +36,7 @@ const Sidebar = ({ isSidebar, setIsSidebar }) => (
                   leaveFrom="opacity-100 translate-x-0 scale-100"
                   leaveTo="opacity-0  -translate-x-full"
                >
-                  <Dialog.Panel className="flex h-screen shrink-0 w-full  max-w-xs transform flex-col overflow-hidden bg-white  p-6 text-left align-middle shadow-xl transition-all md:max-w-sm">
+                  <Dialog.Panel className="flex h-full shrink-0 w-full  max-w-xs transform flex-col overflow-hidden bg-white  p-6 text-left align-middle shadow-xl transition-all md:max-w-sm">
                      <Dialog.Title as="div" className="flex w-full  items-center justify-between">
                         <div className="w-[100px]">
                            <Logo />

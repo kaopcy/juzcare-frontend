@@ -1,44 +1,34 @@
 import { call, fork, put, take, takeEvery } from 'redux-saga/effects';
-import { initialRequest, signInSuccess, startSighIn, signInFailed } from '../slices/user';
+import { initialRequest, signInSuccess, startSighIn, signInFailed, signOut } from '../slices/user';
 // utils
 import { getStoredToken, setStoredToken, removeStoredToken } from '@/utils/storageUtils';
 // services
 import { getUser, signIn } from '@/services/auth.services';
 
-const delaySomething = (returnVal, ms, isRej = false) =>
-   new Promise((res, rej) => setTimeout(() => (isRej ? rej(new Error({ message: 'error' })) : res(returnVal)), ms));
-
-const fakeCall = async (payload) => await delaySomething(payload || 'heloo kao', 2000);
-
-function* initialUser(payload) {
-   try {
-      yield put(startSighIn());
-      const response = yield call(fakeCall, payload);
-      yield put(signIn({ user: response }));
-   } catch (error) {
-      yield put(signInFailed({ error: error }));
-   }
-}
-
-export function* authorizationFlow() {
-   const { payload } = yield take(initialRequest.type);
+function* initialUsers() {
+   yield take(initialRequest.type);
    const accessToken = yield call(getStoredToken);
-   let getUserResponse;
    if (accessToken) {
       try {
-         getUserResponse = yield call(getUser, { accessToken });
+         const getUserResponse = yield call(getUser, { accessToken });
          yield put(signInSuccess({ user: getUserResponse.user }));
+         return getUserResponse;
       } catch (error) {
          yield put(
             signInFailed({
                error: error instanceof Error ? error.message : 'unknow error',
             }),
          );
+         return null;
       }
    }
+}
+
+export function* authorizationFlow() {
+   const initialUserResponse = yield call(initialUsers);
 
    while (true) {
-      if (!getUserResponse?.accessToken) {
+      if (!initialUserResponse?.accessToken) {
          try {
             const { payload } = yield take(startSighIn.type);
             const signInResponse = yield call(signIn, payload);
@@ -52,7 +42,7 @@ export function* authorizationFlow() {
                );
          }
       }
-      // initial
-      yield;
+      yield take(signOut.type);
+      yield call(removeStoredToken);
    }
 }
