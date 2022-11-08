@@ -54,9 +54,4 @@ App.propTypes = {
    pageProps: PropTypes.object,
 };
 
-export const getStaticProps = async () => {
-   console.log('yoy');
-   return;
-};
-
 export default App;

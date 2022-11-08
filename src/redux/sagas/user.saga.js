@@ -22,19 +22,19 @@ function* initialUsers() {
          return null;
       }
    }
+   return null;
 }
 
 export function* authorizationFlow() {
    const initialUserResponse = yield call(initialUsers);
-
    while (true) {
       if (!initialUserResponse?.accessToken) {
          try {
             const { payload } = yield take(startSighIn.type);
             const signInResponse = yield call(signIn, payload);
-            if(!signInResponse.accessToken) throw new Error()
+            if (!signInResponse.accessToken) throw new Error();
             yield put(signInSuccess({ user: signInResponse?.user }));
-            yield call(setStoredToken,signInResponse)
+            yield call(setStoredToken, signInResponse);
          } catch (error) {
             if (error.message)
                yield put(
@@ -45,6 +45,7 @@ export function* authorizationFlow() {
          }
       }
       yield take(signOut.type);
+      console.log('signout');
       yield call(removeStoredToken);
    }
 }

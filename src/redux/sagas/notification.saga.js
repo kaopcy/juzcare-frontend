@@ -5,6 +5,7 @@ import { setNotification } from '../slices/notification';
 export function* notificationFlow() {
    while (true) {
       const { payload } = yield take(signInSuccess);
-      yield put(setNotification(payload.user?.notifications))
+      console.log('clg from notification: ', payload);
+      yield put(setNotification({ notifications: payload.user?.notifications }));
    }
 }
