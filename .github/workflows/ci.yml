@@ -6,14 +6,10 @@ on:
 
 jobs:
   deploy:
-    name: Lint
+    name: deploy to docker
     runs-on: [self-hosted, linux, X64]
     steps:
-      - name: deploy to vps
-        uses: appleboy/ssh-action@master
-        with:
-          script: |
-            cd ${{ secrets.PROJECT_PATH }}
-            git pull origin main
-            docker-compose up --force-recreate --build --detach
-            docker image prune -a -f
+      - uses: actions/checkout@v3
+      - uses: isbang/compose-action@v1.4.0
+      with:
+        compose-file: "./docker-compose.yml"
