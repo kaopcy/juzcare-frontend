@@ -18,8 +18,7 @@ const GoogleLoginButton = ({ ...other }) => {
 
       google.accounts.id.renderButton(googleButtonRef.current, {
          theme: 'outline',
-         size: ' ',
-         width: '300px',
+         width: 315,
       });
       google.accounts.id.prompt();
    }, []);

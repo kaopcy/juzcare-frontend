@@ -26,7 +26,7 @@ function NotificationPanel() {
             {isAuthenticated ? (
                notifications?.map((e) => <NotificationList key={e._id} notification={e} />)
             ) : (
-               <p className="">กรุณาเข้าสู่ระบบก่อน</p>
+               <p className="text-center py-3">กรุณาเข้าสู่ระบบก่อน</p>
             )}
          </aside>
       </section>

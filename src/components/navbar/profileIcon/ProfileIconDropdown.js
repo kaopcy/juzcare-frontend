@@ -11,7 +11,7 @@ function ProfileIconDropdown() {
 
    return (
       <section className="max-h-[400px] overflow-x-hidden rounded-md  bg-white text-text shadow-lg ring-1 ring-black ring-opacity-5">
-         <ul className="flex flex-col items-start overflow-y-auto overflow-x-hidden py-3 px-2">
+         <ul className="flex min-w-[200px] flex-col items-start gap-1 overflow-y-auto overflow-x-hidden py-3 px-2">
             {(isAuthenticated ? dropdownItems : unAuthDropdownItems).map((item) =>
                item.href ? (
                   <Link href={item.href} key={item.id} className="">
