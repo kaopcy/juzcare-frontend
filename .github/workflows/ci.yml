@@ -1,25 +1,24 @@
 name: ci/cd-pipeline
 
-on:
+on: 
   push:
     branches: [main]
 
 jobs:
-  connect-open-vpn:
-    runs-on: ubuntu-latest
+  deploy:
+    name: Lint
+    runs-on: [self-hosted, linux, X64]
     steps:
-      - uses: actions/checkout@v1
-      - name: Install Open VPN
-        run: sudo apt-get install openvpn
-      - name: Connect VPN
-        uses: golfzaptw/action-connect-ovpn@master
-        id: connect_vpn
-        env:
-          CA_CRT: ${{ secrets.CA_CRT}}
-          USER_CRT: ${{ secrets.USER_CRT }}
-          USER_KEY: ${{ secrets.USER_KEY }}
-      - name: Check Connect VPN
-        run: echo ${{ steps.connect_vpn.outputs.STATUS }}
-      - name: kill vpn
-        if: always()
-        run: sudo killall openvpn          
+      - name: deploy to vps
+        use: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_SSH_HOST }}
+          username: ${{ secrets.VPS_SSH_USERNAME }
+          key: ${{ secrets.VPS_SSH_KEY }}
+          password: ${{ secrets.VPS_SSH_PASSWORD }}
+          port: ${{ secrets.VPS.SSH_PORT }}
+          script: |
+            cd ${{ secretes.PROJECT_PATH }}
+            git pull origin main
+            docker-compose up --force-recreate --build --detach
+            docker image prune -a -f
