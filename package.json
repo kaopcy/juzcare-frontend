@@ -4,8 +4,8 @@
    "private": true,
    "author": "piyachai kaewchum",
    "scripts": {
-      "dev": "npm run bundle-icon | next dev -p 3030",
-      "build": "npm run bundle-icon | next build",
+      "dev": "npm run bundle-icon && next dev -p 3030",
+      "build": " next build",
       "start": "next start",
       "lint": "next lint",
       "bundle-icon": "node src/services/offlineIcon.service.js",
