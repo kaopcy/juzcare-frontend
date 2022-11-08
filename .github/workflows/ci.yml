@@ -18,7 +18,7 @@ jobs:
           password: ${{ secrets.VPS_SSH_PASSWORD }}
           port: ${{ secrets.VPS.SSH_PORT }}
           script: |
-            cd ${{ secretes.PROJECT_PATH }}
+            cd ${{ secrets.PROJECT_PATH }}
             git pull origin main
             docker-compose up --force-recreate --build --detach
             docker image prune -a -f
