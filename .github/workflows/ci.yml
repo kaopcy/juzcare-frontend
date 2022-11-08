@@ -9,7 +9,8 @@ jobs:
     name: deploy to docker
     runs-on: [self-hosted, linux, X64]
     steps:
-    - uses: actions/checkout@v3
-    - uses: isbang/compose-action@v1.4.0
-      with:
-        compose-file: "./docker-compose.yml"
+      - name: deploy to docker
+      - uses: actions/checkout@v2
+        run: |
+          docker-compose up --force-recreate --build --detach
+          docker image prune -a -f
