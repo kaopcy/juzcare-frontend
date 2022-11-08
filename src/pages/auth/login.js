@@ -42,8 +42,8 @@ const Login = () => {
    const { formState } = methods;
 
    return (
-      <div className="flex h-screen w-full scale-90 items-center justify-center bg-paper-neutral">
-         <div className="relative ml-32 flex items-end w-full">
+      <div className="flex h-screen w-full scale-90 items-center justify-center bg-paper-neutral overflow-hidden">
+         <div className="relative ml-32 flex items-end w-full h-full">
             <section className="absolute top-5 z-10 flex flex-col rounded-md bg-paper-neutral p-10">
                <Logo className="mx-auto h-full w-[300px] " />
                <h1 className="my-6 self-center text-2xl">เข้าสู่ระบบ</h1>
@@ -76,7 +76,7 @@ const Login = () => {
                   </div>
                </FormProvider>
             </section>
-            <div className="h-full w-[1260px] opacity-70">
+            <div className="h-full w-[1260px] shrink-0 opacity-70 hidden md:block">
                <Background />
             </div>
          </div>
