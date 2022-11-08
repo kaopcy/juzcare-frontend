@@ -9,8 +9,8 @@ jobs:
     name: deploy to docker
     runs-on: [self-hosted, linux, X64]
     steps:
-      - name: deploy to docker
       - uses: actions/checkout@v2
-        run: |
-          docker-compose up --force-recreate --build --detach
-          docker image prune -a -f
+      - name: deploy to docker
+        run: docker-compose up --force-recreate --build --detach
+        run: docker image prune -a -f
+          
