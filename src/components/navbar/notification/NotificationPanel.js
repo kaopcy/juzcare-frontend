@@ -4,16 +4,13 @@ import { Popover } from '@headlessui/react';
 import { Icon } from '@iconify/react';
 // components
 import NotificationList from './NotificationList';
-// contexts
-import { useSelector } from '@/redux/store';
-import { useEffect } from 'react';
+// hooks
+import useNotifications from '@/hooks/useNotifications';
+import useUser from '@/hooks/useUser';
 
 function NotificationPanel() {
-   const notification = useSelector((state) => state.notifications.notifications);
-
-   useEffect(() => {
-      console.log('notification:', notification);
-   }, [notification]);
+   const { notifications } = useNotifications();
+   const { isAuthenticated } = useUser();
 
    return (
       <section className=" max-h-[400px] overflow-x-hidden  rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
@@ -26,9 +23,11 @@ function NotificationPanel() {
             />
          </header>
          <aside className="overflow-y-auto overflow-x-hidden py-3 ">
-            {notification?.map((e) => (
-               <NotificationList key={e._id} notification={e} />
-            ))}
+            {isAuthenticated ? (
+               notifications?.map((e) => <NotificationList key={e._id} notification={e} />)
+            ) : (
+               <p className="">กรุณาเข้าสู่ระบบก่อน</p>
+            )}
          </aside>
       </section>
    );

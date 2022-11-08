@@ -3,6 +3,7 @@ export const fakeUser = {
    username: 'kpcy',
    firstName: 'piyachai',
    lastName: 'kaewchum',
+   email: 'kao@hotmail.com',
    phone: '0626814488',
    emailType: 'username/password',
    role: 'normal',

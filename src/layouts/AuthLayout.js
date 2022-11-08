@@ -4,13 +4,13 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 const AuthLayout = ({ children }) => {
-   const user = useUser();
+   const { isAuthenticated } = useUser();
    const router = useRouter();
    useEffect(() => {
-      if (user?._id) {
+      if (isAuthenticated) {
          router.replace('/');
       }
-   }, [user, router]);
+   }, [isAuthenticated, router]);
    return (
       <>
          <main className="relative min-h-screen w-full ">{children}</main>

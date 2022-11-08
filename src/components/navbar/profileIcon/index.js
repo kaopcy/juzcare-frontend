@@ -8,7 +8,7 @@ import Icon from '@/components/Icon';
 import ProfileIconDropdown from './ProfileIconDropdown';
 
 function ProfileIcon() {
-   const user = useUser();
+   const { user , isAuthenticated } = useUser();
 
    return (
       <Popover className="relative flex items-center">
@@ -16,7 +16,7 @@ function ProfileIcon() {
             <>
                <Popover.Button>
                   <div className="relative aspect-square h-12 rounded-full  ">
-                     {user ? (
+                     {isAuthenticated ? (
                         <>
                            <div className="relative aspect-square h-full rounded-full border border-primary-light  p-0.5">
                               <div className="relative z-10 h-full w-full overflow-hidden rounded-full bg-primary-light">

@@ -34,6 +34,7 @@ export function* authorizationFlow() {
             const signInResponse = yield call(signIn, payload);
             if (!signInResponse.accessToken) throw new Error();
             yield put(signInSuccess({ user: signInResponse?.user }));
+            console.log(payload)
             yield call(setStoredToken, signInResponse);
          } catch (error) {
             if (error.message)
