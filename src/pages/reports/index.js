@@ -6,13 +6,23 @@ import ReportPost from '@/components/commons/ReportPost';
 import ReportsTypesSelector from '@/sections/reports/ReportsTypesSelector';
 import ReportsOptions from '@/sections/reports/ReportsOptions';
 // services
-import { getPosts } from '@/services/reports.service';
+import { getPosts, getTags } from '@/services/reports.service';
+import { useEffect } from 'react';
+// stores
+import { dispatch } from '@/redux/store';
+import { fetchTagSucceed, fetchTagFail } from '@/slices/reportOptions';
+import {} from '@/slices/reports';
 
 Reports.propTypes = {
-   reports: PropTypes.object,
+   reports: PropTypes.array,
+   tags: PropTypes.array,
 };
 
-function Reports({ reports }) {
+function Reports({ reports, tags: initialTags }) {
+   useEffect(() => {
+      if (initialTags) dispatch(fetchTagSucceed({ tags: initialTags }));
+      dispatch(fetchTagFail({ error: 'fetch tag failed' }));
+   }, [initialTags]);
    return (
       <section className="relative flex  w-full justify-center">
          <div className="mx-[10%] flex w-full  max-w-[700px] flex-col gap-y-10 py-12">
@@ -30,9 +40,12 @@ export const getServerSideProps = async () => {
    const reports = await getPosts({
       sort: 'something',
    });
+   const tags = await getTags();
+
    return {
       props: {
          ...reports,
+         tags,
       },
    };
 };
