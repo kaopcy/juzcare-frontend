@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 // sections
-import HomeTag from './HomeTag';
+import Tag from '@/components/commons/Tag';
 import { Icon } from '@iconify/react';
 
 const SLIDE_AMOUNT = 400;
@@ -79,7 +79,7 @@ function HomeTagSlider() {
    };
 
    return (
-      <section className="relative w-full mb-20">
+      <section className="relative mb-20 w-full">
          <button onClick={slideToLeft} className="absolute top-1/2 right-full -translate-x-full  -translate-y-1/2">
             <Icon className=" h-5 w-5 text-text-light/70 hover:text-text" icon="akar-icons:circle-chevron-left-fill" />
          </button>
@@ -88,10 +88,13 @@ function HomeTagSlider() {
             <Icon className=" h-5 w-5 text-text-light/70 hover:text-text" icon="akar-icons:circle-chevron-right-fill" />
          </button>
 
-         <div ref={sliderContainerRef} className="test-scroll relative h-[40px] w-full overflow-x-hidden overflow-y-hidden">
+         <div
+            ref={sliderContainerRef}
+            className="test-scroll relative h-[40px] w-full overflow-x-hidden overflow-y-hidden"
+         >
             <div ref={sliderRef} className="absolute flex flex-nowrap gap-x-3  transition-all duration-500">
                {tags.map((tag) => (
-                  <HomeTag key={tag.id} tag={tag} />
+                  <Tag key={tag.id} tag={tag} />
                ))}
             </div>
          </div>
