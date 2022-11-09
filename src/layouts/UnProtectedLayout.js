@@ -6,7 +6,7 @@ const UnProtectedLayout = ({ children }) => (
    <>
       <NavBar />
       <FloatingToolbar />
-      <main className="min-h-screen w-full  overflow-x-hidden text-text">
+      <main className="min-h-screen w-full   text-text">
          <div className="h-navbar w-full" />
          {children}
       </main>
