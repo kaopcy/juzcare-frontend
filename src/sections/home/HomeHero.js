@@ -7,12 +7,12 @@ function HomeHero() {
          <article className="-mt-10 flex flex-col items-center md:items-start">
             <h1 className="mb-3">ให้เราช่วยเหลือคุณสิ!</h1>
             <div className="flex items-end ">
-               <p className="mr-2 text-lg ">ปัญหาภายในมหาลัย สามารถแจ้งผ่าน</p>
+               <span className="mr-2 text-lg ">ปัญหาภายในมหาลัย สามารถแจ้งผ่าน</span>
                <div className="mb-1 hidden w-24 md:block">
                   <Logo />
                </div>
             </div>
-            <p className="mb-5 text-center text-lg md:text-start">ให้เราเป็นคนรวบรวมปัญหาและแจ้งปัญหาแทนคุณเอง</p>
+            <span className="mb-5 text-center text-lg md:text-start">ให้เราเป็นคนรวบรวมปัญหาและแจ้งปัญหาแทนคุณเอง</span>
             <button className="text-md rounded-full bg-primary px-4 py-2 text-paper hover:bg-primary-dark">
                แจ้งปัญหา
             </button>

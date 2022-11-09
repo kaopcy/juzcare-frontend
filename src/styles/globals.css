@@ -45,6 +45,9 @@
    h3 {
       @apply text-base font-semibold md:text-xl;
    }
+   h4 {
+      @apply text-base font-bold md:text-lg;
+   }
    input[type='text'] , input[type='password'] {
       @apply block w-full rounded-lg border border-text-lighter p-2.5 text-sm outline-none focus:border-blue-500  focus:ring-blue-500;
    }
@@ -52,7 +55,7 @@
       @apply text-base font-semibold transition-colors ;
    }
    p {
-      @apply text-text text-base font-normal
+      @apply text-text text-base font-normal font-secondary
    }
    button:focus-visible {
       @apply border-none outline-none;
