@@ -10,16 +10,16 @@ const navConfig = [
    },
    {
       id: 2,
-      href: PATH.thread,
+      href: PATH.reports,
       title: 'กระทู้',
-      value: 'thread',
+      value: 'reports',
       icon: 'fluent:people-community-20-filled',
    },
    {
       id: 3,
-      href: PATH.report,
+      href: PATH.createReport,
       title: 'โพสต์',
-      value: 'post',
+      value: 'createReport',
       icon: 'ic:round-post-add',
    },
 ];

@@ -5,6 +5,7 @@ module.exports = {
    theme: {
       fontFamily: {
          primary: ['IBM Plex Sans Thai', 'sans-serif'],
+         secondary: ['IBM Plex Sans Thai Looped', 'sans-serif'],
       },
       screens: {
          xs: '360px',

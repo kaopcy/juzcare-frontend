@@ -5,8 +5,8 @@ const RootAuthpath = '/auth';
 
 export const PATH = {
    home: joinPath(RootPath, '/'),
-   thread: joinPath(RootPath, '/thread'),
-   report: joinPath(RootPath, '/report'),
+   createReport: joinPath(RootPath, '/create-report'),
+   reports: joinPath(RootPath, '/reports'),
    auth: {
       login: joinPath(RootAuthpath, '/login'),
       register: joinPath(RootAuthpath, '/register'),
