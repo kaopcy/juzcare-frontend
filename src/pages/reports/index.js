@@ -18,6 +18,14 @@ function Reports() {
    );
 }
 
+export const getServersideProps =  async ()=>{
+   return {
+      props: {
+         
+      }
+   }
+}
+
 Reports.getLayout = (page) => (
    <Layout title="กระทู้" variant="unprotected">
       {page}
