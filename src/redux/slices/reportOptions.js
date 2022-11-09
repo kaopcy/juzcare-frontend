@@ -1,12 +1,14 @@
 import { createAction, createSlice } from '@reduxjs/toolkit';
+import { ASCENDING, SORT_BY_LIKE, DESCENDING } from '@/configs/reportConfig/reportSortOrder.config';
+import { WAITING } from '@/configs/reportConfig/reportStatus.config';
 
 const initialState = {
    tags: [],
    isLoading: false,
    error: null,
-   sort: '',
-   order: '',
-   filter: '',
+   sort: SORT_BY_LIKE,
+   order: ASCENDING,
+   filter: WAITING,
    activeTags: [],
    page: 1,
    search: '',
@@ -37,8 +39,8 @@ const reportOptionsSlice = createSlice({
       updateSort: (state, action) => {
          state.sort = action.payload.sort;
       },
-      updateOrder: (state, action) => {
-         state.order = action.payload.order;
+      toggleOrder: (state) => {
+         state.order = state.order === ASCENDING ? DESCENDING : ASCENDING;
       },
       updateFilter: (state, action) => {
          state.filter = action.payload.filter;
@@ -55,6 +57,15 @@ const reportOptionsSlice = createSlice({
 
 export const fetchTag = createAction('fetchTag');
 
-export const { fetchTagFail, fetchTagSucceed, startFetchTag, updateFilter, updateOrder, updateSort } =
-   reportOptionsSlice.actions;
-export const reportOptionsReducer = reportOptionsSlice.reducer;
+export const {
+   fetchTagFail,
+   fetchTagSucceed,
+   startFetchTag,
+   updateFilter,
+   toggleOrder,
+   updateSort,
+   updateActiveTags,
+   updatePage,
+   updateSearch,
+} = reportOptionsSlice.actions;
+export default reportOptionsSlice.reducer;

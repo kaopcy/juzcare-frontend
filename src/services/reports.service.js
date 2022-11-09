@@ -7,7 +7,7 @@ export const getTags = async () => {
    return response;
 };
 
-export const getPosts = async ({ sort, order, filter, activeTags, page, search }) => {
+export const getPosts = async ({ sort = '', order = '', filter = '', activeTags = '', page = '', search = '' }) => {
    const response = await new Promise((res) => setTimeout(() => res(fakeReportsResponse), NETWORK_DELAY));
    return response;
 };

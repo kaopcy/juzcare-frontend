@@ -1,28 +1,52 @@
+import PropTypes from 'prop-types';
 import Layout from '@/layouts/index';
 // components
 import ReportPost from '@/components/commons/ReportPost';
 // sections
 import ReportsTypesSelector from '@/sections/reports/ReportsTypesSelector';
 import ReportsOptions from '@/sections/reports/ReportsOptions';
+// services
+import { getPosts, getTags } from '@/services/reports.service';
+import { useEffect } from 'react';
+// stores
+import { dispatch } from '@/redux/store';
+import { fetchTagSucceed, fetchTagFail } from '@/slices/reportOptions';
+import {} from '@/slices/reports';
 
-function Reports() {
+Reports.propTypes = {
+   reports: PropTypes.array,
+   tags: PropTypes.array,
+};
+
+function Reports({ reports, tags: initialTags }) {
+   useEffect(() => {
+      if (initialTags) dispatch(fetchTagSucceed({ tags: initialTags }));
+      dispatch(fetchTagFail({ error: 'fetch tag failed' }));
+   }, [initialTags]);
    return (
       <section className="relative flex  w-full justify-center">
-         <div className="flex w-full mx-[10%]  max-w-[700px] flex-col gap-y-10 py-12">
+         <div className="mx-[10%] flex w-full  max-w-[700px] flex-col gap-y-10 py-12">
             <ReportsTypesSelector />
-            <ReportPost />
-            <ReportPost />
-            <ReportPost />
-            <ReportPost />
+            {reports.map((report) => (
+               <ReportPost key={report._id} report={report} />
+            ))}
          </div>
          <ReportsOptions />
       </section>
    );
 }
 
-export const getServersideProps = async () => {
+export const getServerSideProps = async () => {
+   const reports = await getPosts({
+      sort: 'something',
+   });
+   const tags = await getTags();
+
    return {
-      props: {},
+      props: {
+         ...reports,
+         tags,
+      },
    };
 };
 
