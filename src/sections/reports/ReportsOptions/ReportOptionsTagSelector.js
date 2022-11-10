@@ -1,24 +1,34 @@
-import { updateActiveTags } from '@/slices/reportOptions';
-import { useDispatch, useSelector } from '@/redux/store';
-
+import { useEffect } from 'react';
+import { useSelector } from '@/redux/store';
+// framer
+import { motion, AnimatePresence } from 'framer-motion';
 // components
 import ReportOptionsTag from './ReportOptionsTag';
 
 function ReportOptionsTagSelector() {
    const tags = useSelector((state) => state.reportOptions.tags);
+   const activeTags = useSelector((state) => state.reportOptions.activeTags);
 
-   const dispatch = useDispatch();
-   const onTagsClick = (e) => {
-      dispatch(updateActiveTags({ activeTags: [e.target.value] }));
-   };
+   useEffect(() => {
+      console.log(activeTags);
+      console.log(tags);
+   }, [activeTags, tags]);
 
    return (
-      <section className="mb-5 flex flex-col items-start gap-y-1.5">
-         <h3 className="mb-2 text-primary underline">แท็กยอดนิยม</h3>
-         {tags?.slice(0, 5).map((tag) => (
-            <ReportOptionsTag value={tag.name} onClick={onTagsClick} key={tag.id} tag={tag} />
-         ))}
-      </section>
+      <div className="mb-5 flex flex-col items-start justify-start gap-y-1.5">
+         <AnimatePresence>
+            {activeTags?.slice(0, 5).map((tag) => (
+               <ReportOptionsTag value={tag._id} key={tag._id} tag={tag} selected />
+            ))}
+            <motion.h3  layoutId='h3-name-123' className="mb-2 text-primary underline">แท็กยอดนิยม</motion.h3>
+            {tags
+               ?.filter((e) => !activeTags.find((ac) => e._id == ac._id))
+               .slice(0, 5)
+               .map((tag) => (
+                  <ReportOptionsTag value={tag._id} key={tag._id} tag={tag} />
+               ))}
+         </AnimatePresence>
+      </div>
    );
 }
 

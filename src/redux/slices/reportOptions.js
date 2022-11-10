@@ -21,6 +21,7 @@ const reportOptionsSlice = createSlice({
       startFetchTag: (state) => {
          state.isLoading = true;
       },
+      
       fetchTagSucceed: (state, action) => {
          state.isLoading = false;
          state.tags = action.payload.tags;
@@ -47,7 +48,7 @@ const reportOptionsSlice = createSlice({
       },
       updateActiveTags: (state, action) => {
          action.payload.activeTags.forEach((activeTag) => {
-            const index = state.activeTags.indexOf(activeTag);
+            const index = state.activeTags.findIndex(e => e._id == activeTag._id);
             if (index !== -1) state.activeTags.splice(index, 1);
             else state.activeTags.push(activeTag);
          });

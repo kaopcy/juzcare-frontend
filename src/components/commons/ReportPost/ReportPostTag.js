@@ -1,16 +1,21 @@
 import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+// framer
+import { motion } from 'framer-motion';
+
 // utils
 import { classname } from '@/utils/getClassName';
 
 const ReportPostTag = ({ tag }) => {
    console.log(tag);
    return (
-      <button  className={classname('bg-text-lighter font-normal text-xs px-3 py-0.5 text-text rounded-full mr-2')}>
+      <motion.button
+         layout
+         className={classname('mr-2 rounded-full bg-text-lighter px-3 py-0.5 text-xs font-normal text-text')}
+      >
          {tag.name}
-      </button>
-   )
-}
+      </motion.button>
+   );
+};
 
 ReportPostTag.propTypes = {
    tag: PropTypes.object,

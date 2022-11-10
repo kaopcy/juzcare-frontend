@@ -14,7 +14,7 @@ function HomeHero() {
             </div>
             <span className="mb-5 text-center text-lg md:text-start">ให้เราเป็นคนรวบรวมปัญหาและแจ้งปัญหาแทนคุณเอง</span>
             <button className="text-md rounded-full bg-primary px-4 py-2 text-paper hover:bg-primary-dark">
-               แจ้งปัญหา
+               ตั้งกระทู้
             </button>
          </article>
          <article className="relative mt-16 aspect-[9/10] w-64 md:mt-0 md:w-72">
