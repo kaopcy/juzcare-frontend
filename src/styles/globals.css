@@ -58,7 +58,7 @@
       @apply text-text text-base font-normal font-secondary
    }
    button:focus-visible {
-      @apply border-none outline-none;
+      @apply border-transparent outline-transparent;
    }
 }
 

@@ -3,6 +3,7 @@ import { initialRequest, signInSuccess, startSighIn, signInFailed, signOut } fro
 // utils
 import { getStoredToken, setStoredToken, removeStoredToken } from '@/utils/storageUtils';
 // services
+
 import { getUser, signIn } from '@/services/auth.services';
 
 function* initialUsers() {
