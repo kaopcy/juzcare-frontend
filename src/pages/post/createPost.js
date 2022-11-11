@@ -58,8 +58,7 @@ const createPost = () => {
         <div class="absolute left-0 top-0 h-80 w-80 p-11">
 
         <ProfileIcon/> 
-        {/* <div className="w-full h-full relative rounded-full overflow-hidden bg-primary-light"> */}
-                {/* <Image src="https://avatars.dicebear.com/api/bottts/12.svg" alt="avatar" layout="fill" objectFit="cover"  /> */}
+      
             </div>
             
             </div>
@@ -98,7 +97,7 @@ const createPost = () => {
         </div>
          </header>
 
-         <input class="block w-full text-sm text-black-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-white-400 focus:outline-none dark:bg-primary-300 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"></input>
+         <input class="block w-full text-sm text-black-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-white-400 focus:outline-none dark:bg-primary-300 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" />
 
         
          </section>
@@ -151,7 +150,7 @@ const createPost = () => {
 };
 
 createPost.getLayout = (page) => (
-   <Layout variant="authenticated" title="สร้างโพสต์">
+   <Layout variant="protected" title="สร้างโพสต์">
       {page}
    </Layout>
 );

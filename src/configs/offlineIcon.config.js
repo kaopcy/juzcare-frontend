@@ -5,4 +5,5 @@ module.exports = [
    'fluent:people-community-20-filled',
    'ci:notification',
    "ant-design:home-filled",
+   'ic:baseline-account-circle'
 ];

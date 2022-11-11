@@ -7,9 +7,9 @@ import '../styles/apexchart.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 // redux
-import { store } from '@/redux/store';
+import { store, dispatch } from '@/redux/store';
 import { Provider as StoreProvider } from 'react-redux';
-import { initialUser } from '@/slices/user';
+import { initialRequest } from '@/redux/slices/user';
 // apollo
 import client from '@/graphql/apollo-client';
 import { ApolloProvider } from '@apollo/client';
@@ -28,10 +28,8 @@ const App = (props) => {
    const { Component, pageProps } = props;
    const getLayout = Component.getLayout || ((page) => page);
 
-   console.log('_iconsbundle', _iconsbundle);
-
    useEffect(() => {
-      initialUser();
+      dispatch(initialRequest());
    }, []);
 
    return (
@@ -54,11 +52,6 @@ const App = (props) => {
 App.propTypes = {
    Component: PropTypes.func,
    pageProps: PropTypes.object,
-};
-
-export const getStaticProps = async () => {
-   console.log('yoy');
-   return;
 };
 
 export default App;

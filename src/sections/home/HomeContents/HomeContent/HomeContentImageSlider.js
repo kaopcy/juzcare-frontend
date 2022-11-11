@@ -6,9 +6,10 @@ import Slider from 'react-slick';
 
 HomeContentImageSlider.propTypes = {
    report: PropTypes.object,
+   active: PropTypes.bool,
 };
 
-function HomeContentImageSlider({ report }) {
+function HomeContentImageSlider({ report , active }) {
    const [currentIndex, setCurrentIndex] = useState(0);
 
    const settings = useMemo(
@@ -16,35 +17,31 @@ function HomeContentImageSlider({ report }) {
          speed: 800,
          dots: true,
          arrows: false,
-         autoplay: false,
+         autoplay: active,
          slidesToShow: 1,
          slidesToScroll: 1,
          beforeChange: (current, next) => setCurrentIndex(next),
          customPaging: (i) => <div className="" />,
       }),
-      []
+      [active]
    );
 
    return (
       <section className="hidden h-full w-[220px] flex-col justify-between self-start md:flex">
          <div className="">
             <Slider {...settings}>
-               {[...Array(10)].map((_, index) => (
+               {report?.medias?.map((media) => (
                   <div
-                     key={index}
+                     key={media.id}
                      className="relative aspect-square h-[200px] w-full  shrink-0 cursor-grab overflow-hidden rounded-md"
                   >
-                     <NextImage
-                        objectFit="cover"
-                        layout="fill"
-                        src="https://images.unsplash.com/photo-1589824783837-6169889fa20f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                     />
+                     <NextImage objectFit="cover" layout="fill" src={media.imageUrl} />
                   </div>
                ))}
             </Slider>
          </div>
          <div className="flex h-3 items-center justify-center gap-x-2 overflow-hidden">
-            {[...Array(10)].map((_, index) => (
+            {[...Array(report?.medias?.length)].map((_, index) => (
                <div
                   key={index}
                   className={`h-2 w-2 rounded-full transition-all  ${

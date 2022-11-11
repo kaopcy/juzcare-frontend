@@ -14,7 +14,7 @@ function Home() {
          <HomeSummary />
          <HomeHero />
          <ReportsProvider>
-            <section className="flex min-h-[600px] w-full max-w-[750px] flex-col items-center  gap-x-16 self-center">
+            <section className="flex min-h-[600px] w-full max-w-[750px] flex-col items-center gap-x-16  self-center px-4  md:px-0">
                <HomeTags />
                <HomeContents />
             </section>
@@ -24,7 +24,7 @@ function Home() {
 }
 
 Home.getLayout = (page) => (
-   <Layout variant="authenticated" title="หน้าหลัก">
+   <Layout variant="unprotected" title="หน้าหลัก">
       {page}
    </Layout>
 );

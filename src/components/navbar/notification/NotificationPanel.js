@@ -4,38 +4,14 @@ import { Popover } from '@headlessui/react';
 import { Icon } from '@iconify/react';
 // components
 import NotificationList from './NotificationList';
+// hooks
+import useNotifications from '@/hooks/useNotifications';
+import useUser from '@/hooks/useUser';
 
 function NotificationPanel() {
-   const test = [
-      {
-         id: 1,
-         label: 'มีคนมาไลค์กระทู้คุณ',
-         href: '/',
-         type: 'like',
-         createdAt: 'Sun Oct 30 2022 22:25:01 GMT+0700 (Indochina Time)'
-      },
-      {
-         id: 2,
-         label: 'มีคนคอมเมนท์กระทู้คุณ',
-         href: '/',
-         type: 'comment',
-         createdAt: 'Sun Oct 30 2022 22:25:01 GMT+0700 (Indochina Time)'
-      },
-      {
-         id: 3,
-         label: 'กระทู้คุณอยู่ในลำดับที่ 1 ในการโหวตawdawd',
-         href: '/',
-         type: 'trend',
-         createdAt: 'Sun Oct 30 2022 22:25:01 GMT+0700 (Indochina Time)'
-      },
-      {
-         id: 4,
-         label: 'มีคนมาไลค์กระทู้คุณ',
-         href: '/',
-         type: 'like',
-         createdAt: 'Sun Oct 30 2022 22:25:01 GMT+0700 (Indochina Time)'
-      },
-   ];
+   const { notifications } = useNotifications();
+   const { isAuthenticated } = useUser();
+
    return (
       <section className=" max-h-[400px] overflow-x-hidden  rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
          <header className="flex w-full items-center justify-between bg-text p-5">
@@ -47,11 +23,11 @@ function NotificationPanel() {
             />
          </header>
          <aside className="overflow-y-auto overflow-x-hidden py-3 ">
-            {test.map((e) => (
-               
-                  <NotificationList key={e.id}  notification={e} />
-               
-            ))}
+            {isAuthenticated ? (
+               notifications?.map((e) => <NotificationList key={e._id} notification={e} />)
+            ) : (
+               <p className="text-center py-3">กรุณาเข้าสู่ระบบก่อน</p>
+            )}
          </aside>
       </section>
    );

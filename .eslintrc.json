@@ -1,7 +1,8 @@
 {
    "env": {
       "browser": true,
-      "es2021": true
+      "es2021": true,
+      "jest": true
    },
    "extends": [
       "eslint:recommended",
@@ -29,7 +30,9 @@
                ["@/configs", "./src/configs"],
                ["@/pages", "./src/pages"],
                ["@/utils", "./src/utils"],
-               ["@/hooks", "./src/hooks"]
+               ["@/hooks", "./src/hooks"],
+               ["@/services", "./src/services"],
+               ["@/_mock", "./src/_mock"]
             ],
             "extensions": [".js", ".jsx"]
          }

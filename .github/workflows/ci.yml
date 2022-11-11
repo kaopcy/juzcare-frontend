@@ -1,0 +1,15 @@
+name: ci/cd-pipeline
+
+on: 
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  deploy:
+    name: deploy to docker
+    runs-on: [self-hosted, linux, X64]
+    steps:
+      - uses: actions/checkout@v2
+      - name: deploy to docker
+        run: docker-compose up --force-recreate --build --detach && docker image prune -a -f

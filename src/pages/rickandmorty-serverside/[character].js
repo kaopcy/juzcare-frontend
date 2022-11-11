@@ -16,10 +16,8 @@ Character.propTypes = {
     results: PropTypes.object,
 };
 
-Character.getLayout = (pages) => {
-    return (
-        <Layout title={`ตัวละคร`} variant="authenticated">
+Character.getLayout = (pages) => (
+        <Layout title={`ตัวละคร`} variant="protected">
             {pages}
         </Layout>
     );
-};
