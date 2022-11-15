@@ -16,4 +16,5 @@ export const PATH = {
       ssr: joinPath(RootPath, '/rickandmorty-serverside'),
    },
    aboutus: joinPath(RootPath, '/about-us'),
+   editUser: joinPath(RootPath,'/edituser'),
 };

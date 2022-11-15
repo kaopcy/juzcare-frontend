@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 import NavBar from '@/components/navbar';
-import FloatingToolbar from '@/components/floatingToolbar';
+
 
 const ProtectedLayout = ({ children }) => (
    <>
       <NavBar />
-      <FloatingToolbar />
-      <main className="min-h-screen w-full  overflow-x-hidden text-text">
-         <div className="h-navbar w-full" />
+      <main className="w-full min-h-screen overflow-x-hidden text-text">
+         <div className="w-full h-navbar" />
          {children}
       </main>
    </>
