@@ -10,7 +10,7 @@ export const fakeUser = {
    isBanned: false,
    avatar: {
       _id: '1231231312',
-      avatarUrl: `https://avatars.dicebear.com/api/bottts/${Math.random() * 100}.svg`,
+      avatarUrl: `https://source.unsplash.com/Mv9hjnEUHR4`,
    },
    notifications: [
       {

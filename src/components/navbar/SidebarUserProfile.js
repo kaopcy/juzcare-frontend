@@ -4,21 +4,19 @@ import { PATH } from '@/routes/index';
 import useUser from '@/hooks/useUser';
 // components
 import Link from '@/components/Link';
-import Image from 'next/image';
+import UserProfileIcon from '@/components/UserProfileIcon';
 
 const SidebarUserProfile = () => {
    const { user } = useUser();
    return (
-      <Link href={PATH.auth.login}>
-         <section className="mt-auto flex w-full items-center gap-x-3 px-4 py-2 border border-primary rounded-md">
-            <div className="relative h-11 w-11 overflow-hidden rounded-full mr-2 bg-primary/40">
-               <Image alt={user._id} src={user.avatar.avatarUrl} layout="fill" objectFit="cover" />
-            </div>
+      <Link href={PATH.editUser}>
+         <section className="mt-auto flex w-full items-center gap-x-3 rounded-md border border-primary px-4 py-2">
+            <UserProfileIcon className="h-11 bg-primary/40" />
             <div className="mr-auto flex flex-col items-start">
                <span className="font-medium">{user.username}</span>
                <span className="text-sm text-text-light">{user.email}</span>
             </div>
-            <button className="underline text-sm">ดูโปรไฟล์</button>
+            <button className="text-sm underline">ดูโปรไฟล์</button>
          </section>
       </Link>
    );

@@ -2,10 +2,10 @@ const joinPath = (root, sublink) => `${root}${sublink}`;
 
 const RootPath = '';
 const RootAuthpath = '/auth';
+const RootReportPath = '/report';
 
 export const PATH = {
    home: joinPath(RootPath, '/'),
-   createReport: joinPath(RootPath, '/create-report'),
    reports: joinPath(RootPath, '/reports'),
    auth: {
       login: joinPath(RootAuthpath, '/login'),
@@ -16,4 +16,7 @@ export const PATH = {
       ssr: joinPath(RootPath, '/rickandmorty-serverside'),
    },
    aboutus: joinPath(RootPath, '/about-us'),
+   editUser: joinPath(RootPath, '/edituser'),
+
+   createReport: joinPath(RootReportPath, '/createReport'),
 };
