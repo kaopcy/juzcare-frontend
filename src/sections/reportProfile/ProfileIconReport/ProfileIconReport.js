@@ -1,7 +1,5 @@
 import Image from 'next/image';
 
-
-
 function ProfileIconReport() {
    return (
       <div className="relative h-full w-full overflow-hidden rounded-full bg-primary-light">
