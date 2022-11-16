@@ -51,28 +51,28 @@ function CreateReportForm() {
       <section className="flex w-full max-w-[800px] flex-col rounded-xl  border px-10 py-10 shadow-md">
          <FormProvider {...methods}>
             <form id="createReport" onSubmit={methods.handleSubmit(onSubmit)} />
-            <div className="flex w-[700px]  flex-col items-center justify-center gap-y-6 ">
+            <div className="flex w-full flex-col items-center justify-center gap-y-6 ">
                <header className="flex w-full items-center gap-x-8">
-                  <h4 className="w-32 whitespace-nowrap font-medium">หัวข้อ : </h4>
+                  <h4 className="w-20 shrink-0 whitespace-nowrap font-medium md:w-32">หัวข้อ : </h4>
                   <div className="relative w-full justify-center lg:max-w-xl">
                      <InputText form="createReport" className="h-10" name="topic" />
                   </div>
                </header>
                <header className="flex w-full items-start gap-x-8">
-                  <h4 className="w-32 whitespace-nowrap font-medium">รายละเอียด : </h4>
+                  <h4 className="w-20 shrink-0 whitespace-nowrap font-medium md:w-32">รายละเอียด : </h4>
                   <div className="relative w-full justify-center lg:max-w-xl">
                      <TextField form="createReport" name="detail" />
                   </div>
                </header>
 
                <header className="flex w-full items-center gap-x-8">
-                  <h4 className="w-32 whitespace-nowrap font-medium">แท็ก : </h4>
+                  <h4 className="w-20 shrink-0 whitespace-nowrap font-medium md:w-32">แท็ก : </h4>
                   <CreateReportTagInput methods={methods} />
                </header>
                <header className="flex w-full items-center gap-x-8">
-                  <h4 className="w-32 whitespace-nowrap font-medium">โลเคชั่น : </h4>
+                  <h4 className="w-20 shrink-0 whitespace-nowrap font-medium md:w-32">โลเคชั่น : </h4>
                   <div className="relative w-full justify-center lg:max-w-xl">
-                     <select className="w-full h-10 appearance-none rounded-md border bg-white p-2.5  text-sm text-black shadow-sm outline-none focus:active:border-primary">
+                     <select className="h-10 w-full appearance-none rounded-md border bg-white p-2.5  text-sm text-black shadow-sm outline-none focus:active:border-primary">
                         <option location="1">ตึกโหล</option>
                         <option location="2">ตึกพระเทพ</option>
                         <option location="3">โรงA</option>
@@ -81,16 +81,17 @@ function CreateReportForm() {
                   </div>
                </header>
                <header className="flex w-full items-center gap-x-8">
-                  <h4 className="w-32 whitespace-nowrap font-medium" />
+                  <h4 className="w-20 shrink-0 whitespace-nowrap font-medium md:w-32" />
                   <CreateReportAddFile />
                </header>
             </div>
             <button
+               form="createReport"
                className="ml-auto rounded-md bg-primary px-10 py-2 text-paper shadow-md hover:bg-primary-dark"
                type="submit"
             >
                ยืนยัน
-            </button>{' '}
+            </button>
          </FormProvider>
       </section>
    );

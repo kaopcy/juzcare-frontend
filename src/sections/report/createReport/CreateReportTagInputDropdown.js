@@ -5,10 +5,14 @@ import { useMemo, useCallback, useState, forwardRef, useImperativeHandle, useEff
 // mock
 import { fakeTagsResponse } from '@/_mock/reports';
 
-const CreateReportTagInputDropdown = forwardRef(({ currentTags, setCurrentTags }, ref) => {
+const CreateReportTagInputDropdown = forwardRef(({ input, currentTags, setCurrentTags }, ref) => {
    const filteredResponse = useMemo(
-      () => fakeTagsResponse.filter((e) => !currentTags.reduce((acc, cur) => `${acc}${cur.name}`, '').includes(e.name)),
-      [currentTags],
+      () =>
+         fakeTagsResponse.filter(
+            (e) =>
+               !currentTags.reduce((acc, cur) => `${acc}${cur.name}`, '').includes(e.name) && e.name.includes(input),
+         ),
+      [currentTags, input],
    );
    const [isOpen, setIsOpen] = useState();
 
@@ -52,7 +56,7 @@ const CreateReportTagInputDropdown = forwardRef(({ currentTags, setCurrentTags }
                type="button"
                key={tag._id}
                onClick={() => onButtonClick(tag)}
-               className="mr-2 w-full whitespace-nowrap text-start hover:bg-gray-100 px-3 py-1" 
+               className="mr-2 w-full whitespace-nowrap px-3 py-1 text-start hover:bg-gray-100 focus:bg-gray-100"
             >
                {tag.name}
             </button>
@@ -64,6 +68,7 @@ const CreateReportTagInputDropdown = forwardRef(({ currentTags, setCurrentTags }
 CreateReportTagInputDropdown.propTypes = {
    currentTags: PropTypes.array,
    setCurrentTags: PropTypes.func,
+   input: PropTypes.string,
 };
 
 export default CreateReportTagInputDropdown;
