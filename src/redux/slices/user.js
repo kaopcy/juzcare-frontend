@@ -19,10 +19,14 @@ const userSlice = createSlice({
          state.isLoading = true;
          state.isAuthenticated = false;
       },
+      initialFinished: (state)=>{
+         state.isInitialized = true
+      },
       signInSuccess: (state, action) => {
          state.isLoading = false;
          state.user = action.payload.user;
          state.isAuthenticated = true;
+         state.isInitialized = true;
          state.error = null;
       },
       signInFailed: (state, action) => {
@@ -33,12 +37,12 @@ const userSlice = createSlice({
       },
       signOut: (state) => {
          state.user = null;
-         state.isAuthenticatedw = false;
+         state.isAuthenticated = false;
       },
    },
 });
 
 export const initialRequest = createAction('initialUser');
-export const { signInSuccess, signInFailed, signOut, startSighIn } = userSlice.actions;
+export const { signInSuccess, signInFailed, signOut, startSighIn , initialFinished} = userSlice.actions;
 
 export default userSlice.reducer;
