@@ -4,17 +4,15 @@ import { PATH } from '@/routes/index';
 import useUser from '@/hooks/useUser';
 // components
 import Link from '@/components/Link';
-import Image from 'next/image';
+import UserProfileIcon from '@/components/UserProfileIcon';
 
 const SidebarUserProfile = () => {
    const { user } = useUser();
    return (
       <Link href={PATH.editUser}>
-         <section className="flex items-center w-full px-4 py-2 mt-auto border rounded-md gap-x-3 border-primary">
-            <div className="relative mr-2 overflow-hidden rounded-full h-11 w-11 bg-primary/40">
-               <Image alt={user._id} src={user.avatar.avatarUrl} layout="fill" objectFit="cover" />
-            </div>
-            <div className="flex flex-col items-start mr-auto">
+         <section className="mt-auto flex w-full items-center gap-x-3 rounded-md border border-primary px-4 py-2">
+            <UserProfileIcon className="h-11 bg-primary/40" />
+            <div className="mr-auto flex flex-col items-start">
                <span className="font-medium">{user.username}</span>
                <span className="text-sm text-text-light">{user.email}</span>
             </div>

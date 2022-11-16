@@ -5,29 +5,19 @@ import useUser from '@/hooks/useUser';
 // components
 import { Popover, Transition } from '@headlessui/react';
 import Icon from '@/components/Icon';
+import UserProfileIcon from '@/components/UserProfileIcon';
+// sections
 import ProfileIconDropdown from './ProfileIconDropdown';
 
 function ProfileIcon() {
-   const { user , isAuthenticated } = useUser();
+   const { user, isAuthenticated } = useUser();
 
    return (
       <Popover className="relative flex items-center">
          {({ open }) => (
             <>
                <Popover.Button>
-                  <div className="relative aspect-square h-12 rounded-full  ">
-                     {isAuthenticated ? (
-                        <>
-                           <div className="relative aspect-square h-full rounded-full border border-primary-light  p-0.5">
-                              <div className="relative z-10 h-full w-full overflow-hidden rounded-full bg-primary-light">
-                                 <Image src={user.avatar.avatarUrl} alt="avatar" layout="fill" objectFit="cover" />
-                              </div>
-                           </div>
-                        </>
-                     ) : (
-                        <Icon icon="ic:baseline-account-circle" className="h-full w-full" />
-                     )}
-                  </div>
+                  <UserProfileIcon isBorder className="h-12" />
                </Popover.Button>
                <Transition
                   as={Fragment}
