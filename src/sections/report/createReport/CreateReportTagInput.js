@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { v4 as uuid } from 'uuid';
 // hooks
 import { useFormContext } from 'react-hook-form';
@@ -25,6 +25,7 @@ function CreateReportTagInput({ methods }) {
 
    const onInputSubmit = (event) => {
       event.preventDefault();
+      if (input.length === 0) return;
       setCurrentTags((oldTags) =>
          currentTags.find((tag) => tag.name === input)?._id
             ? [...oldTags]
@@ -38,6 +39,21 @@ function CreateReportTagInput({ methods }) {
       );
       setInput('');
    };
+
+   const onInputChange = (e) => {
+      console.log(e);
+      setInput(e.target.value);
+   };
+
+   const onInputKeyDown = useCallback(
+      (e) => {
+         if (e.keyCode === 8 && input.length === 0 && currentTags.length > 0) {
+            e.preventDefault();
+            setCurrentTags((old) => old.slice(0, -1));
+         }
+      },
+      [input, currentTags],
+   );
 
    // custom tags error set value to main form state
    const { getFieldState } = useFormContext();
@@ -57,15 +73,16 @@ function CreateReportTagInput({ methods }) {
          ))}
          <div className="relative h-full w-full">
             <motion.input
+               onKeyDown={onInputKeyDown}
                layout="position"
                onFocus={() => dropdownRef.current?.open()}
-               className="h-full w-full border-none outline-none focus:placeholder:text-transparent placeholder:text-text-lighter"
-               onChange={(e) => setInput(e.target.value)}
+               className="h-full w-full border-none outline-none placeholder:text-text-lighter focus:placeholder:text-transparent"
+               onChange={onInputChange}
                type="text"
                value={input}
                placeholder="เพิ่มแท็ก +"
             />
-            <CreateReportTagInputDropdown currentTags={currentTags} setCurrentTags={setCurrentTags} ref={dropdownRef} />
+            <CreateReportTagInputDropdown input={input} currentTags={currentTags} setCurrentTags={setCurrentTags} ref={dropdownRef} />
          </div>
          {error && <span className="flex-end  absolute top-[110%] right-0 text-xs text-error">{error.message}</span>}
          {error && (
