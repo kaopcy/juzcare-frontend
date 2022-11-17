@@ -3,6 +3,8 @@ import axios from 'axios';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import * as yup from 'yup';
+// hooks
+import useUploadFiles from '@/hooks/useUploadFiles';
 // components
 import InputText from '@/components/hookFormComponents/InputText';
 import TextField from '@/components/hookFormComponents/TextField';
@@ -16,13 +18,14 @@ function CreateReportForm() {
       detail: '',
       tags: [],
       location: 0,
-      filename: '',
+      media: [],
    };
 
    const resolver = yup.object().shape({
       topic: yup.string().required('กรุณากรอกหัวข้อ'),
       detail: yup.string().required('กรุณากรอกรายละเอียด'),
       tags: yup.array().min(1, 'กรุณาเลือกอย่างน้อย 1 แท็ก'),
+      media: yup.array().min(1, 'กรุณาเลือกอย่างน้อย 1 ไฟล์'),
    });
 
    const methods = useForm({
@@ -30,21 +33,10 @@ function CreateReportForm() {
       defaultValues,
    });
 
-   const onSubmit = (value) => {
-      console.log(value);
-   };
+   const { response, error, isLoading, upload } = useUploadFiles();
 
-   const onUpload = async (e) => {
-      const uploadPort = 3002;
-      console.log(e.target.files[0]);
-
-      const formData = new FormData();
-      formData.append('image', e.target.files[0]);
-      console.log(formData.getAll('image'));
-      const response = await axios.post(`http://localhost:${uploadPort}`, formData, {
-         headers: { 'Content-Type': 'multipart/form-data' },
-      });
-      console.log(response);
+   const onSubmit = async (value) => {
+      upload(value.media);
    };
 
    return (
@@ -54,14 +46,14 @@ function CreateReportForm() {
             <div className="flex w-full flex-col items-center justify-center gap-y-6 ">
                <header className="flex w-full items-center gap-x-8">
                   <h4 className="w-20 shrink-0 whitespace-nowrap font-medium md:w-32">หัวข้อ : </h4>
-                  <div className="relative w-full justify-center lg:max-w-xl">
+                  <div className="relative w-full justify-center">
                      <InputText form="createReport" className="h-10" name="topic" />
                   </div>
                </header>
                <header className="flex w-full items-start gap-x-8">
                   <h4 className="w-20 shrink-0 whitespace-nowrap font-medium md:w-32">รายละเอียด : </h4>
-                  <div className="relative w-full justify-center lg:max-w-xl">
-                     <TextField form="createReport" name="detail" />
+                  <div className="relative w-full justify-center">
+                     <TextField form="createReport" className="h-20" name="detail" />
                   </div>
                </header>
 
@@ -71,7 +63,7 @@ function CreateReportForm() {
                </header>
                <header className="flex w-full items-center gap-x-8">
                   <h4 className="w-20 shrink-0 whitespace-nowrap font-medium md:w-32">โลเคชั่น : </h4>
-                  <div className="relative w-full justify-center lg:max-w-xl">
+                  <div className="relative w-full justify-center">
                      <select className="h-10 w-full appearance-none rounded-md border bg-white p-2.5  text-sm text-black shadow-sm outline-none focus:active:border-primary">
                         <option location="1">ตึกโหล</option>
                         <option location="2">ตึกพระเทพ</option>
@@ -80,14 +72,15 @@ function CreateReportForm() {
                      </select>
                   </div>
                </header>
-               <header className="flex w-full items-center gap-x-8">
+               <header className="flex w-full items-center gap-x-8 ">
                   <h4 className="w-20 shrink-0 whitespace-nowrap font-medium md:w-32" />
-                  <CreateReportAddFile />
+                  <CreateReportAddFile methods={methods} />
+                  {isLoading && <div className="">loading</div>}
                </header>
             </div>
             <button
                form="createReport"
-               className="ml-auto rounded-md bg-primary px-10 py-2 text-paper shadow-md hover:bg-primary-dark"
+               className="ml-auto mt-10 rounded-md bg-primary px-10 py-2 text-paper shadow-md hover:bg-primary-dark"
                type="submit"
             >
                ยืนยัน

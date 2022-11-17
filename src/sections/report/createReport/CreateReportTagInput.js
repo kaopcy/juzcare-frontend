@@ -72,11 +72,10 @@ function CreateReportTagInput({ methods }) {
             <CreateReportTag tag={tag.name} key={tag._id} onClick={() => onRemoveTagClick(tag._id)} />
          ))}
          <div className="relative h-full w-full">
-            <motion.input
+            <input
                onKeyDown={onInputKeyDown}
-               layout="position"
                onFocus={() => dropdownRef.current?.open()}
-               className="h-full w-full border-none outline-none placeholder:text-text-lighter focus:placeholder:text-transparent"
+               className="!p-0 h-full w-full border-none outline-none placeholder:text-text-lighter focus:placeholder:text-transparent"
                onChange={onInputChange}
                type="text"
                value={input}

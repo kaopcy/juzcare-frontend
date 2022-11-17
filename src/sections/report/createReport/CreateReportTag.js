@@ -13,9 +13,9 @@ function CreateReportTag({ tag, onClick }) {
          layout="position"
          type="button"
          onClick={onClick}
-         className=" flex max-w-[100px] items-center gap-x-1 whitespace-nowrap rounded-full bg-primary/20 px-3 py-0.5 text-sm text-text"
+         className=" flex max-w-[100px] items-center gap-x-1 whitespace-nowrap rounded-lg bg-primary/10 px-3 py-1 text-xs text-text hover:bg-primary/30"
       >
-         <span className="ellipsis mt-[2px]">{tag}</span>
+         <span className="ellipsis mt-[2px] font-normal">{tag}</span>
          <Icon className="h-3 w-3 shrink-0 text-error" icon="ic:twotone-close" />
       </motion.button>
    );

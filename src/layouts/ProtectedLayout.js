@@ -12,7 +12,7 @@ const ProtectedLayout = ({ children }) => {
    const { isAuthenticated, isInitialized } = useUser();
    const router = useRouter();
    useEffect(() => {
-      console.log(isInitialized , isAuthenticated)
+      console.log(isInitialized, isAuthenticated);
       if (isInitialized && !isAuthenticated) {
          router.replace(PATH.auth.login);
       }
@@ -20,7 +20,10 @@ const ProtectedLayout = ({ children }) => {
    return (
       <>
          <NavBar />
-         <main className="h-1 min-h-screen  w-full overflow-x-hidden text-text">{children}</main>
+         <main className="h-1 min-h-screen  w-full overflow-x-hidden text-text">
+            <div className="h-navbar w-full" />
+            {children}
+         </main>
       </>
    );
 };
