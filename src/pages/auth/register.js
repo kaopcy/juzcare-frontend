@@ -8,7 +8,7 @@ import * as yup from 'yup';
 import Layout from '@/layouts/index';
 
 // components
-import InputText from '@/components/InputText';
+import InputText from '@/components/hookFormComponents/InputText';
 import Background from '@/sections/Register/BackgroundReg';
 import Logo from '@/sections/login/Logo';
 

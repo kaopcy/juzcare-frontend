@@ -1,0 +1,58 @@
+import { useReducer, useEffect } from 'react';
+import axios from 'axios';
+
+const START = 'START';
+const SUCCESS = 'SUCCESS';
+const FAILED = 'FAILED';
+
+const useUploadFiles = () => {
+   const initState = {
+      response: null,
+      error: null,
+      isLoading: false,
+   };
+
+   const reducer = (state, actions) => {
+      switch (actions.type) {
+         case START:
+            return { ...state, isLoading: true };
+         case SUCCESS:
+            return { ...state, isLoading: false, response: actions.payload };
+         case FAILED:
+            return { ...state, isLoading: false, error: actions.payload };
+      }
+   };
+
+   const [state, dispatch] = useReducer(reducer, initState);
+
+   const upload = async (files) => {
+      dispatch({ type: START });
+      const formData = new FormData();
+      files.forEach((file) => {
+         formData.append(file.name, file);
+      });
+      try {
+         const uploadResponse = await axios.post(process.env.NEXT_PUBLIC_UPLOADGATEWAY_URL, formData, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+         });
+         dispatch({ type: SUCCESS, payload: uploadResponse.data });
+         console.log(uploadResponse);
+      } catch (error) {
+         dispatch({ type: FAILED, payload: error instanceof Error ? error.message : 'somethin went wrong' });
+      }
+   };
+
+   useEffect(() => {
+      console.log('state response: ', state.response);
+      console.log('state isLoading: ', state.isLoading);
+   }, [state]);
+
+   return {
+      isLoading: state.isLoading,
+      response: state.response,
+      error: state.error,
+      upload,
+   };
+};
+
+export default useUploadFiles;

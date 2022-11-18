@@ -1,7 +1,7 @@
-import { call, fork, put, take, takeEvery } from 'redux-saga/effects';
-import { initialRequest, signInSuccess, startSighIn, signInFailed, signOut } from '../slices/user';
+import { call, put, take } from 'redux-saga/effects';
+import { initialFinished, initialRequest, signInFailed, signInSuccess, signOut, startSighIn } from '../slices/user';
 // utils
-import { getStoredToken, setStoredToken, removeStoredToken } from '@/utils/storageUtils';
+import { getStoredToken, removeStoredToken, setStoredToken } from '@/utils/storageUtils';
 // services
 
 import { getUser, signIn } from '@/services/auth.services';
@@ -23,6 +23,7 @@ function* initialUsers() {
          return null;
       }
    }
+   yield put(initialFinished());
    return null;
 }
 
@@ -35,7 +36,7 @@ export function* authorizationFlow() {
             const signInResponse = yield call(signIn, payload);
             if (!signInResponse.accessToken) throw new Error();
             yield put(signInSuccess({ user: signInResponse?.user }));
-            console.log(payload)
+            console.log(payload);
             yield call(setStoredToken, signInResponse);
          } catch (error) {
             if (error.message)

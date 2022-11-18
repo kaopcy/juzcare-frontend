@@ -9,7 +9,7 @@ import { startSighIn } from '@/slices/user';
 // layout
 import Layout from '@/layouts/index';
 // components
-import InputText from '@/components/InputText';
+import InputText from '@/components/hookFormComponents/InputText';
 import GoogleLoginButton from '@/sections/login/GoogleLoginButton';
 import Background from '@/sections/login/BackgroundLog';
 import ErrorPageSvg from '@/sections/errorPage/ErrorPageSvg';
