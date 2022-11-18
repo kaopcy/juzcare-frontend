@@ -45,9 +45,9 @@ const Register = () => {
    };
 
    return (
-      <div className="flex h-screen w-full scale-90 items-center justify-center bg-paper-neutral">
-         <div className="relative mr-44 flex">
-            <section className="absolute right-0 z-10 bg-paper-neutral p-8 ">
+      <div className="flex items-center justify-center w-full h-screen scale-90 bg-paper-neutral">
+         <div className="relative flex mr-44">
+            <section className="absolute right-0 z-10 p-8 bg-paper-neutral ">
                <Logo className="absolute right-full mr-28 mt-10 w-[300px]" />
                <h1 className="mb-6 ml-28 ">ลงทะเบียน</h1>
                <FormProvider {...methods}>
@@ -73,7 +73,7 @@ const Register = () => {
                         <div className="w-full">
                            <Link href={PATH.auth.login}>
                               <button
-                                 className="text-md font-normal text-black underline hover:text-primary"
+                                 className="font-normal text-black underline text-md hover:text-primary"
                                  type="button"
                               >
                                  ย้อนกลับ

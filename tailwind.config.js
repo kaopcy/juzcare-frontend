@@ -62,6 +62,7 @@ module.exports = {
                DEFAULT: '#F7931E',
                light: '#FFBB6B',
                lighter: '#FFDCB2',
+               errorbg : '#383838',
             },
             secondary: {
                darkest: '#000',

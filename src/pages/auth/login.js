@@ -12,6 +12,7 @@ import Layout from '@/layouts/index';
 import InputText from '@/components/InputText';
 import GoogleLoginButton from '@/sections/login/GoogleLoginButton';
 import Background from '@/sections/login/BackgroundLog';
+import ErrorPageSvg from '@/sections/errorPage/ErrorPageSvg';
 import Logo from '@/sections/login/Logo';
 import IconGoogle from '@/sections/login/IconGoogle';
 // Path
@@ -42,11 +43,11 @@ const Login = () => {
    const { formState } = methods;
 
    return (
-      <div className="flex h-screen w-full scale-90 items-center justify-center overflow-hidden bg-paper-neutral">
-         <div className="relative flex h-full w-full items-end md:ml-32">
-            <section className="absolute left-1/2 top-5 z-10 flex -translate-x-1/2 md:translate-x-0 md:left-0 flex-col rounded-md bg-paper-neutral p-10">
+      <div className="flex items-center justify-center w-full h-screen overflow-hidden scale-95 bg-paper-neutral">
+         <div className="relative flex items-end w-full h-full md:ml-32">
+            <section className="absolute z-10 flex flex-col p-10 -translate-x-1/2 rounded-md left-1/2 top-5 md:translate-x-0 md:left-0 bg-paper-neutral">
                <Logo className="mx-auto h-full w-[300px] " />
-               <h1 className="my-6 self-center text-2xl">เข้าสู่ระบบ</h1>
+               <h1 className="self-center my-6 text-2xl">เข้าสู่ระบบ</h1>
                <FormProvider {...methods}>
                   <form onSubmit={methods.handleSubmit(onSubmit)}>
                      <section className="flex w-[350px] flex-col items-center justify-center gap-y-6 ">
@@ -65,11 +66,11 @@ const Login = () => {
                      </section>
                   </form>
 
-                  <div className="my-6 flex w-full flex-col items-center justify-between gap-y-6">
+                  <div className="flex flex-col items-center justify-between w-full my-6 gap-y-6">
                      <GoogleLoginButton />
 
                      <Link href={PATH.auth.register}>
-                        <button className="text-md font-normal text-black underline hover:text-primary" type="button">
+                        <button className="font-normal text-black underline text-md hover:text-primary" type="button">
                            สมัครใช้งาน
                         </button>
                      </Link>
@@ -77,7 +78,8 @@ const Login = () => {
                </FormProvider>
             </section>
             <div className="hidden h-full w-[1260px] shrink-0 opacity-70 md:block">
-               <Background />
+               <Background/>
+               
             </div>
          </div>
       </div>
