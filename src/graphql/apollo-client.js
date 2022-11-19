@@ -3,7 +3,7 @@ import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 
 const httpLink = new HttpLink({
    credentials: 'same-origin',
-   uri: 'http://10.10.0.25:6003/graphql',
+   uri: 'https://api-juzcare.celab.network/graphql',
    headers: {
       authorization: `Bearer ${getStoredToken()}`,
    },

@@ -30,9 +30,7 @@ function CreateReportAddFile({ methods }) {
       [files],
    );
 
-   const getUrlObject = useCallback((e)=>{
-      return URL.createObjectURL(e)
-   }, [])
+   const getUrlObject = useCallback((e) => URL.createObjectURL(e), []);
 
    const onFileClick = (targetName) => {
       setFiles((old) => old.filter((e) => e.name !== targetName));
@@ -46,7 +44,7 @@ function CreateReportAddFile({ methods }) {
       methods.trigger('media');
    }, [files, methods]);
 
-   console.log('rerender')
+   console.log('rerender');
 
    return (
       <div className="relative flex w-full flex-wrap items-center justify-start gap-x-3 gap-y-3">
@@ -58,7 +56,7 @@ function CreateReportAddFile({ methods }) {
                key={e.name}
                className="flex max-w-[140px] items-center whitespace-nowrap rounded-lg border border-primary  px-2 py-2 hover:border-primary-dark"
             >
-               <div className="relative mr-2 aspect-[12/9] h-7 shrink-0">
+               <div className="relative mr-2 aspect-square h-7 shrink-0">
                   <Image layout="fill" objectFit="cover" alt={e.name} src={getUrlObject(e)} />
                </div>
                <div className="ellipsis mr-2 flex flex-col">
@@ -88,10 +86,7 @@ function CreateReportAddFile({ methods }) {
          />
          {error && <span className="flex-end  absolute top-[110%] right-0 text-xs text-error">{error.message}</span>}
          {error && (
-            <Icon
-               className="absolute right-2 top-1/2 h-5 w-5 -translate-y-1/2  text-error"
-               icon="material-symbols:fmd-bad-rounded"
-            />
+            <Icon className="absolute right-2 top-1/2 h-5 w-5 -translate-y-1/2  text-error" icon="clarity:error-line" />
          )}
       </div>
    );

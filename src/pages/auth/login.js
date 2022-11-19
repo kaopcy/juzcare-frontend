@@ -73,9 +73,9 @@ const Login = () => {
                      </section>
                   </form>
                   <div className="flex w-full items-center ">
-                     <span className="h-[1px] w-full bg-text-lighter " />
+                     <span className="h-[1px] w-full bg-text-lighter/60 " />
                      <span className="mx-3 my-6 text-xs text-text-light">หรือ</span>
-                     <span className="h-[1px] w-full bg-text-lighter " />
+                     <span className="h-[1px] w-full bg-text-lighter/60 " />
                   </div>
                   <div className=" flex w-full flex-col items-center justify-between gap-y-6">
                      <GoogleLoginButton />

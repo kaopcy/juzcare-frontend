@@ -87,7 +87,7 @@ function CreateReportTagInput({ methods }) {
          {error && (
             <Icon
                className="absolute right-2 top-1/2 h-5 w-5 -translate-y-1/2  text-error"
-               icon="material-symbols:fmd-bad-rounded"
+               icon="clarity:error-line"
             />
          )}
       </form>

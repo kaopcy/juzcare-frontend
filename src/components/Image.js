@@ -4,6 +4,8 @@ import { useState } from 'react';
 import NextImage from 'next/image';
 import { classname } from '@/utils/getClassName';
 
+import Loader from '@/svg/Loader';
+
 Image.propTypes = {
    src: PropTypes.string,
    alt: PropTypes.string,
@@ -31,8 +33,8 @@ function Image({ src, alt, loadingRender, ...rest }) {
 
 function LoadingIndicator({ ...rest }) {
    return (
-      <div className={classname('flex h-full w-full items-center justify-center bg-gray-300', rest.className ?? '')}>
-         <div className="aspect-square w-[20%] animate-spin rounded-full border-2 border-t-0 border-gray-500 " />
+      <div className={classname('flex h-full w-full items-center justify-center bg-gray-300/30', rest.className ?? '')}>
+         <Loader className="w-[20%] min-w-[20px]" indicatorColor="#8f8f8f" />
       </div>
    );
 }
