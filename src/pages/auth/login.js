@@ -9,9 +9,9 @@ import { startSignIn } from '@/slices/user';
 // layout
 import Layout from '@/layouts/index';
 // components
-import Icon from '@/components/Icon';
 import InputText from '@/components/hookFormComponents/InputText';
 import Background from '@/components/AuthBackground';
+import Loader from '@/svg/Loader';
 // sections
 import Logo from '@/sections/auth/Logo';
 import GoogleLoginButton from '@/sections/auth/GoogleLoginButton';
@@ -51,35 +51,34 @@ const Login = () => {
             <section className="z-10 flex flex-col bg-paper px-4 md:px-8">
                <FormProvider {...methods}>
                   <form onSubmit={methods.handleSubmit(onSubmit)}>
-                     <section className="flex w-[350px]  flex-col items-center justify-center gap-y-6 ">
+                     <section className="flex w-[400px]  flex-col items-center justify-center gap-y-6 ">
                         <Logo className="mx-auto h-full w-[60%] " />
-                        <h1 className="self-center text-2xl font-bold tracking-wide">เข้าสู่ระบบ</h1>
+                        <h1 className="mb-4 self-center text-3xl font-bold tracking-wide">เข้าสู่ระบบ</h1>
 
                         {error && <AuthResponseError error={error} />}
-                        <InputText
-                           label={<div className="mb-1 cursor-default text-sm font-medium">อีเมล์</div>}
-                           name="email"
-                        />
-                        <InputText
-                           label={<div className="mb-1 cursor-default text-sm font-medium">รหัสผ่าน</div>}
-                           name="password"
-                           type="password"
-                        />
+                        <div className="flex w-full gap-x-4">
+                           <InputText label="อีเมล์" name="email" />
+                           <InputText label="รหัสผ่าน" name="password" type="password" />
+                        </div>
 
                         <button
-                           className="my-3 w-full rounded-lg border-2 border-solid border-primary 
+                           className="mt-3 w-full rounded-lg border-2 border-solid border-primary 
                                      bg-primary py-2.5 text-base tracking-wider 
                                      text-paper drop-shadow-md hover:bg-paper-neutral
                                      hover:text-primary active:border-primary"
                            type="submit"
                         >
-                           {isLoading ? 'loading' : 'เข้าสู่ระบบ'}
+                           {isLoading ? <Loader className="mx-auto h-6 w-6" /> : 'เข้าสู่ระบบ'}
                         </button>
                      </section>
                   </form>
-                  <div className="my-6 flex w-full flex-col items-center justify-between gap-y-6">
+                  <div className="flex w-full items-center ">
+                     <span className="h-[1px] w-full bg-text-lighter " />
+                     <span className="mx-3 my-6 text-xs text-text-light">หรือ</span>
+                     <span className="h-[1px] w-full bg-text-lighter " />
+                  </div>
+                  <div className=" flex w-full flex-col items-center justify-between gap-y-6">
                      <GoogleLoginButton />
-
                      <div className="flex items-end  text-base">
                         <span className="mr-4">ยังไม่มีบัญชี?</span>
                         <Link href={PATH.auth.register}>

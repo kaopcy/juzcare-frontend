@@ -3,21 +3,18 @@ import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-
 // store
 import { useDispatch, useSelector } from '@/redux/store';
 import { startRegister } from '@/slices/user';
-
 // layout
 import Layout from '@/layouts/index';
-
 // components
 import InputText from '@/components/hookFormComponents/InputText';
 import Background from '@/components/AuthBackground';
 // sections
 import AuthResponseError from '@/sections/auth/AuthResponseError';
 import Logo from '@/sections/auth/Logo';
-
+import Loader from '@/svg/Loader';
 // Path
 import Link from 'next/link';
 import { PATH } from '@/routes/index';
@@ -67,7 +64,7 @@ const Register = () => {
                <Logo className="absolute  -top-5  z-10 mr-28 w-[30%] md:left-[14%]" />
             </div>
             <section className="z-10 flex flex-col items-center gap-y-7 bg-paper-neutral px-8">
-               <h1 className="text-2xl font-bold md:text-3xl">ลงทะเบียน</h1>
+               <h1 className="text-3xl font-bold md:text-3xl">ลงทะเบียน</h1>
                {error && <AuthResponseError error={error} />}
                <FormProvider {...methods}>
                   <form onSubmit={methods.handleSubmit(onSubmit)}>
@@ -90,7 +87,7 @@ const Register = () => {
                                     active:border-primary"
                            type="submit"
                         >
-                           ลงทะเบียน
+                           {isLoading ? <Loader className="mx-auto h-6 w-6" /> : 'ลงทะเบียน'}
                         </button>
                         <div className="flex items-end  text-base">
                            <span className="mr-4">มีบัญชีอยู่แล้ว?</span>
