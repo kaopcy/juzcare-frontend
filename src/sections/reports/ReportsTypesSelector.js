@@ -11,24 +11,18 @@ function ReportsTypesSelector() {
    const isLatest = useCallback(() => 'latest' === _mockSeletor, [_mockSeletor]);
 
    return (
-      <div className="sticky top-navbar pt-2  z-10 bg-paper mb-5 box-content flex w-full border-b-[3px] border-b-text-lighter">
+      <div className="sticky top-navbar z-10 mb-5  box-content flex w-full border-b-[3px] border-b-text-lighter bg-paper/60 pt-2 backdrop-blur-md">
          <button
             onClick={onClick}
             value="latest"
-            className={classname(
-               'w-full py-2 text-lg  ',
-               isLatest() ? 'font-semibold text-primary' : 'font-normal text-text',
-            )}
+            className={classname('w-full py-2 text-lg  ', isLatest() ? ' text-primary' : 'font-normal text-text')}
          >
             ล่าสุด
          </button>
          <button
             onClick={onClick}
             value="popular"
-            className={classname(
-               'w-full py-2 text-lg  ',
-               !isLatest() ? 'font-semibold text-primary' : 'font-normal text-text',
-            )}
+            className={classname('w-full py-2 text-lg  ', !isLatest() ? ' text-primary' : 'font-normal text-text')}
          >
             ยอดนิยม
          </button>

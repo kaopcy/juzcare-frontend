@@ -46,6 +46,8 @@ function CreateReportAddFile({ methods }) {
       methods.trigger('media');
    }, [files, methods]);
 
+   console.log('rerender')
+
    return (
       <div className="relative flex w-full flex-wrap items-center justify-start gap-x-3 gap-y-3">
          {files?.map((e) => (
@@ -76,6 +78,7 @@ function CreateReportAddFile({ methods }) {
             เพิ่มไฟล์
          </motion.label>
          <input
+            accept=".png, .gif, .jpeg, .jpg, .mp4, .webp"
             multiple
             ref={fileInputRef}
             onChange={onInputFileChange}
