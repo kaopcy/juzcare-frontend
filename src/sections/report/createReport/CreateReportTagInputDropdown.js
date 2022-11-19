@@ -56,7 +56,7 @@ const CreateReportTagInputDropdown = forwardRef(({ input, currentTags, setCurren
                type="button"
                key={tag._id}
                onClick={() => onButtonClick(tag)}
-               className="mr-2 w-full whitespace-nowrap px-3 py-1 text-start hover:bg-gray-100 focus:bg-gray-100"
+               className="mr-2 w-full whitespace-nowrap px-3 py-1 text-start font-normal hover:bg-gray-100 focus:bg-gray-100"
             >
                {tag.name}
             </button>
