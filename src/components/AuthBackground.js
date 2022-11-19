@@ -1,6 +1,6 @@
 const Background = (props) => (
     <svg
-        viewBox="50 32 850 452"
+        viewBox="50 35 850 447"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"

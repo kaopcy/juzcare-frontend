@@ -15,12 +15,16 @@ const userSlice = createSlice({
    name: 'user',
    initialState: initialState,
    reducers: {
-      startSighIn: (state) => {
+      startSignIn: (state) => {
          state.isLoading = true;
          state.isAuthenticated = false;
       },
-      initialFinished: (state)=>{
-         state.isInitialized = true
+      startRegister: (state) => {
+         state.isLoading = true;
+         state.isAuthenticated = false;
+      },
+      initialFinished: (state) => {
+         state.isInitialized = true;
       },
       signInSuccess: (state, action) => {
          state.isLoading = false;
@@ -43,6 +47,6 @@ const userSlice = createSlice({
 });
 
 export const initialRequest = createAction('initialUser');
-export const { signInSuccess, signInFailed, signOut, startSighIn , initialFinished} = userSlice.actions;
+export const { signInSuccess, signInFailed, startRegister, signOut, startSignIn, initialFinished } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -1,12 +1,15 @@
+import { getStoredToken } from '@/utils/storageUtils';
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 
 const httpLink = new HttpLink({
    credentials: 'same-origin',
-   uri: 'https://rickandmortyapi.com/graphql',
+   uri: 'http://10.10.0.25:6003/graphql',
+   headers: {
+      authorization: `Bearer ${getStoredToken()}`,
+   },
 });
 
 const client = new ApolloClient({
-   ssrMode: typeof window === 'undefined',
    cache: new InMemoryCache({}),
    link: httpLink,
 });
