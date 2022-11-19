@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
-import { useMemo } from 'react';
 // components
-import Image from 'next/image';
 import ReportPostHeader from './ReportPostHeader';
 import ReportPostImageSlider from './ReportPostImageSlider';
 import Icon from '@/components/Icon';
+import Image from '@/components/Image'
 // contexts
 import { ReportContextProvider } from '@/contexts/reports/ReportContext';
 

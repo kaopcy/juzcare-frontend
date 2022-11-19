@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Controller, useFormContext } from 'react-hook-form';
+import { classname } from '@/utils/getClassName';
 
 // components
 import Icon from '@/components/Icon';
@@ -11,9 +12,9 @@ const TextField = ({ name, label, type = 'text', ...other }) => {
          name={name}
          control={control}
          render={({ field, fieldState: { error } }) => (
-            <div className="relative flex w-full flex-col">
+            <div className={classname('relative flex w-full flex-col', other.className)}>
                {label && <div className="mb-1 text-sm">{label}</div>}
-               <textarea {...other} type={type} {...field} className="" />
+               <textarea {...other} type={type} {...field} className="h-full w-full" />
                {error && (
                   <span className="flex-end  absolute top-[110%] right-0 text-xs text-error">{error.message}</span>
                )}

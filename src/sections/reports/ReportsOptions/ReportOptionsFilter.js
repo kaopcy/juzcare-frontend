@@ -4,12 +4,16 @@ import { statusRadios } from '@/configs/reportConfig/reportStatus.config';
 // store
 import { useDispatch, useSelector } from '@/redux/store';
 import { updateFilter } from '@/slices/reportOptions';
+// hooks
+import useSearchQuery from '@/hooks/useSearchQuery';
 
 function ReportOptionsFilter() {
+   const { replaceFilter } = useSearchQuery();
    const filter = useSelector((state) => state.reportOptions.filter);
    const dispatch = useDispatch();
 
    const onChange = (event) => {
+      replaceFilter(event.target.value);
       dispatch(updateFilter({ filter: event.target.value }));
    };
 

@@ -21,7 +21,7 @@ const reportOptionsSlice = createSlice({
       startFetchTag: (state) => {
          state.isLoading = true;
       },
-      
+
       fetchTagSucceed: (state, action) => {
          state.isLoading = false;
          state.tags = action.payload.tags;
@@ -40,15 +40,17 @@ const reportOptionsSlice = createSlice({
       updateSort: (state, action) => {
          state.sort = action.payload.sort;
       },
-      toggleOrder: (state) => {
-         state.order = state.order === ASCENDING ? DESCENDING : ASCENDING;
+      toggleOrder: (state, action) => {
+         if (action.payload?.order) state.order = action.payload.order;
+         else state.order = state.order === ASCENDING ? DESCENDING : ASCENDING;
       },
       updateFilter: (state, action) => {
          state.filter = action.payload.filter;
       },
       updateActiveTags: (state, action) => {
          action.payload.activeTags.forEach((activeTag) => {
-            const index = state.activeTags.findIndex(e => e._id == activeTag._id);
+            const index = state.activeTags.findIndex((e) => e.name == activeTag.name);
+            console.log(index);
             if (index !== -1) state.activeTags.splice(index, 1);
             else state.activeTags.push(activeTag);
          });

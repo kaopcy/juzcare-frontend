@@ -4,19 +4,28 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+// store
+import { useDispatch, useSelector } from '@/redux/store';
+import { startRegister } from '@/slices/user';
+
 // layout
 import Layout from '@/layouts/index';
 
 // components
 import InputText from '@/components/hookFormComponents/InputText';
-import Background from '@/sections/Register/BackgroundReg';
-import Logo from '@/sections/login/Logo';
+import Background from '@/components/AuthBackground';
+// sections
+import AuthResponseError from '@/sections/auth/AuthResponseError';
+import Logo from '@/sections/auth/Logo';
 
 // Path
 import Link from 'next/link';
 import { PATH } from '@/routes/index';
 
 const Register = () => {
+   const { isLoading, error } = useSelector((state) => state.user);
+   const dispatch = useDispatch();
+
    const defaultValues = {
       email: '',
       firstName: '',
@@ -41,52 +50,58 @@ const Register = () => {
    });
 
    const onSubmit = (value) => {
-      console.log(value);
+      const registerData = {
+         ...value,
+         emailType: 'normal',
+         role: 'user',
+      };
+      console.log(registerData);
+      dispatch(startRegister({ ...registerData }));
    };
 
    return (
-      <div className="flex h-screen w-full scale-90 items-center justify-center bg-paper-neutral">
-         <div className="relative mr-44 flex">
-            <section className="absolute right-0 z-10 bg-paper-neutral p-8 ">
-               <Logo className="absolute right-full mr-28 mt-10 w-[300px]" />
-               <h1 className="mb-6 ml-28 ">ลงทะเบียน</h1>
+      <div className="relative mx-auto flex h-screen w-full max-w-[1000px] items-center justify-center px-4 ">
+         <div className="relative flex  w-full items-end justify-center md:justify-end">
+            <div className="absolute left-0 bottom-0 hidden  w-full md:block">
+               <Background className="opacity-70" />
+               <Logo className="absolute  -top-5  z-10 mr-28 w-[30%] md:left-[14%]" />
+            </div>
+            <section className="z-10 flex flex-col items-center gap-y-7 bg-paper-neutral px-8">
+               <h1 className="text-2xl font-bold md:text-3xl">ลงทะเบียน</h1>
+               {error && <AuthResponseError error={error} />}
                <FormProvider {...methods}>
                   <form onSubmit={methods.handleSubmit(onSubmit)}>
-                     <section className="flex w-[380px]  flex-col items-center justify-center gap-y-4">
-                        <InputText label="ชื่อผู้ใช้งาน" name="username" />
-                        <InputText label="ชื่อ" name="firstName" />
-                        <InputText label="นามสกุล" name="lastName" />
-                        <InputText label="อีเมลล์" name="email" />
-                        <InputText label="รหัสผ่าน" name="password" type="password" />
-                        <InputText label="เบอร์โทร" name="phone" />
+                     <section className="flex flex-col items-center justify-center gap-y-7">
+                        <InputText className="h-14" label="ชื่อผู้ใช้งาน" name="username" />
+                        <div className="flex w-full gap-x-4">
+                           <InputText className="h-14" label="ชื่อ" name="firstName" />
+                           <InputText className="h-14" label="นามสกุล" name="lastName" />
+                        </div>
+                        <InputText className="h-14" label="อีเมลล์" name="email" />
+                        <div className="flex w-full gap-x-4">
+                           <InputText className="h-14" label="รหัสผ่าน" name="password" type="password" />
+                           <InputText className="h-14" label="เบอร์โทร" name="phone" />
+                        </div>
 
                         <button
-                           className="my-3 w-full rounded-sm border-2 border-solid border-primary 
-                                    bg-primary py-2.5 text-base text-paper 
-                                    drop-shadow-md hover:bg-paper-neutral hover:text-primary
+                           className="mt-6 w-full rounded-lg border-2 border-solid border-primary bg-primary 
+                                    py-2.5 text-base tracking-wider text-paper 
+                                    shadow-md  hover:bg-paper-neutral hover:text-primary
                                     active:border-primary"
                            type="submit"
                         >
                            ลงทะเบียน
                         </button>
-
-                        <div className="w-full">
+                        <div className="flex items-end  text-base">
+                           <span className="mr-4">มีบัญชีอยู่แล้ว?</span>
                            <Link href={PATH.auth.login}>
-                              <button
-                                 className="text-md font-normal text-black underline hover:text-primary"
-                                 type="button"
-                              >
-                                 ย้อนกลับ
-                              </button>
+                              <a className=" font-medium text-primary underline hover:text-primary">เข้าสู่ระบบ</a>
                            </Link>
                         </div>
                      </section>
                   </form>
                </FormProvider>
             </section>
-            <div className="h-full w-[1260px] opacity-70">
-               <Background />
-            </div>
          </div>
       </div>
    );

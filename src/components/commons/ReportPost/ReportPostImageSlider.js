@@ -1,9 +1,9 @@
-import Image from 'next/image';
+import Image from '@/components/Image';
 
 function ReportPostImageSlider() {
    return (
       <div className="flex ">
-         <div className="aspect-[4/3] relative h-[200px] shrink-0">
+         <div className="relative aspect-[4/3] h-[200px] shrink-0">
             <Image alt="test" layout="fill" objectFit="cover" src="https://source.unsplash.com/L7EwHkq1B2s" />
          </div>
       </div>

@@ -43,7 +43,7 @@ function HomeSummaryMainProblem() {
                         offsetY: 2,
                         color: '#383838',
                         fontSize: '22px',
-                        fontWeight: '800',
+                        fontWeight: '700',
                         lineHeight: '0px',
                      },
                      total: {

@@ -13,7 +13,7 @@ const donutChartOption = {
       toolbar: { show: false },
       zoom: { enabled: false },
       foreColor: '#D9D9D9',
-      fontFamily: 'IBM Plex Sans Thai',
+      fontFamily: 'LineSeed',
    },
    stroke: {
       width: 3,
@@ -41,7 +41,7 @@ const donutChartOption = {
                offsetY: 2,
                color: '#383838',
                fontSize: '22px',
-               fontWeight: '800',
+               fontWeight: '500',
                lineHeight: '0px',
             },
             total: {

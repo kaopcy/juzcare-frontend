@@ -17,7 +17,7 @@ function ProfileIcon() {
          {({ open }) => (
             <>
                <Popover.Button>
-                  <UserProfileIcon isBorder className="h-12" />
+                  <UserProfileIcon className="h-12" />
                </Popover.Button>
                <Transition
                   as={Fragment}
