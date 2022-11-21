@@ -56,13 +56,6 @@ const Register = () => {
    };
 
    return (
-<<<<<<< HEAD
-      <div className="flex items-center justify-center w-full h-screen scale-90 bg-paper-neutral">
-         <div className="relative flex mr-44">
-            <section className="absolute right-0 z-10 p-8 bg-paper-neutral ">
-               <Logo className="absolute right-full mr-28 mt-10 w-[300px]" />
-               <h1 className="mb-6 ml-28 ">ลงทะเบียน</h1>
-=======
       <div className="relative mx-auto flex h-screen w-full max-w-[1000px] items-center justify-center px-4 ">
          <div className="relative flex  w-full items-end justify-center md:justify-end">
             <div className="absolute left-0 bottom-0 hidden  w-full md:block">
@@ -72,7 +65,6 @@ const Register = () => {
             <section className="z-10 flex flex-col items-center gap-y-7 bg-paper-neutral px-8">
                <h1 className="text-3xl font-bold md:text-3xl">ลงทะเบียน</h1>
                {error && <AuthResponseError error={error} />}
->>>>>>> 52497f2092fd0c57ea539c8a71c4b10cb4721177
                <FormProvider {...methods}>
                   <form onSubmit={methods.handleSubmit(onSubmit)}>
                      <section className="flex flex-col items-center justify-center gap-y-7">
@@ -99,16 +91,7 @@ const Register = () => {
                         <div className="flex items-end  text-base">
                            <span className="mr-4">มีบัญชีอยู่แล้ว?</span>
                            <Link href={PATH.auth.login}>
-<<<<<<< HEAD
-                              <button
-                                 className="font-normal text-black underline text-md hover:text-primary"
-                                 type="button"
-                              >
-                                 ย้อนกลับ
-                              </button>
-=======
                               <a className=" font-medium text-primary underline hover:text-primary">เข้าสู่ระบบ</a>
->>>>>>> 52497f2092fd0c57ea539c8a71c4b10cb4721177
                            </Link>
                         </div>
                      </section>
