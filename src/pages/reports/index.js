@@ -1,42 +1,40 @@
-import PropTypes from 'prop-types';
 import Layout from '@/layouts/index';
+import PropTypes from 'prop-types';
 // components
-import ReportPost from '@/components/commons/ReportPost';
 // sections
-import ReportsTypesSelector from '@/sections/reports/ReportsTypesSelector';
+import ReportsList from '@/sections/reports/ReportsList';
 import ReportsOptions from '@/sections/reports/ReportsOptions';
 import ReportsPersuade from '@/sections/reports/ReportsPersuade';
+import ReportsTypesSelector from '@/sections/reports/ReportsTypesSelector';
+import ReportsFetchObserver from '@/sections/reports/ReportsFetchObserver';
 // hooks
 import useSearchQuery from '@/hooks/useSearchQuery';
 import { useEffectOnce } from 'react-use';
-// services
-import { getReports, getTags } from '@/services/reports.service';
 import { useEffect } from 'react';
 // stores
-import { dispatch } from '@/redux/store';
-import {
-   fetchTagSucceed,
-   fetchTagFail,
-   updateActiveTags,
-   updateFilter,
-   updateSort,
-   toggleOrder,
-} from '@/slices/reportOptions';
+import { useDispatch } from '@/redux/store';
+import { fetchTag, toggleOrder, updateActiveTags, updateFilter, updateSort } from '@/slices/reportOptions';
+import { fetchReports } from '@/slices/reports';
+// init swiper
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
 
 Reports.propTypes = {
    reports: PropTypes.array,
    tags: PropTypes.array,
 };
 
-function Reports({ reports, tags: initialTags }) {
-   useEffect(() => {
-      if (initialTags) dispatch(fetchTagSucceed({ tags: initialTags }));
-      dispatch(fetchTagFail({ error: 'fetch tag failed' }));
-   }, [initialTags]);
+function Reports({ filter, order, sort, tags }) {
+   // init reports and tags
+   const dispatch = useDispatch();
 
    const { getCurrentSearchQuery } = useSearchQuery();
+   useEffect(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+   }, [getCurrentSearchQuery]);
+
    useEffectOnce(() => {
-      const { filter, order, sort, tags } = getCurrentSearchQuery();
       if (tags) {
          dispatch(updateActiveTags({ activeTags: tags }));
       }
@@ -49,16 +47,20 @@ function Reports({ reports, tags: initialTags }) {
       if (sort) {
          dispatch(updateSort({ sort }));
       }
-      console.log(filter, order, sort, tags);
    });
+
+   useEffect(() => {
+      console.log('calllll');
+      dispatch(fetchReports());
+      dispatch(fetchTag({ tagsQuery: '' }));
+   }, [dispatch]);
 
    return (
       <section className="relative flex w-full justify-center">
-         <div className="mx-[10%] flex w-full  max-w-[700px] flex-col gap-y-10 ">
+         <div className="mx-0 flex w-full max-w-[700px] flex-col gap-y-10  px-4 md:mx-[10%] md:px-0 ">
             <ReportsTypesSelector />
-            {reports.map((report) => (
-               <ReportPost key={report._id} report={report} />
-            ))}
+            <ReportsList />
+            <ReportsFetchObserver />
             <ReportsPersuade />
          </div>
          <ReportsOptions />
@@ -66,14 +68,17 @@ function Reports({ reports, tags: initialTags }) {
    );
 }
 
-export const getServerSideProps = async () => {
-   const reports = await getReports({ sort: 'something' });
-   const tags = await getTags();
-
+export const getServerSideProps = async (context) => {
+   const { query } = context;
+   const searchQuery = {
+      tags: query.tag ? query.tag.split(',').map((e) => ({ name: e })) : null,
+      sort: query.sort ?? null,
+      order: query.order ?? null,
+      filter: query.filter ?? null,
+   };
    return {
       props: {
-         ...reports,
-         tags,
+         ...searchQuery,
       },
    };
 };

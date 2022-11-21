@@ -15,8 +15,8 @@ function ProfileIconDropdown() {
             {(isAuthenticated ? dropdownItems : unAuthDropdownItems).map((item) =>
                item.href ? (
                   <Link href={item.href} key={item.id} className="">
-                     <a className="flex w-full items-center whitespace-nowrap px-2 py-2 hover:bg-primary/10" href="">
-                        <Icon className="mr-2 h-5 w-5" icon={item.icon} />
+                     <a className="flex items-center w-full px-2 py-2 whitespace-nowrap hover:bg-primary/10" href="">
+                        <Icon className="w-5 h-5 mr-2" icon={item.icon} />
                         <span className="font-normal">{item.label}</span>
                      </a>
                   </Link>
@@ -24,9 +24,9 @@ function ProfileIconDropdown() {
                   <button
                      onClick={item.action}
                      key={item.id}
-                     className="flex w-full items-center whitespace-nowrap px-2 py-2 hover:bg-primary/10"
+                     className="flex items-center w-full px-2 py-2 whitespace-nowrap hover:bg-primary/10"
                   >
-                     <Icon className="mr-2 h-5 w-5" icon={item.icon} />
+                     <Icon className="w-5 h-5 mr-2" icon={item.icon} />
                      <span className="font-normal">{item.label}</span>
                   </button>
                ),

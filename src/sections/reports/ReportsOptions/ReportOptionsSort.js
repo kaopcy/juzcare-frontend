@@ -1,4 +1,3 @@
-import { useState } from 'react';
 // configs
 import { sortConfig, ASCENDING, DESCENDING } from '@/configs/reportConfig/reportSortOrder.config';
 // store
@@ -32,10 +31,8 @@ function ReportOptionsSort() {
             <h3 className="text-primary underline">จัดเรียง</h3>
             <button className="rounded-full p-1 hover:bg-gray-500/10" onClick={onOrderButtonClick}>
                <Icon
-                  className={classname(
-                     'h-5 w-5 transition-transform ',
-                  )}
-                  icon={orderBy === ASCENDING ? 'icon-park:sort-amount-down' : 'icon-park:sort-amount-up'}
+                  className={classname('h-5 w-5 transition-transform ')}
+                  icon={orderBy === DESCENDING ? 'icon-park:sort-amount-down' : 'icon-park:sort-amount-up'}
                />
             </button>
          </div>

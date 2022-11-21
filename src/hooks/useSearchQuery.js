@@ -8,7 +8,6 @@ const useSearchQuery = () => {
    const replaceTag = useCallback(
       (newTag) => {
          if (newTag.length === 0) {
-            console.log(newTag.length);
             const { tag, ...rest } = router.query;
             router.replace({ query: { ...rest } }, undefined, {
                shallow: true,
@@ -32,6 +31,7 @@ const useSearchQuery = () => {
 
    const removeTagQuery = useCallback(
       (value) => {
+         if (!curTags) return;
          replaceTag([...curTags.filter((e) => e !== value)].join(','));
       },
       [curTags, replaceTag],

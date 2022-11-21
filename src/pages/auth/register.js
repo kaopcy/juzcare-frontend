@@ -52,18 +52,17 @@ const Register = () => {
          emailType: 'normal',
          role: 'user',
       };
-      console.log(registerData);
       dispatch(startRegister({ ...registerData }));
    };
 
    return (
       <div className="relative mx-auto flex h-screen w-full max-w-[1000px] items-center justify-center px-4 ">
-         <div className="relative flex  w-full items-end justify-center md:justify-end">
-            <div className="absolute left-0 bottom-0 hidden  w-full md:block">
+         <div className="relative flex items-end justify-center w-full md:justify-end">
+            <div className="absolute bottom-0 left-0 hidden w-full md:block">
                <Background className="opacity-70" />
                <Logo className="absolute  -top-5  z-10 mr-28 w-[30%] md:left-[14%]" />
             </div>
-            <section className="z-10 flex flex-col items-center gap-y-7 bg-paper-neutral px-8">
+            <section className="z-10 flex flex-col items-center px-8 gap-y-7 bg-paper-neutral">
                <h1 className="text-3xl font-bold md:text-3xl">ลงทะเบียน</h1>
                {error && <AuthResponseError error={error} />}
                <FormProvider {...methods}>
@@ -87,12 +86,12 @@ const Register = () => {
                                     active:border-primary"
                            type="submit"
                         >
-                           {isLoading ? <Loader className="mx-auto h-6 w-6" /> : 'ลงทะเบียน'}
+                           {isLoading ? <Loader className="w-6 h-6 mx-auto" /> : 'ลงทะเบียน'}
                         </button>
-                        <div className="flex items-end  text-base">
+                        <div className="flex items-end text-base">
                            <span className="mr-4">มีบัญชีอยู่แล้ว?</span>
                            <Link href={PATH.auth.login}>
-                              <a className=" font-medium text-primary underline hover:text-primary">เข้าสู่ระบบ</a>
+                              <a className="font-medium underline text-primary hover:text-primary">เข้าสู่ระบบ</a>
                            </Link>
                         </div>
                      </section>

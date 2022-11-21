@@ -1,21 +1,32 @@
-export const WAITING = 'WAITING';
-export const APPROVED = 'APPROVED';
-export const FINISHED = 'FINISHED';
+export const UNVERIFIED = 'UNVERIFIED';
+export const VERIFIED = 'VERIFIED';
+export const INPROGESS = 'INPROGESS';
+export const COMPLETE = 'COMPLETE';
+
+export const getStatusTHLabel = (value) =>
+   ({
+      VERIFIED: 'รออนุมัติ',
+      INPROGRESS: 'กำลังดำเนินการ',
+      COMPLETE: 'เสร็จสิ้น',
+   }[value]);
 
 export const statusRadios = [
    {
       label: 'รออนุมัติ',
-      _id: 'radio-1234',
-      value: WAITING,
+      _id: 'radio-1234c',
+      value: VERIFIED,
+      valueNumber: 1
    },
    {
       label: 'กำลังดำเนินการ',
       _id: 'radio-12345',
-      value: APPROVED,
+      value: INPROGESS,
+      valueNumber: 2
    },
    {
       label: 'เสร็จสิ้น',
       _id: 'radio-12346',
-      value: FINISHED,
+      value: COMPLETE,
+      valueNumber: 3
    },
 ];

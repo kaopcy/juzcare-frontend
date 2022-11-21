@@ -5,6 +5,8 @@ import { useReportContext } from '@/contexts/reports/ReportContext';
 import ReportPostTag from './ReportPostTag';
 import Moment from 'react-moment';
 import 'moment/locale/th';
+import { getStatusTHLabel } from '@/configs/reportConfig/reportStatus.config';
+import Link from '@/components/Link';
 
 function ReportPostHeader() {
    const report = useReportContext();
@@ -13,7 +15,9 @@ function ReportPostHeader() {
       <div className="flex h-16 w-full justify-between p-1">
          <div className="flex flex-col items-start justify-center gap-y-1 ">
             <div className="flex items-center">
-               <h4 className="mr-6">{report.title}</h4>
+               <Link href={`/reports/${report?._id}`}>
+                  <h4 className="ellipsis mr-6 cursor-pointer whitespace-nowrap hover:underline">{report.title}</h4>
+               </Link>
                {report.tags.map((postTag) => (
                   <ReportPostTag key={postTag._id} tag={postTag} />
                ))}
@@ -25,15 +29,12 @@ function ReportPostHeader() {
          </div>
          <div className="flex flex-col items-end gap-y-1 text-text-light">
             <span>
-               <Moment
-                  fromNow
-                  locale="th"
-               >
+               <Moment fromNow locale="th">
                   {new Date(report.createdAt)}
                </Moment>
             </span>
 
-            <span className="font-bold text-primary">รอรับเรื่อง</span>
+            <span className="font-bold text-primary">{getStatusTHLabel(report.status.type)}</span>
          </div>
       </div>
    );

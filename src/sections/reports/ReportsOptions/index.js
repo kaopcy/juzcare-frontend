@@ -20,13 +20,13 @@ function ReportsOptions() {
       let prevCombineGap = '';
       const combileGap = () => `${gapTop.toFixed(0)}${gapBot.toFixed(0)}`;
 
-      const trigger = (callback)=>{
+      const trigger = (callback) => {
          if (prevCombineGap !== combileGap()) {
-            callback()
+            callback();
             prevCombineGap = combileGap();
          }
-      }
-      
+      };
+
       const scrollEvent = () => {
          const sidebarHeight = sidebarEl.clientHeight;
          const screenHeight = window.innerHeight;
@@ -38,9 +38,9 @@ function ReportsOptions() {
 
             // เลื่อนลง
             if (position == -1) {
-               trigger(()=>{
+               trigger(() => {
                   sidebarBlockEl.style.marginTop = `${window.scrollY}px`;
-               })
+               });
                sidebarEl.style.bottom = `auto`;
                sidebarEl.style.top = `-${sidebarHeight - screenHeight - 70}px`;
             }
@@ -50,10 +50,9 @@ function ReportsOptions() {
             gapBot = Math.min(window.scrollY + sidebarHeight, gapBot);
             gapTop = Math.min(window.scrollY, gapTop);
             if (position == 1) {
-               trigger(()=>{
+               trigger(() => {
                   sidebarBlockEl.style.marginTop = `${window.scrollY + screenHeight - sidebarHeight}px`;
-                  
-               })
+               });
                sidebarEl.style.top = `auto`;
                sidebarEl.style.bottom = `-${sidebarHeight - screenHeight + 70}px`;
             }
@@ -74,7 +73,7 @@ function ReportsOptions() {
    }, []);
 
    return (
-      <div className="flex flex-col">
+      <div className="hidden flex-col md:flex">
          <div ref={sidebarBlockRef} className="mt-0" />
          <aside ref={sidebarRef} className="sticky flex min-h-[1000px] flex-col items-start self-start py-10 pr-5 ">
             <ReportOptionsSearchBar />

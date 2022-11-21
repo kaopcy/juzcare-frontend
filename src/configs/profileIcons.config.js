@@ -7,13 +7,13 @@ export const dropdownItems = [
       id: 'dropfile-dropdownIcon-1234',
       icon: 'clarity:note-edit-solid',
       label: 'แก้ไขโปรไฟล์',
-      href: PATH.auth.login,
+      href: PATH.user.edituser,
    },
    {
       id: 'dropfile-dropdownIcon-12345',
       icon: 'ic:baseline-history',
       label: 'ดูประวัติการแจ้งปัญหา',
-      href: PATH.auth.login,
+      href: PATH.user.history,
    },
    {
       id: 'dropfile-dropdownIcon-12346',
