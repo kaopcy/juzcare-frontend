@@ -104,3 +104,53 @@ export const UpVoteGQL = gql`
       }
    }
 `;
+
+export const GetReportGQL = gql`
+   query ($_id: String!) {
+      report(_id: $_id) {
+         _id
+         user {
+            avatar {
+               avatarUrl
+            }
+         }
+         detail
+         title
+         status {
+            type
+         }
+         progresses {
+            detail
+            medias {
+               imageUrl
+               _id
+            }
+         }
+         location {
+            name
+         }
+         upVotes {
+            _id
+         }
+         medias {
+            imageUrl
+            _id
+         }
+         comments {
+            user {
+               _id
+               firstName
+               lastName
+            }
+            body
+            createdAt
+         }
+         tags {
+            name
+            _id
+         }
+         createdAt
+         updatedAt
+      }
+   }
+`;

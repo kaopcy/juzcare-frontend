@@ -1,6 +1,6 @@
 import { fakeReportsResponse, fakeTagsResponse } from '@/_mock/reports';
 
-import { GetPopularTagGQL, GetReportsGQL } from '@/graphql/report.gql';
+import { GetPopularTagGQL, GetReportsGQL, GetReportGQL } from '@/graphql/report.gql';
 import client from '@/graphql/apollo-client';
 
 const NETWORK_DELAY = 0;
@@ -31,4 +31,12 @@ export const getReports = async ({ sort = '', order = '', filter = '', activeTag
    });
 
    return data.reports;
+};
+
+export const getReport = async ({ _id }) => {
+   const { data } = await client.query({
+      query: GetReportGQL,
+      variables: { _id },
+   });
+   return data.report;
 };

@@ -13,17 +13,20 @@ export const getStatusTHLabel = (value) =>
 export const statusRadios = [
    {
       label: 'รออนุมัติ',
-      _id: 'radio-1234',
+      _id: 'radio-1234c',
       value: VERIFIED,
+      valueNumber: 1
    },
    {
       label: 'กำลังดำเนินการ',
       _id: 'radio-12345',
       value: INPROGESS,
+      valueNumber: 2
    },
    {
       label: 'เสร็จสิ้น',
       _id: 'radio-12346',
       value: COMPLETE,
+      valueNumber: 3
    },
 ];

@@ -5,6 +5,7 @@ import { useSelector } from '@/redux/store';
 import ReportPost from '@/components/commons/ReportPost';
 import Loader from '@/svg/Loader';
 import { useEffect } from 'react';
+import Icon from '@/components/Icon';
 
 function ReportsList() {
    const { isLoading, reports, error } = useSelector((state) => state.reports);
@@ -25,7 +26,12 @@ function ReportsList() {
          {reports?.map((report) => (
             <ReportPost key={report._id} report={report} />
          ))}
-         {reports?.length === 0 && !isLoading && <h2 className='mx-auto'>ไม่พบกระทู้ที่ค้นหา</h2>}
+         {reports?.length === 0 && !isLoading && (
+            <div className="flex w-full justify-center items-center gap-x-2">
+               <Icon className="h-8 w-8" icon="fluent:slide-search-20-regular" />
+               <h2 className="">ไม่พบกระทู้ที่ค้นหา</h2>
+            </div>
+         )}
       </div>
    );
 }
