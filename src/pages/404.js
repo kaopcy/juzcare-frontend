@@ -18,5 +18,4 @@ const ErrorPage = () => (
          
       </section>
    );
-ErrorPage.getLayout = (children) => <Layout variant="protected">{children}</Layout>;
 export default ErrorPage;

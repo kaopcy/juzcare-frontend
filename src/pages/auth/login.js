@@ -44,16 +44,16 @@ const Login = () => {
 
    return (
       <div className="relative mx-auto flex h-screen w-full max-w-[1000px] items-center justify-center px-4 ">
-         <div className="relative flex w-full items-end justify-center   md:justify-start">
-            <div className="absolute left-0 bottom-0 hidden  w-full md:block">
+         <div className="relative flex items-end justify-center w-full md:justify-start">
+            <div className="absolute bottom-0 left-0 hidden w-full md:block">
                <Background className="opacity-70" />
             </div>
-            <section className="z-10 flex flex-col bg-paper px-4 md:px-8">
+            <section className="z-10 flex flex-col px-4 bg-paper md:px-8">
                <FormProvider {...methods}>
                   <form onSubmit={methods.handleSubmit(onSubmit)}>
                      <section className="flex w-[400px]  flex-col items-center justify-center gap-y-6 ">
                         <Logo className="mx-auto h-full w-[60%] " />
-                        <h1 className="mb-4 self-center text-3xl font-bold tracking-wide">เข้าสู่ระบบ</h1>
+                        <h1 className="self-center mb-4 text-3xl font-bold tracking-wide">เข้าสู่ระบบ</h1>
 
                         {error && <AuthResponseError error={error} />}
                         <div className="flex w-full gap-x-4">
@@ -68,21 +68,21 @@ const Login = () => {
                                      hover:text-primary active:border-primary"
                            type="submit"
                         >
-                           {isLoading ? <Loader className="mx-auto h-6 w-6" /> : 'เข้าสู่ระบบ'}
+                           {isLoading ? <Loader className="w-6 h-6 mx-auto" /> : 'เข้าสู่ระบบ'}
                         </button>
                      </section>
                   </form>
-                  <div className="flex w-full items-center ">
+                  <div className="flex items-center w-full ">
                      <span className="h-[1px] w-full bg-text-lighter/60 " />
                      <span className="mx-3 my-6 text-xs text-text-light">หรือ</span>
                      <span className="h-[1px] w-full bg-text-lighter/60 " />
                   </div>
-                  <div className=" flex w-full flex-col items-center justify-between gap-y-6">
+                  <div className="flex flex-col items-center justify-between w-full gap-y-6">
                      <GoogleLoginButton />
-                     <div className="flex items-end  text-base">
+                     <div className="flex items-end text-base">
                         <span className="mr-4">ยังไม่มีบัญชี?</span>
                         <Link href={PATH.auth.register}>
-                           <a className=" font-medium text-primary underline hover:text-primary">สมัครใช้งาน</a>
+                           <a className="font-medium underline text-primary hover:text-primary">สมัครใช้งาน</a>
                         </Link>
                      </div>
                   </div>
