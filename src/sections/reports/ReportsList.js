@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 // stores
 import { useSelector } from '@/redux/store';
 // components
-import ReportPost from '@/components/commons/ReportPost';
+import ReportListPost from '@/sections/reports/ReportListPost';
 import Loader from '@/svg/Loader';
 import { useEffect } from 'react';
 import Icon from '@/components/Icon';
@@ -24,7 +24,7 @@ function ReportsList() {
             )}
          </AnimatePresence>
          {reports?.map((report) => (
-            <ReportPost key={report._id} report={report} />
+            <ReportListPost key={report._id} report={report} />
          ))}
          {reports?.length === 0 && !isLoading && (
             <div className="flex w-full justify-center items-center gap-x-2">

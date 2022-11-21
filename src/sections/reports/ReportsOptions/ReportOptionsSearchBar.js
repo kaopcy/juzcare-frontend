@@ -1,16 +1,17 @@
 import { Icon } from '@iconify/react';
 // store
+import useSearchQuery from '@/hooks/useSearchQuery';
 import { useDispatch, useSelector } from '@/redux/store';
 import { updateActiveTags, updateSearch } from '@/slices/reportOptions';
-import useReportOptions from '@/hooks/useReportOptions';
-import useSearchQuery from '@/hooks/useSearchQuery';
 
 function ReportOptionsSearchBar() {
    const dispatch = useDispatch();
    const search = useSelector((state) => state.reportOptions.search);
 
-   const { appendTagQuery, removeTagQuery, tagQuery } = useSearchQuery();
-   const onSubmit = () => {
+   const { appendTagQuery } = useSearchQuery();
+   const onSubmit = (e) => {
+      e.preventDefault();
+      if (search.length === 0) return;
       dispatch(updateActiveTags({ activeTags: [{ name: search, _id: search }] }));
       appendTagQuery(search);
    };
@@ -20,12 +21,7 @@ function ReportOptionsSearchBar() {
    };
 
    return (
-      <form
-         onSubmit={(e) => {
-            e.preventDefault();
-            onSubmit();
-         }}
-      >
+      <form onSubmit={onSubmit}>
          <section className="mb-5 flex w-full items-center justify-between rounded-md border-2">
             <input
                onChange={onChange}

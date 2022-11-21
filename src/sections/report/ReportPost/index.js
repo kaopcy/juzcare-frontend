@@ -25,7 +25,7 @@ function ReportPost({ report }) {
             <div className="flex w-full  min-w-0  flex-col gap-y-5">
                <ReportPostHeader />
                <ReportPostImageSlider report={report} />
-               <p>{report.detail}</p>
+               <p className='text-lg' >{report.detail}</p>
                <div className="flex text-text-light">
                   <ReportUpVote report={report} />
                   <Link href={`/reports/${report._id}`}>

@@ -19,7 +19,7 @@ function Image({ src, alt, loadingRender, ...rest }) {
          <div className="absolute inset-0 flex  h-full w-full items-center justify-center">
             <Blurhash
                className=""
-               hash="LEHV6nWB2yk8pyo0adR*.7kCMdnj"
+               hash="LSG@[N.mt,=|ACVYs9XS%MxukCM|"
                width={'100%'}
                height={'100%'}
                style={{ position: 'absolute', top: 0, left: 0 }}

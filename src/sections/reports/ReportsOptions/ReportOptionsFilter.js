@@ -20,6 +20,20 @@ function ReportOptionsFilter() {
    return (
       <section className="mb-5 flex w-full flex-col gap-y-1.5">
          <h3 className="text-primary underline">สถานะ</h3>
+         <div className=" flex items-center">
+            <input
+               onChange={onChange}
+               checked={filter == ''}
+               id={'all'}
+               type="radio"
+               value={''}
+               name="default-radio"
+               className="h-3 w-3  bg-gray-100  accent-[#ff6202]"
+            />
+            <label htmlFor={'all'} className="ml-2 cursor-pointer text-sm text-text ">
+               ทั้งหมด
+            </label>
+         </div>
          {statusRadios.map((radio) => (
             <div key={radio._id} className=" flex items-center">
                <input

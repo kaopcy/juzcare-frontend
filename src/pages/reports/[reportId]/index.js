@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Layout from '@/layouts/index';
 import { getReport } from '@/services/reports.service';
 
-import ReportPost from '@/components/commons/ReportPost';
+import ReportPost from '@/sections/report/ReportPost';
 import ReportStatusTimeline from '@/sections/report/ReportStatusTimeline';
 import ReportComment from '@/sections/report/ReportComment';
 // init swiper

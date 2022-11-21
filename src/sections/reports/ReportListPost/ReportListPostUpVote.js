@@ -14,11 +14,11 @@ import { classname } from '@/utils/getClassName';
 // path
 import { PATH } from '@/routes/index';
 
-ReportUpVote.propTypes = {
+ReportListPostUpVote.propTypes = {
    report: PropTypes.object,
 };
 
-function ReportUpVote({ report }) {
+function ReportListPostUpVote({ report }) {
    const router = useRouter();
    const [upvoteService] = useMutation(UpVoteGQL);
    const { user, isAuthenticated } = useUser();
@@ -43,4 +43,4 @@ function ReportUpVote({ report }) {
    );
 }
 
-export default ReportUpVote;
+export default ReportListPostUpVote;
