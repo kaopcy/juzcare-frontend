@@ -5,6 +5,7 @@ export const COMPLETE = 'COMPLETE';
 
 export const getStatusTHLabel = (value) =>
    ({
+      UNVERIFIED: 'ยังไม่อนุมัติ',
       VERIFIED: 'รออนุมัติ',
       INPROGRESS: 'กำลังดำเนินการ',
       COMPLETE: 'เสร็จสิ้น',
