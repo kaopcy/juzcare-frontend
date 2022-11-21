@@ -10,15 +10,16 @@ import { createReport } from '@/services/createReport.service';
 import InputText from '@/components/hookFormComponents/InputText';
 import TextField from '@/components/hookFormComponents/TextField';
 // stores
-import { useDispatch } from '@/redux/store'
+import { useDispatch } from '@/redux/store';
 import { stopLoading } from '@/redux/slices/loading';
 // sections
 import CreateReportTagInput from './CreateReportTagInput';
 import CreateReportAddFile from './CreateReportAddFile';
 import CreateReportSelectLocation from './CreateReportSelectLocation';
+import { useRouter } from 'next/router';
 
 function CreateReportForm() {
-   const dispatch = useDispatch()
+   /* ---------------------------------- form ---------------------------------- */
    const defaultValues = {
       title: '',
       detail: '',
@@ -40,6 +41,8 @@ function CreateReportForm() {
       defaultValues,
    });
 
+   const dispatch = useDispatch();
+   const router = useRouter();
    const { response, error, isLoading, upload } = useUploadFiles();
 
    const onSubmit = async (value) => {
@@ -55,7 +58,7 @@ function CreateReportForm() {
          };
          const res = await createReport({ ...shapedInput });
          dispatch(stopLoading());
-         console.log(res);
+         router.replace('/reports');
       } catch (error) {
          dispatch(stopLoading());
          console.log(error);

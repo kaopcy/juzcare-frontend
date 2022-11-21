@@ -141,7 +141,11 @@ export const GetReportGQL = gql`
                _id
                firstName
                lastName
+               avatar{
+                  avatarUrl
+               }
             }
+            _id
             body
             createdAt
          }
@@ -154,3 +158,4 @@ export const GetReportGQL = gql`
       }
    }
 `;
+

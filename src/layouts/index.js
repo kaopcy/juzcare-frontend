@@ -4,23 +4,29 @@ import Head from 'next/head';
 import ProtectedLayout from './ProtectedLayout';
 import AuthLayout from './AuthLayout';
 import UnProtectedLayout from './UnProtectedLayout';
+import useUser from '@/hooks/useUser';
 
-const Layout = ({ variant = 'protected', title, children, ...other }) => (
-   <PageWrapper title={title} {...other}>
-      {() => {
-         switch (variant) {
-            case 'protected':
-               return <ProtectedLayout {...other}>{children}</ProtectedLayout>;
-            case 'unprotected':
-               return <UnProtectedLayout {...other}>{children}</UnProtectedLayout>;
-            case 'auth':
-               return <AuthLayout {...other}>{children}</AuthLayout>;
-            default:
-               return children;
-         }
-      }}
-   </PageWrapper>
-);
+const Layout = ({ variant = 'protected', title, children, ...other }) => {
+   const { isInitialized } = useUser();
+   return (
+      isInitialized && (
+         <PageWrapper title={title} {...other}>
+            {() => {
+               switch (variant) {
+                  case 'protected':
+                     return <ProtectedLayout {...other}>{children}</ProtectedLayout>;
+                  case 'unprotected':
+                     return <UnProtectedLayout {...other}>{children}</UnProtectedLayout>;
+                  case 'auth':
+                     return <AuthLayout {...other}>{children}</AuthLayout>;
+                  default:
+                     return children;
+               }
+            }}
+         </PageWrapper>
+      )
+   );
+};
 const PageWrapper = ({ title, children }) => (
    <>
       <Head>

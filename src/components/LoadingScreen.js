@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Icon from '@/components/Icon';
 // stores
 import { useSelector } from '@/redux/store';
+import Image from 'next/image';
 
 function LoadingScreen() {
    const { isLoading } = useSelector((state) => state.loading);
@@ -16,16 +17,13 @@ function LoadingScreen() {
                transition={{ ease: 'easeInOut' }}
                className="fixed z-sidebar-overlay flex h-full w-full flex-col items-center justify-center bg-black/60"
             >
-               <div className="flex h-56 w-56 flex-col items-center justify-center gap-y-10 rounded-lg bg-white">
+               <div className="flex h-56 w-56 flex-col items-center justify-center gap-y-10 rounded-lg bg-white shadow-xl">
                   <div className="flex items-center gap-x-3">
-                     <Icon icon="bi:megaphone" className="h-24 w-24 text-primary" />
-                     <div className="flex flex-col gap-y-7 ">
-                        <motion.div className="h-1 w-6 -rotate-45 bg-primary" />
-                        <motion.div className="h-1 w-6 bg-primary " />
-                        <motion.div className="h-1 w-6 rotate-45  bg-primary" />
+                     <div className="relative h-20 w-32">
+                        <Image alt="loading" src="/images/loading/loading.gif" objectFit="cover" layout="fill" />
                      </div>
                   </div>
-                  <span className="text-text">...กำลังโหลด...</span>
+                  <span className="text-text text-lg font-bold">...กำลังโหลด...</span>
                </div>
             </motion.div>
          )}

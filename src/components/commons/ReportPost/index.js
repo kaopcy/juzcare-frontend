@@ -8,6 +8,7 @@ import ReportPostImageSlider from './ReportPostImageSlider';
 // contexts
 import { ReportContextProvider } from '@/contexts/reports/ReportContext';
 import ReportUpVote from './ReportUpVote';
+import Link from '@/components/Link';
 // swiper
 
 ReportPost.propTypes = {
@@ -27,10 +28,12 @@ function ReportPost({ report }) {
                <p>{report.detail}</p>
                <div className="flex text-text-light">
                   <ReportUpVote report={report} />
-                  <button className="flex items-center">
-                     <Icon className="mr-1 h-5 w-5" icon="ant-design:comment-outlined" />
-                     <span className="-mb-2 text-sm font-normal">{report.comments.length}</span>
-                  </button>
+                  <Link href={`/reports/${report._id}`}>
+                     <a className="flex items-center ">
+                        <Icon className="mr-1 h-5 w-5" icon="ant-design:comment-outlined" />
+                        <span className="-mb-2 text-sm font-normal">{report.comments.length}</span>
+                     </a>
+                  </Link>
                </div>
             </div>
          </article>
