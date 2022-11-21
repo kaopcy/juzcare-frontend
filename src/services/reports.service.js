@@ -1,7 +1,6 @@
 import { GetPopularTagGQL, GetReportsGQL, GetReportGQL } from '@/graphql/report.gql';
 import client from '@/graphql/apollo-client';
 
-
 export const getTags = async ({ tagsQuery }) => {
    const { data } = await client.query({
       query: GetPopularTagGQL,
@@ -19,7 +18,7 @@ export const getReports = async ({ sort = '', order = '', filter = '', activeTag
       fetchPolicy: 'no-cache',
       variables: {
          sort,
-         filter: [],
+         filter: filter.length === 0 ? [] : [filter],
          order,
          tags: activeTags.map((tag) => tag.name),
          page: parseInt(page),

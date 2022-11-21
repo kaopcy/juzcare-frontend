@@ -22,11 +22,7 @@ function ReportUpVote({ report }) {
    const router = useRouter();
    const [upvoteService] = useMutation(UpVoteGQL);
    const { user, isAuthenticated } = useUser();
-   const dispatch = useDispatch();
    const onUpvoteClick = () => {
-      if (!isAuthenticated) return router.push(PATH.auth.login);
-      dispatch(upvoteReports({ _id: report._id, userId: user._id }));
-      upvoteService({ variables: { _id: report._id } });
    };
 
    const isLiked = useMemo(() => report.upVotes.some((e) => e._id === user?._id), [user, report]);

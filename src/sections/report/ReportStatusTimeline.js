@@ -10,14 +10,14 @@ ReportStatusTimeline.propTypes = {
 
 function ReportStatusTimeline({ reportStatus }) {
    const currentStatusNumber = useMemo(
-      () => statusRadios.find((e) => e.value === reportStatus.type)?.valueNumber ?? 0,
+      () => statusRadios.find((e) => e.value === reportStatus.type)?.valueNumber,
       [reportStatus],
    );
-   console.log(currentStatusNumber);
+
    const isPassedStatus = useCallback((index) => currentStatusNumber > index, [currentStatusNumber]);
 
    return (
-      <div className="mx-auto mb-20 flex h-[3px] w-full max-w-[500px] items-center justify-between bg-text-light/30">
+      <div className="relative mx-auto mb-20 flex h-[3px] w-full max-w-[500px] items-center justify-between bg-text-light/30">
          {statusRadios.map((e, index) => (
             <div
                key={e._id}
