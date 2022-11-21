@@ -81,7 +81,7 @@
    input[type='text'],
    input[type='password'],
    textarea {
-      @apply block w-full rounded-lg border border-text-lighter p-2.5 text-sm outline-none focus:border-blue-500  focus:ring-blue-500;
+      @apply block w-full rounded-lg border border-text-lighter p-2.5  outline-none focus:border-blue-500  focus:ring-blue-500;
    }
    button {
       @apply text-base font-bold transition-colors;

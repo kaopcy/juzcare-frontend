@@ -19,7 +19,12 @@ const InputText = ({ name, label, type = 'text', ...other }) => {
                   <div className="mb-1 cursor-default text-sm">{label}</div>
                )}
                <div className="relative h-full w-full ">
-                  <input type={type} {...other} {...field} className="h-full w-full placeholder:text-text-lighter" />
+                  <input
+                     type={type}
+                     {...other}
+                     {...field}
+                     className="h-full w-full text-sm md:text-base placeholder:text-text-lighter"
+                  />
                   {error && (
                      <span className="flex-end  absolute top-[110%] right-0 text-xs text-error">{error.message}</span>
                   )}

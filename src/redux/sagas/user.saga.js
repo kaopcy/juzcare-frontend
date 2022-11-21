@@ -8,6 +8,7 @@ import {
    startSignIn,
    startRegister,
 } from '../slices/user';
+
 // utils
 import { getStoredToken, removeStoredToken, setStoredToken } from '@/utils/storageUtils';
 // services
@@ -17,12 +18,10 @@ import { getUser, signIn, register } from '@/services/auth.services';
 function* initialUsers() {
    yield take(initialRequest.type);
    const accessToken = yield call(getStoredToken);
-   console.log(accessToken);
    if (accessToken) {
       try {
          const getUserResponse = yield call(getUser);
          yield put(signInSuccess({ user: getUserResponse }));
-         console.log(getUserResponse)
          return getUserResponse;
       } catch (error) {
          console.log(error);
@@ -68,6 +67,7 @@ export function* authorizationFlow() {
       }
       yield take(signOut.type);
       yield call(removeStoredToken);
+      window.location.reload();
       initialUserResponse = null;
    }
 }

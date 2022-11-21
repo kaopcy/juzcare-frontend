@@ -52,7 +52,6 @@ const Register = () => {
          emailType: 'normal',
          role: 'user',
       };
-      console.log(registerData);
       dispatch(startRegister({ ...registerData }));
    };
 

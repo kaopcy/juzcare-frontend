@@ -24,7 +24,7 @@ function UserProfileIcon({ isBorder = false, ...rest }) {
       >
          {isAuthenticated ? (
             <div className={classname('relative h-full w-full rounded-full bg-transparent')}>
-               <Image src={user.avatar.avatarUrl} alt={user.firstName} className="m-auto h-full w-full  rounded-full" />
+               <Image src={user.avatar.avatarUrl} alt={user.firstName} className="m-auto h-full w-full  rounded-[50%]" />
             </div>
          ) : (
             <Icon icon="ic:baseline-account-circle" className="h-full w-full" />
