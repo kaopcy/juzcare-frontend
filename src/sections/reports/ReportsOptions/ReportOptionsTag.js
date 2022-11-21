@@ -15,6 +15,7 @@ import useSearchQuery from '@/hooks/useSearchQuery';
 const ReportOptionsTag = ({ tag, selected = false, ...rest }) => {
    const { appendTagQuery, removeTagQuery, tagQuery } = useSearchQuery();
    const dispatch = useDispatch();
+   
    const onTagsClick = () => {
       dispatch(updateActiveTags({ activeTags: [tag] }));
       if (selected) removeTagQuery(tag.name);

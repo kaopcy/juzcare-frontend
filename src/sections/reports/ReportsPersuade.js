@@ -8,7 +8,7 @@ import { PATH } from '@/routes/index';
 
 function ReportsPersuade() {
    return (
-      <section className="flex h-56 w-full items-center gap-x-10 bg-text-lighter/20 px-10 shadow-md">
+      <section className="flex h-56 w-full items-center gap-x-10 bg-gray-200/10 px-10 shadow-md">
          <Logo width="100%" />
          <div className="flex w-full flex-col items-center gap-y-5">
             <div className="flex items-center">
