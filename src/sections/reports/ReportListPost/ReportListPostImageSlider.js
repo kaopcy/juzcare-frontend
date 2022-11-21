@@ -4,11 +4,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination } from 'swiper';
 import Image from '@/components/Image';
 
-ReportPostImageSlider.propTypes = {
+ReportListPostImageSlider.propTypes = {
    report: PropTypes.object,
 };
 
-function ReportPostImageSlider({ report }) {
+function ReportListPostImageSlider({ report }) {
    return (
       <Swiper
          slidesPerView={1}
@@ -36,4 +36,4 @@ function ReportPostImageSlider({ report }) {
    );
 }
 
-export default ReportPostImageSlider;
+export default ReportListPostImageSlider;

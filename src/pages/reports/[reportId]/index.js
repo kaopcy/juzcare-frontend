@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Layout from '@/layouts/index';
 import { getReport } from '@/services/reports.service';
 
-import ReportPost from '@/components/commons/ReportPost';
+import ReportListPost from '@/sections/reports/ReportListPost';
 import ReportStatusTimeline from '@/sections/report/ReportStatusTimeline';
 import ReportComment from '@/sections/report/ReportComment';
 // init swiper
@@ -19,7 +19,7 @@ function ReportId({ report }) {
       <div className="mx-auto flex max-w-[700px] flex-col py-20">
          <ReportStatusTimeline reportStatus={report.status} />
          <div className="flex w-full flex-col">
-            <ReportPost report={report} />
+            <ReportListPost report={report} />
          </div>
          <ReportComment report={report} />
       </div>

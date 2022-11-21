@@ -2,13 +2,13 @@ import Icon from '@/components/Icon';
 // contexts
 import { useReportContext } from '@/contexts/reports/ReportContext';
 // components
-import ReportPostTag from './ReportPostTag';
+import ReportListPostTag from './ReportListPostTag';
 import Moment from 'react-moment';
 import 'moment/locale/th';
 import { getStatusTHLabel } from '@/configs/reportConfig/reportStatus.config';
 import Link from '@/components/Link';
 
-function ReportPostHeader() {
+function ReportListPostHeader() {
    const report = useReportContext();
 
    return (
@@ -19,7 +19,7 @@ function ReportPostHeader() {
                   <h4 className="ellipsis mr-6 cursor-pointer whitespace-nowrap hover:underline">{report.title}</h4>
                </Link>
                {report.tags.map((postTag) => (
-                  <ReportPostTag key={postTag._id} tag={postTag} />
+                  <ReportListPostTag key={postTag._id} tag={postTag} />
                ))}
             </div>
             <div className="flex items-center gap-x-1">
@@ -40,4 +40,4 @@ function ReportPostHeader() {
    );
 }
 
-export default ReportPostHeader;
+export default ReportListPostHeader;

@@ -7,7 +7,7 @@ import { updateActiveTags } from '@/slices/reportOptions';
 // hooks
 import useSearchQuery from '@/hooks/useSearchQuery';
 
-const ReportPostTag = ({ tag }) => {
+const ReportListPostTag = ({ tag }) => {
    const { appendTagQuery, removeTagQuery, tagQuery } = useSearchQuery();
    const dispatch = useDispatch();
    const onTagsClick = () => {
@@ -27,8 +27,8 @@ const ReportPostTag = ({ tag }) => {
    );
 };
 
-ReportPostTag.propTypes = {
+ReportListPostTag.propTypes = {
    tag: PropTypes.object,
 };
 
-export default ReportPostTag;
+export default ReportListPostTag;

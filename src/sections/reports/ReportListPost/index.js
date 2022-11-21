@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 import Icon from '@/components/Icon';
 import Image from '@/components/Image';
 // sections
-import ReportPostHeader from './ReportPostHeader';
-import ReportPostImageSlider from './ReportPostImageSlider';
+import ReportListPostHeader from './ReportListPostHeader';
+import ReportListPostImageSlider from './ReportListPostImageSlider';
 // contexts
 import { ReportContextProvider } from '@/contexts/reports/ReportContext';
-import ReportUpVote from './ReportUpVote';
+import ReportListPostUpVote from './ReportListPostUpVote';
 import Link from '@/components/Link';
 // swiper
 
-ReportPost.propTypes = {
+ReportListPost.propTypes = {
    report: PropTypes.object,
 };
 
-function ReportPost({ report }) {
+function ReportListPost({ report }) {
    return (
       <ReportContextProvider initVal={report}>
          <article className="flex w-full items-start  text-text ">
@@ -23,11 +23,11 @@ function ReportPost({ report }) {
                <Image alt="bird" src={report.user.avatar.avatarUrl} objectFit="cover" layout="fill" />
             </div>
             <div className="flex w-full  min-w-0  flex-col gap-y-5">
-               <ReportPostHeader />
-               <ReportPostImageSlider report={report} />
+               <ReportListPostHeader />
+               <ReportListPostImageSlider report={report} />
                <p>{report.detail}</p>
                <div className="flex text-text-light">
-                  <ReportUpVote report={report} />
+                  <ReportListPostUpVote report={report} />
                   <Link href={`/reports/${report._id}`}>
                      <a className="flex items-center ">
                         <Icon className="mr-1 h-5 w-5" icon="ant-design:comment-outlined" />
@@ -42,4 +42,4 @@ function ReportPost({ report }) {
    );
 }
 
-export default ReportPost;
+export default ReportListPost;
