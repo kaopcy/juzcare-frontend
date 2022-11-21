@@ -4,8 +4,7 @@ import ErrorPageSvg from '@/sections/errorPage/ErrorPageSvg';
 import Link from 'next/link';
 import { PATH } from '@/routes/index';
 
-const ErrorPage = () => {
-   return (
+const ErrorPage = () => (
       <section className="relative flex flex-col items-center justify-center w-full min-h-screen bg-primary-errorbg">
          <div className="relative mb-48">
             <ErrorPageSvg />
@@ -19,8 +18,5 @@ const ErrorPage = () => {
          
       </section>
    );
-};
-ErrorPage.getLayout = (children) => {
-   return <Layout variant="protected">{children}</Layout>;
-};
+ErrorPage.getLayout = (children) => <Layout variant="protected">{children}</Layout>;
 export default ErrorPage;
