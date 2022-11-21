@@ -4,6 +4,8 @@ import { useReducer } from 'react';
 import { useDispatch } from '@/redux/store';
 import { startLoading, stopLoading } from '@/slices/loading';
 
+
+
 const START = 'START';
 const SUCCESS = 'SUCCESS';
 const FAILED = 'FAILED';
@@ -40,9 +42,8 @@ const useUploadFiles = () => {
          const uploadResponse = await axios.post(process.env.NEXT_PUBLIC_UPLOADGATEWAY_URL, formData, {
             headers: { 'Content-Type': 'multipart/form-data' },
          });
-         reduxDispatch(stopLoading());
          dispatch({ type: SUCCESS, payload: uploadResponse.data });
-         console.log(uploadResponse);
+         return uploadResponse.data?.name;
       } catch (error) {
          reduxDispatch(stopLoading());
          dispatch({ type: FAILED, payload: error instanceof Error ? error.message : 'somethin went wrong' });

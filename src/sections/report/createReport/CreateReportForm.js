@@ -5,17 +5,22 @@ import { FormProvider, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 // hooks
 import useUploadFiles from '@/hooks/useUploadFiles';
+import { createReport } from '@/services/createReport.service';
 // components
 import InputText from '@/components/hookFormComponents/InputText';
 import TextField from '@/components/hookFormComponents/TextField';
+// stores
+import { useDispatch } from '@/redux/store'
+import { stopLoading } from '@/redux/slices/loading';
 // sections
 import CreateReportTagInput from './CreateReportTagInput';
 import CreateReportAddFile from './CreateReportAddFile';
 import CreateReportSelectLocation from './CreateReportSelectLocation';
 
 function CreateReportForm() {
+   const dispatch = useDispatch()
    const defaultValues = {
-      topic: '',
+      title: '',
       detail: '',
       tags: [],
       location: '',
@@ -23,7 +28,7 @@ function CreateReportForm() {
    };
 
    const resolver = yup.object().shape({
-      topic: yup.string().required('กรุณากรอกหัวข้อ'),
+      title: yup.string().required('กรุณากรอกหัวข้อ'),
       detail: yup.string().required('กรุณากรอกรายละเอียด'),
       tags: yup.array().min(1, 'กรุณาเลือกอย่างน้อย 1 แท็ก'),
       media: yup.array().min(1, 'กรุณาเลือกอย่างน้อย 1 ไฟล์'),
@@ -38,7 +43,23 @@ function CreateReportForm() {
    const { response, error, isLoading, upload } = useUploadFiles();
 
    const onSubmit = async (value) => {
-      upload(value.media);
+      try {
+         const imageLinks = await upload(value.media);
+         const shapedInput = {
+            ...value,
+            locationDetail: 'awdawdawdaw',
+            tags: value.tags.map((e) => e.name),
+            medias: imageLinks.map((link) => ({
+               imageUrl: link,
+            })),
+         };
+         const res = await createReport({ ...shapedInput });
+         dispatch(stopLoading());
+         console.log(res);
+      } catch (error) {
+         dispatch(stopLoading());
+         console.log(error);
+      }
    };
 
    return (
@@ -54,7 +75,7 @@ function CreateReportForm() {
                         <InputText
                            form="createReport"
                            className="h-10"
-                           name="topic"
+                           name="title"
                            placeholder="เช่น น้ำไม่ไหล, ห้องน้ำสกปรก"
                         />
                      </div>
