@@ -7,13 +7,14 @@ const AuthLayout = ({ children }) => {
    const { isAuthenticated } = useUser();
    const router = useRouter();
    useEffect(() => {
+      console.log('isAuthenticated', isAuthenticated);
       if (isAuthenticated) {
          router.replace('/');
       }
    }, [isAuthenticated, router]);
    return (
       <>
-         <main className="relative min-h-screen w-full ">{children}</main>
+         <main className="relative min-h-screen w-full text-text ">{children}</main>
       </>
    );
 };

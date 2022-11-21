@@ -1,3 +1,35 @@
+
+@font-face {
+   font-family: 'LineSeed';
+   src: local(''), url(/fonts/lineseed/LINESeedSansTH_W_He.woff) format('woff');
+   font-weight: 900;
+}
+
+@font-face {
+   font-family: 'LineSeed';
+   src: local(''), url(/fonts/lineseed/LINESeedSansTH_W_XBd.woff) format('woof');
+   font-weight: 600;
+}
+
+@font-face {
+   font-family: 'LineSeed';
+   src: local(''), url(/fonts/lineseed/LINESeedSansTH_W_Bd.woff) format('woff');
+   font-weight: 700;
+}
+
+@font-face {
+   font-family: 'LineSeed';
+   src: local(''), url(/fonts/lineseed/LINESeedSansTH_W_Rg.woff) format('woff');
+   font-weight: 400;
+}
+
+@font-face {
+   font-family: 'LineSeed';
+   src: local(''), url(/fonts/lineseed/LINESeedSansTH_W_Th.woff) format('woff');
+   font-weight: 300;
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,13 +67,13 @@
 
 @layer base {
    h1 {
-      @apply text-xl font-black md:text-3xl;
+      @apply text-xl font-bold md:text-3xl;
    }
    h2 {
       @apply text-lg font-bold md:text-2xl;
    }
    h3 {
-      @apply text-base font-semibold md:text-xl;
+      @apply text-base font-bold md:text-xl;
    }
    h4 {
       @apply text-base font-bold md:text-lg;
@@ -49,10 +81,10 @@
    input[type='text'],
    input[type='password'],
    textarea {
-      @apply block w-full rounded-lg border border-text-lighter p-2.5 text-sm outline-none focus:border-blue-500  focus:ring-blue-500;
+      @apply block w-full rounded-lg border border-text-lighter p-2.5  outline-none focus:border-blue-500  focus:ring-blue-500;
    }
    button {
-      @apply text-base font-semibold transition-colors;
+      @apply text-base font-bold transition-colors;
    }
    p {
       @apply font-secondary text-base font-normal text-text;
@@ -72,7 +104,7 @@ html,
 body {
    padding: 0;
    margin: 0;
-   font-family: 'IBM Plex Sans Thai', sans-serif;
+   font-family: 'LineSeed', sans-serif;
 }
 
 * {

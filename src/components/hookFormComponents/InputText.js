@@ -12,18 +12,29 @@ const InputText = ({ name, label, type = 'text', ...other }) => {
          name={name}
          control={control}
          render={({ field, fieldState: { error } }) => (
-            <div  className={classname('relative flex w-full flex-col', other.className ?? '')}>
-               {label && <div className="mb-1 text-sm">{label}</div>}
-               <input type={type} {...other} {...field} className="h-full w-full" />
-               {error && (
-                  <span className="flex-end  absolute top-[110%] right-0 text-xs text-error">{error.message}</span>
+            <div className={classname('relative flex w-full flex-col', other.className ?? '')}>
+               {label && typeof label == 'function' ? (
+                  label()
+               ) : (
+                  <div className="mb-1 cursor-default text-sm">{label}</div>
                )}
-               {error && (
-                  <Icon
-                     className="absolute right-2 top-1/2 h-5 w-5 -translate-y-1/2  text-error"
-                     icon="material-symbols:fmd-bad-rounded"
+               <div className="relative h-full w-full ">
+                  <input
+                     type={type}
+                     {...other}
+                     {...field}
+                     className="h-full w-full text-sm md:text-base placeholder:text-text-lighter"
                   />
-               )}
+                  {error && (
+                     <span className="flex-end  absolute top-[110%] right-0 text-xs text-error">{error.message}</span>
+                  )}
+                  {error && (
+                     <Icon
+                        className="absolute right-2 top-1/2 h-5 w-5 -translate-y-1/2  text-error"
+                        icon="clarity:error-line"
+                     />
+                  )}
+               </div>
             </div>
          )}
       />

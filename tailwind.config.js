@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
    darkMode: 'class',
-   content: ['./src/{pages,layouts,guards,components,sections}/**/*.{js,ts,jsx,tsx}'],
+   content: ['./src/**/*.{js,ts,jsx,tsx}'],
    theme: {
       fontFamily: {
-         primary: ['IBM Plex Sans Thai', 'sans-serif'],
-         secondary: ['IBM Plex Sans Thai Looped', 'sans-serif'],
+         primary: ['LineSeed', 'IBM Plex Sans Thai', 'sans-serif'],
+         secondary: ['LineSeed', 'IBM Plex Sans Thai Looped', 'sans-serif'],
       },
       screens: {
          xs: '360px',
@@ -36,9 +36,6 @@ module.exports = {
          boxShadow: {
             card: '0px 7px 29px 0px rgba(100, 100, 111, 0.2)',
             test: '0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06)',
-         },
-         fontWeight: {
-            black: 700,
          },
          colors: {
             error: '#EF4444',

@@ -1,11 +1,17 @@
-import { useReducer, useEffect } from 'react';
 import axios from 'axios';
+import { useReducer } from 'react';
+
+import { useDispatch } from '@/redux/store';
+import { startLoading, stopLoading } from '@/slices/loading';
+
+
 
 const START = 'START';
 const SUCCESS = 'SUCCESS';
 const FAILED = 'FAILED';
 
 const useUploadFiles = () => {
+   const reduxDispatch = useDispatch();
    const initState = {
       response: null,
       error: null,
@@ -27,6 +33,7 @@ const useUploadFiles = () => {
 
    const upload = async (files) => {
       dispatch({ type: START });
+      reduxDispatch(startLoading());
       const formData = new FormData();
       files.forEach((file) => {
          formData.append(file.name, file);
@@ -36,16 +43,12 @@ const useUploadFiles = () => {
             headers: { 'Content-Type': 'multipart/form-data' },
          });
          dispatch({ type: SUCCESS, payload: uploadResponse.data });
-         console.log(uploadResponse);
+         return uploadResponse.data?.name;
       } catch (error) {
+         reduxDispatch(stopLoading());
          dispatch({ type: FAILED, payload: error instanceof Error ? error.message : 'somethin went wrong' });
       }
    };
-
-   useEffect(() => {
-      console.log('state response: ', state.response);
-      console.log('state isLoading: ', state.isLoading);
-   }, [state]);
 
    return {
       isLoading: state.isLoading,

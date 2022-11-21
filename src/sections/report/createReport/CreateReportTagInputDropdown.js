@@ -2,22 +2,38 @@ import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
 import { useMemo, useCallback, useState, forwardRef, useImperativeHandle, useEffect, useRef } from 'react';
+import { useQuery } from '@apollo/client';
+import { GetPopularTagGQL } from '@/graphql/report.gql';
 // mock
 import { fakeTagsResponse } from '@/_mock/reports';
 
 const CreateReportTagInputDropdown = forwardRef(({ input, currentTags, setCurrentTags }, ref) => {
-   const filteredResponse = useMemo(
+   const { data, loading, refetch, error } = useQuery(GetPopularTagGQL, {
+      variables: {
+         tagsQuery: input,
+      },
+   });
+
+   useEffect(() => {
+      refetch();
+   }, [input, refetch]);
+
+   const filteredByInputTags = useMemo(
       () =>
-         fakeTagsResponse.filter(
+         data?.getPopularTags?.filter(
             (e) =>
                !currentTags.reduce((acc, cur) => `${acc}${cur.name}`, '').includes(e.name) && e.name.includes(input),
          ),
-      [currentTags, input],
+      [currentTags, input, data],
    );
    const [isOpen, setIsOpen] = useState();
 
-   useImperativeHandle(ref, () => ({ close, open }));
+   const onButtonClick = (tag) => {
+      setCurrentTags((oldTags) => [...oldTags, data?.getPopularTags.find((e) => e._id === tag._id)]);
+   };
 
+   /* --------------------------- handle close - open -------------------------- */
+   useImperativeHandle(ref, () => ({ close, open }));
    const close = useCallback(() => {
       setIsOpen(false);
    }, []);
@@ -26,10 +42,7 @@ const CreateReportTagInputDropdown = forwardRef(({ input, currentTags, setCurren
       setIsOpen(true);
    }, []);
 
-   const onButtonClick = (tag) => {
-      setCurrentTags((oldTags) => [...oldTags, fakeTagsResponse.find((e) => e._id === tag._id)]);
-   };
-
+   /* --------------------- handle onclick outside dropdown -------------------- */
    const dropDownElRef = useRef(null);
    useEffect(() => {
       const { current: dropdownEl } = dropDownElRef;
@@ -51,16 +64,29 @@ const CreateReportTagInputDropdown = forwardRef(({ input, currentTags, setCurren
          ref={dropDownElRef}
          className="absolute z-40 flex flex-col items-start  rounded-lg border bg-white py-2 shadow-md"
       >
-         {filteredResponse.map((tag) => (
-            <button
-               type="button"
-               key={tag._id}
-               onClick={() => onButtonClick(tag)}
-               className="mr-2 w-full whitespace-nowrap px-3 py-1 text-start hover:bg-gray-100 focus:bg-gray-100"
-            >
-               {tag.name}
-            </button>
-         ))}
+         {loading ? (
+            <div className="mr-2 w-full whitespace-nowrap px-3 py-1 text-start font-normal hover:bg-gray-100 focus:bg-gray-100">
+               กำลังโหลด
+            </div>
+         ) : (
+            <>
+               {filteredByInputTags?.map((tag) => (
+                  <button
+                     type="button"
+                     key={tag._id}
+                     onClick={() => onButtonClick(tag)}
+                     className="mr-2 w-full whitespace-nowrap px-3 py-1 text-start font-normal hover:bg-gray-100 focus:bg-gray-100"
+                  >
+                     #{tag.name}
+                  </button>
+               ))}
+               {filteredByInputTags.length === 0 && (
+                  <div className="mr-2 w-full whitespace-nowrap px-3 py-1 text-start font-normal hover:bg-gray-100 focus:bg-gray-100">
+                     เพิ่มแท็ก "{input}"
+                  </div>
+               )}
+            </>
+         )}
       </motion.section>
    ) : null;
 });

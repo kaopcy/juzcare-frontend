@@ -1,21 +1,27 @@
-import { useState } from 'react';
 // configs
-import { sortConfig, ASCENDING } from '@/configs/reportConfig/reportSortOrder.config';
+import { sortConfig, ASCENDING, DESCENDING } from '@/configs/reportConfig/reportSortOrder.config';
 // store
 import { useDispatch, useSelector } from '@/redux/store';
 import { updateSort, toggleOrder } from '@/slices/reportOptions';
+// hooks
+import useSearchQuery from '@/hooks/useSearchQuery';
+// components
 import Icon from '@/components/Icon';
 import { classname } from '@/utils/getClassName';
 
 function ReportOptionsSort() {
+   const { replaceSort, replaceOrder } = useSearchQuery();
+
    const dispatch = useDispatch();
    const sortBy = useSelector((state) => state.reportOptions.sort);
    const orderBy = useSelector((state) => state.reportOptions.order);
    const onRadioChange = (event) => {
+      replaceSort(event.target.value);
       dispatch(updateSort({ sort: event.target.value }));
    };
 
    const onOrderButtonClick = () => {
+      replaceOrder(orderBy === ASCENDING ? DESCENDING : ASCENDING);
       dispatch(toggleOrder());
    };
 
@@ -23,13 +29,10 @@ function ReportOptionsSort() {
       <section className="flex w-full flex-col gap-y-1.5">
          <div className="flex w-full items-center justify-between">
             <h3 className="text-primary underline">จัดเรียง</h3>
-            <button className='hover:bg-gray-500/10 p-1 rounded-full' onClick={onOrderButtonClick}>
+            <button className="rounded-full p-1 hover:bg-gray-500/10" onClick={onOrderButtonClick}>
                <Icon
-                  className={classname(
-                     'h-5 w-5 transition-transform ',
-                     orderBy === ASCENDING ? 'rotate-0' : 'rotate-180',
-                  )}
-                  icon="bx:sort-up"
+                  className={classname('h-5 w-5 transition-transform ')}
+                  icon={orderBy === DESCENDING ? 'icon-park:sort-amount-down' : 'icon-park:sort-amount-up'}
                />
             </button>
          </div>

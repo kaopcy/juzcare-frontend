@@ -1,16 +1,17 @@
 import { createAction, createSlice } from '@reduxjs/toolkit';
-import { ASCENDING, SORT_BY_LIKE, DESCENDING } from '@/configs/reportConfig/reportSortOrder.config';
-import { WAITING } from '@/configs/reportConfig/reportStatus.config';
+import { SORT_BY_TIME, DESCENDING, ASCENDING } from '@/configs/reportConfig/reportSortOrder.config';
+import { UNVERIFIED } from '@/configs/reportConfig/reportStatus.config';
 
 const initialState = {
    tags: [],
    isLoading: false,
    error: null,
-   sort: SORT_BY_LIKE,
-   order: ASCENDING,
-   filter: WAITING,
+   sort: SORT_BY_TIME,
+   order: DESCENDING,
+   filter: UNVERIFIED,
    activeTags: [],
-   page: 1,
+   page: 0,
+   nextPage: -1,
    search: '',
 };
 
@@ -21,12 +22,18 @@ const reportOptionsSlice = createSlice({
       startFetchTag: (state) => {
          state.isLoading = true;
       },
-      
+      clearOptions: (state) => {
+         state.sort = SORT_BY_TIME;
+         state.order = DESCENDING;
+         state.filter = '';
+         state.activeTags = [];
+         state.page = 1;
+         state.search = '';
+      },
       fetchTagSucceed: (state, action) => {
          state.isLoading = false;
          state.tags = action.payload.tags;
       },
-
       fetchTagFail: (state, action) => {
          state.isLoading = false;
          state.error = action.payload.error;
@@ -34,21 +41,26 @@ const reportOptionsSlice = createSlice({
       updatePage: (state, action) => {
          state.page = action.payload.page;
       },
+      updateNextPage: (state, action) => {
+         state.nextPage = action.payload.nextPage;
+      },
       updateSearch: (state, action) => {
          state.search = action.payload.search;
       },
       updateSort: (state, action) => {
          state.sort = action.payload.sort;
       },
-      toggleOrder: (state) => {
-         state.order = state.order === ASCENDING ? DESCENDING : ASCENDING;
+      toggleOrder: (state, action) => {
+         if (action.payload?.order) state.order = action.payload.order;
+         else state.order = state.order === ASCENDING ? DESCENDING : ASCENDING;
       },
       updateFilter: (state, action) => {
          state.filter = action.payload.filter;
       },
       updateActiveTags: (state, action) => {
          action.payload.activeTags.forEach((activeTag) => {
-            const index = state.activeTags.findIndex(e => e._id == activeTag._id);
+            const index = state.activeTags.findIndex((e) => e.name == activeTag.name);
+            console.log(index);
             if (index !== -1) state.activeTags.splice(index, 1);
             else state.activeTags.push(activeTag);
          });
@@ -56,7 +68,10 @@ const reportOptionsSlice = createSlice({
    },
 });
 
+// this action take "tagsQuery"
 export const fetchTag = createAction('fetchTag');
+
+export const getOptions = (state) => state.reportOptions;
 
 export const {
    fetchTagFail,
@@ -68,5 +83,7 @@ export const {
    updateActiveTags,
    updatePage,
    updateSearch,
+   clearOptions,
+   updateNextPage,
 } = reportOptionsSlice.actions;
 export default reportOptionsSlice.reducer;

@@ -108,7 +108,8 @@ export const fakeReportsResponse = {
       },
       {
          _id: 'report-123456',
-         detail: 'ตอนนี้รู้สึกหิวข้าวเหลือเกิน ทำไมบะหมี่เป็ดย่างซอยจินดาให้น้อยจัง หิวฮือๆ ออกไปซื้ออะไรกินในเซเว่นดีมั้ยนะนะนะ',
+         detail:
+            'ตอนนี้รู้สึกหิวข้าวเหลือเกิน ทำไมบะหมี่เป็ดย่างซอยจินดาให้น้อยจัง หิวฮือๆ ออกไปซื้ออะไรกินในเซเว่นดีมั้ยนะนะนะ',
          title: 'หิวข้าวมากๆเลยอะ',
          upVote: '20',
          downVote: '20',
@@ -218,6 +219,8 @@ export const fakeReportsResponse = {
    nextPage: 2,
 };
 
+export const fakeReportResponse = fakeReportsResponse.reports[0];
+
 export const fakeTagsResponse = [
    {
       _id: '1234',
@@ -238,5 +241,17 @@ export const fakeTagsResponse = [
    {
       _id: '22345',
       name: 'วาสลีน',
+   },
+   {
+      _id: '22345awda',
+      name: 'ว่าไงน้องสาว',
+   },
+   {
+      _id: '22345awd',
+      name: 'ไหวป่าวเบเบ้',
+   },
+   {
+      _id: '2234ฟไก5awda',
+      name: 'ตงมงเหมียวขื่อ',
    },
 ];

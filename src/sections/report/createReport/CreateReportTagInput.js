@@ -19,21 +19,21 @@ function CreateReportTagInput({ methods }) {
    const [currentTags, setCurrentTags] = useState([]);
    const [input, setInput] = useState('');
    const dropdownRef = useRef(null);
-   const onRemoveTagClick = (targetId) => {
-      setCurrentTags((old) => old.filter((e) => e._id !== targetId));
+   const onRemoveTagClick = (targetName) => {
+      setCurrentTags((old) => old.filter((e) => e.name !== targetName));
    };
-
+   
    const onInputSubmit = (event) => {
       event.preventDefault();
       if (input.length === 0) return;
       setCurrentTags((oldTags) =>
-         currentTags.find((tag) => tag.name === input)?._id
+         currentTags.find((tag) => tag.name === input)?.name
             ? [...oldTags]
             : [
                  ...oldTags,
                  {
                     name: input,
-                    _id: uuid(),
+                    _id: input,
                  },
               ],
       );
@@ -69,26 +69,29 @@ function CreateReportTagInput({ methods }) {
          className=" relative flex h-10 w-full items-center gap-x-2  rounded-lg border border-text-lighter p-2.5 py-0 text-sm outline-none focus:border-blue-500  focus:ring-blue-500"
       >
          {currentTags.map((tag) => (
-            <CreateReportTag tag={tag.name} key={tag._id} onClick={() => onRemoveTagClick(tag._id)} />
+            <CreateReportTag tag={tag.name} key={tag._id} onClick={() => onRemoveTagClick(tag.name)} />
          ))}
          <div className="relative h-full w-full">
             <input
                onKeyDown={onInputKeyDown}
                onFocus={() => dropdownRef.current?.open()}
-               className="!p-0 h-full w-full border-none outline-none placeholder:text-text-lighter focus:placeholder:text-transparent"
+               onClick={() => dropdownRef.current?.open()}
+               className="h-full w-full border-none !p-0 outline-none placeholder:text-text-lighter focus:placeholder:text-transparent"
                onChange={onInputChange}
                type="text"
                value={input}
                placeholder="เพิ่มแท็ก +"
             />
-            <CreateReportTagInputDropdown input={input} currentTags={currentTags} setCurrentTags={setCurrentTags} ref={dropdownRef} />
+            <CreateReportTagInputDropdown
+               input={input}
+               currentTags={currentTags}
+               setCurrentTags={setCurrentTags}
+               ref={dropdownRef}
+            />
          </div>
          {error && <span className="flex-end  absolute top-[110%] right-0 text-xs text-error">{error.message}</span>}
          {error && (
-            <Icon
-               className="absolute right-2 top-1/2 h-5 w-5 -translate-y-1/2  text-error"
-               icon="material-symbols:fmd-bad-rounded"
-            />
+            <Icon className="absolute right-2 top-1/2 h-5 w-5 -translate-y-1/2  text-error" icon="clarity:error-line" />
          )}
       </form>
    );
