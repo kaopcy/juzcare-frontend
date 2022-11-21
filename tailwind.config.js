@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
    darkMode: 'class',
-   content: ['./src/{pages,layouts,guards,components,sections}/**/*.{js,ts,jsx,tsx}'],
+   content: ['./src/**/*.{js,ts,jsx,tsx}'],
    theme: {
       fontFamily: {
          primary: ['LineSeed', 'IBM Plex Sans Thai', 'sans-serif'],
