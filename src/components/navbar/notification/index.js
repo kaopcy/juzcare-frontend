@@ -8,6 +8,7 @@ import Icon from '@/components/Icon';
 import NotificationPanel from './NotificationPanel';
 // hooks
 import useNotifications from '@/hooks/useNotifications';
+import { NotificationContextProvider } from '@/contexts/NotificationContext';
 
 Notification.propTypes = {
    isSidebar: PropTypes.bool,
@@ -16,7 +17,7 @@ Notification.propTypes = {
 
 function Notification() {
    return (
-      <>
+      <NotificationContextProvider>
          <Popover className="relative flex items-center">
             {({ open }) => (
                <>
@@ -40,12 +41,13 @@ function Notification() {
                </>
             )}
          </Popover>
-      </>
+      </NotificationContextProvider>
    );
 }
 
 function NotificationNumberIndicator() {
    const { isUnRead } = useNotifications();
+   console.log('isUnRead: ', isUnRead);
 
    return isUnRead ? (
       <div className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-paper p-[3px]">
