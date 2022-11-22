@@ -14,4 +14,4 @@ jobs:
       - name: clean docker 
         run: docker-compose rm -f
       - name: deploy to docker
-        run: docker-compose up --no-cache --force-recreate --build --detach && docker image prune -a -f
+        run: docker-compose up --force-recreate --build --detach && docker image prune -a -f
