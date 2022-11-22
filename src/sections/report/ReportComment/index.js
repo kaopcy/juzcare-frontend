@@ -8,17 +8,17 @@ import ReportCommentInput from './ReportCommentInput';
 import ReportCommentList from './ReportCommentList';
 import { CreateCommentReportGQL } from '@/graphql/comment.gql';
 import useReport from '@/hooks/useReport';
+import { ACTION } from '@/contexts/ReportContext';
 
 function ReportComment() {
-   const { report } = useReport();
-   const [comments, setComments] = useState(report.comments);
-   const [createComment, { data, loading }] = useMutation(CreateCommentReportGQL, {
+   const { report, dispatch } = useReport();
+   const [createComment, { loading }] = useMutation(CreateCommentReportGQL, {
       keepRootFields: true,
       onError: (error) => {
          console.log(error.message);
       },
       onCompleted: (data) => {
-         setComments(data.createCommentReport?.comments);
+         dispatch({ type: ACTION.UPDATE_COMMENT, payload: { comments: data.createCommentReport?.comments } });
       },
    });
 
@@ -26,7 +26,7 @@ function ReportComment() {
       <section className="mt-8 flex w-full flex-col gap-y-10 rounded-lg bg-text-lighter/30 p-8">
          <ReportCommentInput createComment={createComment} report={report} isLoading={loading} />
          <div className="flex flex-col gap-y-4">
-            <RecursiveComment comments={comments} />
+            <RecursiveComment comments={report.comments} />
          </div>
       </section>
    );

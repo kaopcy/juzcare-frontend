@@ -65,8 +65,8 @@ function ReportProgressForm({ isAdd, setIsAdd }) {
             })),
          };
          const progresses = await createProgressReport(shapedInput);
-         console.log(progresses);
          reportDispatch({ type: ACTION.UPDATE_PROGRESS, payload: { progresses } });
+         setIsAdd(false)
          dispatch(stopLoading());
          // router.replace('/reports');
       } catch (error) {

@@ -60,6 +60,8 @@ export const GetReportsGQL = gql`
                avatar {
                   avatarUrl
                }
+               firstName
+               lastName
             }
             detail
             title
@@ -113,6 +115,8 @@ export const GetReportGQL = gql`
             avatar {
                avatarUrl
             }
+            firstName
+            lastName
          }
          detail
          title

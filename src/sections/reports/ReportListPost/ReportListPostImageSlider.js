@@ -17,19 +17,19 @@ function ReportListPostImageSlider({ report }) {
          breakpoints={{
             500: {
                slidesPerView: 2,
-               spaceBetween: 8
-             },
-             800: {
+               spaceBetween: 8,
+            },
+            800: {
                slidesPerView: 3,
-               spaceBetween: 8
-             },
-          }}
+               spaceBetween: 8,
+            },
+         }}
          modules={[FreeMode, Pagination]}
          className="w-full "
       >
          {report?.medias?.map((media) => (
             <SwiperSlide key={media._id} className="relative aspect-[4/3] h-[200px]">
-               <Image alt="test" layout="fill" objectFit="cover" src={media.imageUrl} />
+               <Image gallery alt="test" layout="fill" objectFit="cover" src={media.imageUrl} />
             </SwiperSlide>
          ))}
       </Swiper>

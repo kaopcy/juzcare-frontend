@@ -10,6 +10,7 @@ export const ReportContext = createContext({
 export const ACTION = {
    UPDATE_PROGRESS: 'UPDATE_PROGRESS',
    LOADING: 'LOADING',
+   UPDATE_COMMENT: "UPDATE_COMMENT"
 };
 
 export const ReportContextProvider = ({ children, initReport }) => {
@@ -28,6 +29,12 @@ export const ReportContextProvider = ({ children, initReport }) => {
          case ACTION.UPDATE_PROGRESS: {
             return produce(state, (draft) => {
                draft.report.progresses = action.payload.progresses;
+            });
+         }
+
+         case ACTION.UPDATE_COMMENT: {
+            return produce(state, (draft) => {
+               draft.report.comments = action.payload.comments;
             });
          }
       }
