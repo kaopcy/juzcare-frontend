@@ -6,7 +6,7 @@ import HomeSummary from '@/sections/home/HomeSummary';
 import HomeTags from '@/sections/home/HomeTags';
 import HomeContents from '@/sections/home/HomeContents';
 // contexts
-import { ReportsProvider } from '@/contexts/home/ReportsContext';
+import { ReportsProvider } from '@/contexts/Home/ReportsContext';
 
 function Home() {
    return (
