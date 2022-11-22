@@ -7,12 +7,10 @@ import { useMutation } from '@apollo/client';
 import ReportCommentInput from './ReportCommentInput';
 import ReportCommentList from './ReportCommentList';
 import { CreateCommentReportGQL } from '@/graphql/comment.gql';
+import useReport from '@/hooks/useReport';
 
-ReportComment.propTypes = {
-   report: PropTypes.object,
-};
-
-function ReportComment({ report }) {
+function ReportComment() {
+   const { report } = useReport();
    const [comments, setComments] = useState(report.comments);
    const [createComment, { data, loading }] = useMutation(CreateCommentReportGQL, {
       keepRootFields: true,

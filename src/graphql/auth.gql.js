@@ -56,3 +56,16 @@ export const RegisterGQL = gql`
       }
    }
 `;
+
+export const GetNotificationGQL = gql`
+   query {
+      getNotifications {
+         _id
+         isWatched
+         detail
+         type
+         reportId
+         createdAt
+      }
+   }
+`;

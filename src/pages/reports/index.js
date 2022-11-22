@@ -28,7 +28,6 @@ Reports.propTypes = {
 function Reports({ filter, order, sort, tags }) {
    // init reports and tags
    const dispatch = useDispatch();
-
    const { getCurrentSearchQuery } = useSearchQuery();
    useEffect(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });

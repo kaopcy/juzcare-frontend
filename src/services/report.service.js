@@ -1,16 +1,32 @@
 import client from '@/graphql/apollo-client';
-import { CreateCommentReportGQL } from '@/graphql/comment.gql'
+import { CreateCommentReportGQL } from '@/graphql/comment.gql';
+import { CreateReportProgressGQL } from '@/graphql/report.gql';
 
-export const createCommentReport = async ({ reportId , body}) => {
+export const createCommentReport = async ({ reportId, body }) => {
    const { data } = await client.mutate({
       mutation: CreateCommentReportGQL,
       variables: {
          createCommentReportData: {
             reportId,
-            body
+            body,
          },
       },
    });
-   console.log(data.createCommentReport)
+   console.log(data.createCommentReport);
+   return data.createCommentReport;
+};
+
+export const createProgressReport = async ({ reportId, detail, medias }) => {
+   const { data } = await client.mutate({
+      mutation: CreateReportProgressGQL,
+      variables: {
+         createProgressReportData: {
+            reportId,
+            detail,
+            medias,
+         },
+      },
+   });
+   console.log(data.createCommentReport);
    return data.createCommentReport;
 };

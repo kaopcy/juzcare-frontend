@@ -1,4 +1,4 @@
-import { put, take } from 'redux-saga/effects';
+import { call, put, take } from 'redux-saga/effects';
 import { signInSuccess } from '../slices/user';
 import { setNotification } from '../slices/notification';
 

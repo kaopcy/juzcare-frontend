@@ -76,7 +76,7 @@ function CreateReportAddFile({ methods }) {
             เพิ่มไฟล์
          </motion.label>
          <input
-            accept=".png, .gif, .jpeg, .jpg, .mp4, .webp"
+            accept=".png, .gif, .jpeg, .jpg, .webp"
             multiple
             ref={fileInputRef}
             onChange={onInputFileChange}

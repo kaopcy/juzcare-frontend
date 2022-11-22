@@ -1,15 +1,20 @@
-import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { useMemo, useContext } from 'react';
+import { NotificationContext } from '@/contexts/NotificationContext';
 
 const useNotifications = () => {
-   const notifications = useSelector((state) => state.notifications);
+   const { isLoading, error, notifications } = useContext(NotificationContext);
    const isUnRead = useMemo(
-      () => (!notifications ? false : notifications?.notifications?.some((e) => !e.isWatched)),
-      [notifications],
+      () => (isLoading || !notifications ? false : notifications?.some((e) => !e.isWatched)),
+      [notifications, isLoading],
    );
+
+   console.log('isUnRead: ', isUnRead);
+
    return {
-      notifications: notifications.notifications,
+      notifications: notifications,
       isUnRead,
+      isLoading,
+      error,
    };
 };
 

@@ -15,7 +15,7 @@ function LoadingScreen() {
                animate={{ opacity: 1 }}
                exit={{ opacity: 0 }}
                transition={{ ease: 'easeInOut' }}
-               className="fixed z-sidebar-overlay flex h-full w-full flex-col items-center justify-center bg-black/60"
+               className="fixed z-[10000] flex h-full w-full flex-col items-center justify-center bg-black/60"
             >
                <div className="flex h-56 w-56 flex-col items-center justify-center gap-y-10 rounded-lg bg-white shadow-xl">
                   <div className="flex items-center gap-x-3">
