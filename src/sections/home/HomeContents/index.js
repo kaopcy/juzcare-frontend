@@ -2,7 +2,7 @@
 import HomeContent from './HomeContent';
 import HomeContentProgressBar from './HomeContentProgressBar';
 // contexts
-import { useReports } from '@/contexts/home/ReportsContext';
+import { useReports } from '@/contexts/Home/ReportsContext';
 import { memo, useEffect, useRef, useState } from 'react';
 import Icon from '@/components/Icon';
 
