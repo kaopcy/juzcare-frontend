@@ -4,6 +4,7 @@ import Head from 'next/head';
 import ProtectedLayout from './ProtectedLayout';
 import AuthLayout from './AuthLayout';
 import UnProtectedLayout from './UnProtectedLayout';
+import UserLayout from './UserLayout';
 import useUser from '@/hooks/useUser';
 
 const Layout = ({ variant = 'protected', title, children, ...other }) => {
@@ -19,6 +20,8 @@ const Layout = ({ variant = 'protected', title, children, ...other }) => {
                      return <UnProtectedLayout {...other}>{children}</UnProtectedLayout>;
                   case 'auth':
                      return <AuthLayout {...other}>{children}</AuthLayout>;
+                  case 'user':
+                     return <UserLayout {...other}>{children}</UserLayout>;
                   default:
                      return children;
                }
@@ -44,7 +47,7 @@ PageWrapper.propTypes = {
 Layout.propTypes = {
    children: PropTypes.node,
    title: PropTypes.string.isRequired,
-   variant: PropTypes.oneOf(['protected', 'auth', 'unprotected']),
+   variant: PropTypes.oneOf(['protected', 'auth', 'unprotected', 'user']),
 };
 
 export default Layout;

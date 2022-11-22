@@ -120,11 +120,19 @@ export const GetReportGQL = gql`
             type
          }
          progresses {
+            createdAt
             _id
+            user {
+               avatar {
+                  avatarUrl
+               }
+               firstName
+               lastName
+            }
             detail
             medias {
-               imageUrl
                _id
+               imageUrl
             }
          }
          location {

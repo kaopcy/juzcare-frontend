@@ -21,7 +21,7 @@ export const PATH = {
    user:{
       edituser: joinPath(RootUserPath, '/edituser'),
       history: joinPath(RootUserPath, '/history'),
-
+      review: joinPath(RootUserPath, '/review')
    },
    
         

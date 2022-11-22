@@ -25,8 +25,24 @@ function ReportProgressForm({ isAdd, setIsAdd }) {
       body: '',
    };
 
+   function checkIfFilesAreTooBig(files) {
+      let valid = true;
+      if (files) {
+         files.map((file) => {
+            const size = file.size / 1024 / 1024;
+            if (size > 3) {
+               valid = false;
+            }
+         });
+      }
+      return valid;
+   }
+
    const resolver = yup.object().shape({
-      media: yup.array().min(1, 'กรุณาเลือกอย่างน้อย 1 ไฟล์'),
+      media: yup
+         .array()
+         .min(1, 'กรุณาเลือกอย่างน้อย 1 ไฟล์')
+         .test('is-correct-file', 'ขนาดไฟล์ต้องไม่เกิน 3mb', checkIfFilesAreTooBig),
       body: yup.string().required('กรุณาใส่เนื้อหา'),
    });
 

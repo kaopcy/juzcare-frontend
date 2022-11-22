@@ -19,7 +19,7 @@ ReportId.propTypes = {
 function ReportId({ report }) {
    return (
       <ReportContextProvider initReport={report}>
-         <div className="mx-auto flex max-w-[700px] flex-col py-20">
+         <div className="mx-auto flex max-w-[700px] flex-col py-20 px-7 md:px-0">
             <ReportStatusTimeline reportStatus={report.status} />
             <div className="flex w-full flex-col">
                <ReportPost />
