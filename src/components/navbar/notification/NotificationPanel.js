@@ -24,9 +24,13 @@ function NotificationPanel() {
          </header>
          <aside className="overflow-y-auto overflow-x-hidden py-3 ">
             {isAuthenticated ? (
-               notifications?.map((e) => <NotificationList key={e._id} notification={e} />)
+               notifications.length === 0 ? (
+                  <p className="py-3 text-center">ไปเริ่มสร้างกระทู้กัน !!</p>
+               ) : (
+                  notifications?.map((e) => <NotificationList key={e._id} notification={e} />)
+               )
             ) : (
-               <p className="text-center py-3">กรุณาเข้าสู่ระบบก่อน</p>
+               <p className="py-3 text-center">กรุณาเข้าสู่ระบบก่อน</p>
             )}
          </aside>
       </section>

@@ -73,7 +73,7 @@ function ReportProgressPost({ progress }) {
                >
                   {progress.medias.map((media) => (
                      <SwiperSlide key={media._id} className="relative aspect-[4/3] h-[200px]">
-                        <Image alt="image" src={media.imageUrl} />
+                        <Image gallery  alt="image" src={media.imageUrl} />
                      </SwiperSlide>
                   ))}
                </Swiper>

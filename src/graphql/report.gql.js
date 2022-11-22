@@ -144,6 +144,8 @@ export const GetReportGQL = gql`
          }
          upVotes {
             _id
+            firstName
+            lastName
          }
          medias {
             imageUrl

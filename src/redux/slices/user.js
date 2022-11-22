@@ -19,6 +19,10 @@ const userSlice = createSlice({
          state.isLoading = true;
          state.isAuthenticated = false;
       },
+      startSignInAdmin: (state) => {
+         state.isLoading = true;
+         state.isAuthenticated = false;
+      },
       startRegister: (state) => {
          state.isLoading = true;
          state.isAuthenticated = false;
@@ -43,10 +47,22 @@ const userSlice = createSlice({
          state.user = null;
          state.isAuthenticated = false;
       },
+      updateAvatarSuccess: (state, action) => {
+         state.user.avatar = action.payload.avatar;
+      },
    },
 });
 
 export const initialRequest = createAction('initialUser');
-export const { signInSuccess, signInFailed, startRegister, signOut, startSignIn, initialFinished } = userSlice.actions;
+export const {
+   signInSuccess,
+   signInFailed,
+   startRegister,
+   signOut,
+   startSignIn,
+   initialFinished,
+   startSignInAdmin,
+   updateAvatarSuccess,
+} = userSlice.actions;
 
 export default userSlice.reducer;
