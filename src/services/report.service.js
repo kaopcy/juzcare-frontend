@@ -12,7 +12,6 @@ export const createCommentReport = async ({ reportId, body }) => {
          },
       },
    });
-   console.log(data.createCommentReport);
    return data.createCommentReport;
 };
 

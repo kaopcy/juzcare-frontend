@@ -21,7 +21,6 @@ function CreateReportAddFile({ methods }) {
    const onInputFileChange = useCallback(
       (e) => {
          const curFiles = [...e.target.files];
-         console.log(curFiles);
          if (!curFiles) return;
          const filteredFile = curFiles.filter((curFile) => !files.some((file) => file.name === curFile.name));
          setFiles((old) => [...old, ...filteredFile]);
@@ -43,8 +42,6 @@ function CreateReportAddFile({ methods }) {
       methods.setValue('media', files);
       methods.trigger('media');
    }, [files, methods]);
-
-   console.log('rerender');
 
    return (
       <div className="relative flex w-full flex-wrap items-center justify-start gap-x-3 gap-y-3">

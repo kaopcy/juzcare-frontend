@@ -8,8 +8,6 @@ const useNotifications = () => {
       [notifications, isLoading],
    );
 
-   console.log('isUnRead: ', isUnRead);
-
    return {
       notifications: notifications,
       isUnRead,

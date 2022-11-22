@@ -35,7 +35,6 @@ export const loginAdmin = async ({ email, password }) => {
 };
 
 export const register = async ({ email, emailType, username, password, firstName, lastName, phone, role }) => {
-   console.log('called email: ', email, emailType);
    const { data } = await client.mutate({
       fetchPolicy: 'no-cache',
       mutation: RegisterGQL,
@@ -52,6 +51,5 @@ export const register = async ({ email, emailType, username, password, firstName
          },
       },
    });
-   console.log(data.registerUser);
    return data.registerUser;
 };

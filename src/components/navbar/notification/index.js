@@ -47,7 +47,6 @@ function Notification() {
 
 function NotificationNumberIndicator() {
    const { isUnRead } = useNotifications();
-   console.log('isUnRead: ', isUnRead);
 
    return isUnRead ? (
       <div className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-paper p-[3px]">

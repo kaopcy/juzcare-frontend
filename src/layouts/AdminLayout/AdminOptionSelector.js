@@ -1,10 +1,7 @@
-import Icon from '@/components/Icon';
 import Link from '@/components/Link';
-import UserProfileIcon from '@/components/UserProfileIcon';
 import { optionRoutes } from '@/configs/adminOption.config';
 import useUser from '@/hooks/useUser';
 // stores
-import { signOut } from '@/redux/slices/user';
 import { useDispatch } from '@/redux/store';
 // utils
 import { classname } from '@/utils/getClassName';

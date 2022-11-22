@@ -21,7 +21,9 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
 Reports.propTypes = {
-   reports: PropTypes.array,
+   filter: PropTypes.string,
+   order: PropTypes.string,
+   sort: PropTypes.string,
    tags: PropTypes.array,
 };
 
@@ -49,7 +51,6 @@ function Reports({ filter, order, sort, tags }) {
    });
 
    useEffect(() => {
-      console.log('calllll');
       dispatch(fetchReports());
       dispatch(fetchTag({ tagsQuery: '' }));
    }, [dispatch]);

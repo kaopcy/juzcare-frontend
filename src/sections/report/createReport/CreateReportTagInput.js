@@ -41,7 +41,6 @@ function CreateReportTagInput({ methods }) {
    };
 
    const onInputChange = (e) => {
-      console.log(e);
       setInput(e.target.value);
    };
 

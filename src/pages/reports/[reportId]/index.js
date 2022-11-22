@@ -41,7 +41,6 @@ export const getServerSideProps = async (ctx) => {
    const { reportId } = ctx.params;
    try {
       const report = await getReport({ _id: reportId });
-      console.log(report);
       return {
          props: {
             report,

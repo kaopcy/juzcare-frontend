@@ -22,7 +22,6 @@ function Image({ src, alt, gallery = false, lazy = true, ...rest }) {
    const dispatch = useDispatch();
    const onClick = () => {
       if (!gallery) return;
-      console.log('open');
       dispatch(open({ src }));
    };
    return (
