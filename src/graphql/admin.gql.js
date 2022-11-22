@@ -45,6 +45,17 @@ export const GetAllReportsGQL = gql`
    }
 `;
 
+export const GetAllTagsGQL = gql`
+   query {
+      getAllTags {
+         _id
+         name
+         status
+         createdAt
+      }
+   }
+`;
+
 export const UpdateStatusReportGQL = gql`
    mutation ($updateStatusReportData: UpdateStatusReportInput!) {
       updateStatusReport(updateStatusReportData: $updateStatusReportData) {

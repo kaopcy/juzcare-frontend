@@ -19,7 +19,7 @@ function AdminReportStatusAcceptButton({ report }) {
          onClick={onAccept}
          className="rounded-lg bg-green-600 px-2 py-0.5 text-sm font-medium text-paper hover:bg-green-800"
       >
-         อนุมัติ
+         รับเรื่อง
       </button>
    );
 }

@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import Layout from '@/layouts/index';
 import { getAllReports } from '@/services/admin.service';
 
-import { useDispatch, useSelector } from '@/redux/store';
-import { useMemo } from 'react';
+import { useSelector } from '@/redux/store';
 import { classname } from '@/utils/getClassName';
+import { useMemo } from 'react';
 
 import { getStatusTHLabel } from '@/configs/reportConfig/reportStatus.config';
 import AdminReportStatusControl from '@/sections/admin/AdminReportStatusControl';
