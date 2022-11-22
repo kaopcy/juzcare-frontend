@@ -1,14 +1,12 @@
-import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
-import { useMemo, useCallback, useState, forwardRef, useImperativeHandle, useEffect, useRef } from 'react';
-import { useQuery } from '@apollo/client';
 import { GetPopularTagGQL } from '@/graphql/report.gql';
-// mock
-import { fakeTagsResponse } from '@/_mock/reports';
+import { useQuery } from '@apollo/client';
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 
 const CreateReportTagInputDropdown = forwardRef(({ input, currentTags, setCurrentTags }, ref) => {
-   const { data, loading, refetch, error } = useQuery(GetPopularTagGQL, {
+   const { data, loading, refetch } = useQuery(GetPopularTagGQL, {
       variables: {
          tagsQuery: input,
       },

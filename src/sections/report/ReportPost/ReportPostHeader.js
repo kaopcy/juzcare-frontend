@@ -2,11 +2,9 @@ import Icon from '@/components/Icon';
 // contexts
 import { useReportContext } from '@/contexts/reports/ReportContext';
 // components
-import ReportPostTag from './ReportPostTag';
-import Moment from 'react-moment';
 import 'moment/locale/th';
-import { getStatusTHLabel } from '@/configs/reportConfig/reportStatus.config';
-import Link from '@/components/Link';
+import Moment from 'react-moment';
+import ReportPostTag from './ReportPostTag';
 
 function ReportPostHeader() {
    const report = useReportContext();

@@ -1,12 +1,6 @@
 import PropTypes from 'prop-types';
 // utils
 import { classname } from '@/utils/getClassName';
-// stores
-import { useDispatch } from '@/redux/store';
-import { updateActiveTags } from '@/slices/reportOptions';
-// hooks
-import useSearchQuery from '@/hooks/useSearchQuery';
-import { useRouter } from 'next/router';
 import Link from '@/components/Link';
 
 const ReportPostTag = ({ tag }) => (

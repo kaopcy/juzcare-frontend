@@ -8,7 +8,7 @@ import { updateActiveTags } from '@/slices/reportOptions';
 import useSearchQuery from '@/hooks/useSearchQuery';
 
 const ReportListPostTag = ({ tag }) => {
-   const { appendTagQuery, removeTagQuery, tagQuery } = useSearchQuery();
+   const { appendTagQuery } = useSearchQuery();
    const dispatch = useDispatch();
    const onTagsClick = () => {
       dispatch(updateActiveTags({ activeTags: [tag] }));

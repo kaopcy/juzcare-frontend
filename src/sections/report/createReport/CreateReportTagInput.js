@@ -1,15 +1,13 @@
 import PropTypes from 'prop-types';
-import { motion } from 'framer-motion';
-import { useState, useRef, useCallback } from 'react';
-import { v4 as uuid } from 'uuid';
+import { useCallback, useRef, useState } from 'react';
 // hooks
-import { useFormContext } from 'react-hook-form';
 import usePreventFirstEffect from '@/hooks/usePreventFirstEffect';
+import { useFormContext } from 'react-hook-form';
 // components
 import Icon from '@/components/Icon';
 // sections
-import CreateReportTagInputDropdown from './CreateReportTagInputDropdown';
 import CreateReportTag from './CreateReportTag';
+import CreateReportTagInputDropdown from './CreateReportTagInputDropdown';
 
 CreateReportTagInput.propTypes = {
    methods: PropTypes.object,

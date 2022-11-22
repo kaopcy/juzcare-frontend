@@ -1,4 +1,3 @@
-import axios from 'axios';
 //form
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -10,13 +9,13 @@ import { createReport } from '@/services/createReport.service';
 import InputText from '@/components/hookFormComponents/InputText';
 import TextField from '@/components/hookFormComponents/TextField';
 // stores
-import { useDispatch } from '@/redux/store';
 import { stopLoading } from '@/redux/slices/loading';
+import { useDispatch } from '@/redux/store';
 // sections
-import CreateReportTagInput from './CreateReportTagInput';
+import { useRouter } from 'next/router';
 import CreateReportAddFile from './CreateReportAddFile';
 import CreateReportSelectLocation from './CreateReportSelectLocation';
-import { useRouter } from 'next/router';
+import CreateReportTagInput from './CreateReportTagInput';
 
 function CreateReportForm() {
    /* ---------------------------------- form ---------------------------------- */
@@ -43,7 +42,7 @@ function CreateReportForm() {
 
    const dispatch = useDispatch();
    const router = useRouter();
-   const { response, error, isLoading, upload } = useUploadFiles();
+   const { isLoading, upload } = useUploadFiles();
 
    const onSubmit = async (value) => {
       try {
@@ -56,7 +55,7 @@ function CreateReportForm() {
                imageUrl: link,
             })),
          };
-         const res = await createReport({ ...shapedInput });
+         await createReport({ ...shapedInput });
          dispatch(stopLoading());
          router.replace('/reports');
       } catch (error) {

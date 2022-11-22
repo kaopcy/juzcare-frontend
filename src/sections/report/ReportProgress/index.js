@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 // sections
 import ReportProgressAddButton from './ReportProgressAddButton';

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useState, useRef } from 'react';
+import { useCallback, useState, useRef } from 'react';
 // hooks
 import { useFormContext } from 'react-hook-form';
 // components
@@ -9,7 +9,6 @@ import Icon from '@/components/Icon';
 import usePreventFirstEffect from '@/hooks/usePreventFirstEffect';
 // utils
 import humanFileSize from '@/utils/humanFileSize';
-import { useCallback } from 'react';
 
 CreateReportAddFile.propTypes = {
    methods: PropTypes.object,

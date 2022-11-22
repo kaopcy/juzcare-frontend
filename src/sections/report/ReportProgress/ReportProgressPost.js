@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,7 +9,6 @@ import Image from '@/components/Image';
 import Moment from 'react-moment';
 import 'moment/locale/th';
 
-import { useEffect } from 'react';
 import Icon from '@/components/Icon';
 
 ReportProgressPost.propTypes = {
@@ -70,7 +69,7 @@ function ReportProgressPost({ progress }) {
                >
                   {progress.medias.map((media) => (
                      <SwiperSlide key={media._id} className="relative aspect-[4/3] h-[200px]">
-                        <Image gallery  alt="image" src={media.imageUrl} />
+                        <Image gallery alt="image" src={media.imageUrl} />
                      </SwiperSlide>
                   ))}
                </Swiper>
