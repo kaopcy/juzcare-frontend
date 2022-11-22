@@ -60,7 +60,6 @@ const reportOptionsSlice = createSlice({
       updateActiveTags: (state, action) => {
          action.payload.activeTags.forEach((activeTag) => {
             const index = state.activeTags.findIndex((e) => e.name == activeTag.name);
-            console.log(index);
             if (index !== -1) state.activeTags.splice(index, 1);
             else state.activeTags.push(activeTag);
          });

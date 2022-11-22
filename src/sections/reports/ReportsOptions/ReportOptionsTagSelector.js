@@ -1,7 +1,7 @@
-import { useEffect, useMemo } from 'react';
 import { useSelector } from '@/redux/store';
+import { useMemo } from 'react';
 // framer
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 // components
 import ReportOptionsTag from './ReportOptionsTag';
 

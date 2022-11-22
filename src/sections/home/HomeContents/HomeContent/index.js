@@ -19,9 +19,6 @@ function HomeContent({ report, active }) {
          >
             <div className="relative  h-16 w-16 overflow-hidden rounded-full shrink-0">
                <NextImage
-                  onLoad={() => {
-                     console.log('image loaded');
-                  }}
                   src={report?.user?.avatar?.avatarUrl}
                   objectFit="cover"
                   layout="fill"

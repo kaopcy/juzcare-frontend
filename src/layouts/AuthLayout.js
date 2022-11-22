@@ -7,7 +7,6 @@ const AuthLayout = ({ children }) => {
    const { isAuthenticated } = useUser();
    const router = useRouter();
    useEffect(() => {
-      console.log('isAuthenticated', isAuthenticated);
       if (isAuthenticated) {
          router.replace('/');
       }

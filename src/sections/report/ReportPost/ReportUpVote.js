@@ -1,18 +1,15 @@
-import PropTypes from 'prop-types';
-import { useMemo } from 'react';
 import Icon from '@/components/Icon';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
+import { useMemo } from 'react';
 // stores
-import { useDispatch } from '@/redux/store';
-import { upvoteReports } from '@/slices/reports';
-import { useMutation } from '@apollo/client';
 import { UpVoteGQL } from '@/graphql/report.gql';
+import { useMutation } from '@apollo/client';
 // hooks
 import useUser from '@/hooks/useUser';
 // utils
 import { classname } from '@/utils/getClassName';
 // path
-import { PATH } from '@/routes/index';
 import ReactTooltip from 'react-tooltip';
 
 ReportUpVote.propTypes = {

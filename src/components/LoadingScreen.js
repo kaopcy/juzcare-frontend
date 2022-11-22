@@ -1,6 +1,4 @@
 import { AnimatePresence, motion } from 'framer-motion';
-// components
-import Icon from '@/components/Icon';
 // stores
 import { useSelector } from '@/redux/store';
 import Image from 'next/image';

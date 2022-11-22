@@ -18,9 +18,6 @@ ReportProgressPost.propTypes = {
 
 function ReportProgressPost({ progress }) {
    const sliderRef = useRef();
-   useEffect(() => {
-      console.log(sliderRef.current);
-   }, []);
    const onNextClick = () => {
       sliderRef.current.swiper.slideNext();
    };

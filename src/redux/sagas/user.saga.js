@@ -19,7 +19,6 @@ import { getUser, loginAdmin, loginUser, register } from '@/services/auth.servic
 function* initialUsers() {
    yield take(initialRequest.type);
    const accessToken = yield call(getStoredToken);
-   console.log(accessToken);
    if (accessToken) {
       try {
          const getUserResponse = yield call(getUser);
@@ -27,7 +26,6 @@ function* initialUsers() {
          return getUserResponse;
       } catch (error) {
          console.log(error);
-         console.log('error catched ');
          yield put(
             signInFailed({
                error: error instanceof Error ? error.message : 'unknow error',
@@ -54,12 +52,10 @@ export function* authorizationFlow() {
             } else if (type === startSignInAdmin.type) {
                authResponse = yield call(loginAdmin, payload);
             }
-            console.log('error not catched by saga');
             if (!authResponse.accessToken) throw new Error('No accesseToken provided');
             yield put(signInSuccess({ user: authResponse }));
             yield call(setStoredToken, authResponse.accessToken);
          } catch (error) {
-            console.log('error catched by saga');
             console.log(error);
             yield put(
                signInFailed({

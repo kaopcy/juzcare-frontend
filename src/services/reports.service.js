@@ -12,7 +12,6 @@ export const getTags = async ({ tagsQuery }) => {
 };
 
 export const getReports = async ({ sort = '', order = '', filter = '', activeTags = '', page }) => {
-   console.log('getREports called');
    const { data } = await client.query({
       query: GetReportsGQL,
       fetchPolicy: 'no-cache',

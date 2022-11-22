@@ -28,8 +28,6 @@ const TData = ({ children, ...props }) => (
 );
 
 function AdminReports({ reports: initReports }) {
-   console.log(initReports);
-   const dispatch = useDispatch();
    const storeReports = useSelector((state) => state.adminReports.reports);
    const { error } = useSelector((state) => state.adminReports);
 
@@ -82,7 +80,6 @@ AdminReports.getLayout = (page) => (
 
 export const getServerSideProps = async () => {
    const reports = await getAllReports();
-   console.log(reports);
    return {
       props: {
          reports,

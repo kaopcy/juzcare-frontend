@@ -1,10 +1,7 @@
-import React from 'react';
-import { useSelector, useDispatch } from '@/redux/store';
+import { useDispatch, useSelector } from '@/redux/store';
 import { close } from '@/slices/ImageGallery';
 import { AnimatePresence, motion } from 'framer-motion';
-import Image from '@/components/Image';
 import Icon from './Icon';
-import { useEffect } from 'react';
 
 function ImageGallery() {
    const { isOpen, src } = useSelector((state) => state.imageGallery);

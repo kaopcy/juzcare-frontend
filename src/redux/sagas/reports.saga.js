@@ -21,12 +21,10 @@ import { getReports } from '@/services/reports.service';
 
 function* fetchFlow() {
    const { sort, order, filter, activeTags, page } = yield select(getOptions);
-   console.log(sort, order, filter, activeTags, page);
 
    yield put(startFetchReport());
    try {
       const { reports, nextPage } = yield call(getReports, { sort, order, activeTags, filter, page });
-      console.log('nextPage: ', nextPage);
       yield put(fetchReportsSuccess({ reports }));
       yield put(updateNextPage({ nextPage }));
    } catch (error) {
@@ -42,7 +40,6 @@ function* fetchMoreFlow() {
    try {
       const { reports, nextPage } = yield call(getReports, { sort, order, activeTags, filter, page: nextPageToFetch });
       yield put(fetchMoreReportsSuccess({ reports }));
-      console.log(reports, nextPage);
       yield put(updateNextPage({ nextPage }));
    } catch (error) {
       console.log(error.message);

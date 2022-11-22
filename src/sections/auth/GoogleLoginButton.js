@@ -5,7 +5,7 @@ const GoogleLoginButton = ({ ...other }) => {
    const googleButtonRef = useRef();
 
    const loginCallback = (smt) => {
-      console.log(smt);
+      console.log("logged in");
    };
 
    useEffect(() => {

@@ -15,16 +15,9 @@ function ReportsFetchObserver() {
       threshold: 1,
    });
 
-   // const isFirstTimeObserve = useRef(true);
    useEffect(() => {
       if (intersection && intersection.intersectionRatio >= 1) {
-         // prevent firsttime call
-         // if (isFirstTimeObserve.current) {
-         //    isFirstTimeObserve.current = false;
-         //    return;
-         // }
          dispatch(fetchMoreReports());
-         console.log('ready to fetch');
       }
    }, [intersection, dispatch]);
 

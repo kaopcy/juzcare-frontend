@@ -7,7 +7,6 @@ export const getStoredToken = () => {
 export const setStoredToken = (token) => {
    if (typeof window === 'undefined') return null;
    if (!token) return;
-   console.log('setted: ', token);
    window.localStorage.setItem(process.env.NEXT_PUBLIC_ACCESSTOKEN_STORAGE_KEY, token);
 };
 

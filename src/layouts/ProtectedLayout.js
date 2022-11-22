@@ -13,7 +13,6 @@ const ProtectedLayout = ({ children }) => {
    const { isAuthenticated, isInitialized } = useUser();
    const router = useRouter();
    useEffect(() => {
-      console.log(isInitialized, isAuthenticated);
       if (isInitialized && !isAuthenticated) {
          router.replace(PATH.auth.login);
       }

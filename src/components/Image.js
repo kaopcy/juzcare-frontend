@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import { Blurhash } from 'react-blurhash';
 
-import { useEffect, useState } from 'react';
-import NextImage from 'next/image';
 import { classname } from '@/utils/getClassName';
+import NextImage from 'next/image';
 
 // stores
 import { useDispatch } from '@/redux/store';
@@ -23,7 +22,6 @@ function Image({ src, alt, gallery = false, lazy = true, ...rest }) {
    const dispatch = useDispatch();
    const onClick = () => {
       if (!gallery) return;
-      console.log('open');
       dispatch(open({ src }));
    };
    return (

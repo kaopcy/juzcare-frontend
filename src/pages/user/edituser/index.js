@@ -63,7 +63,6 @@ function EditUser() {
 
    const onSubmit = async (value) => {
       try {
-         console.log(value , user._id)
          const { data } = await updateUserService({
             variables: {
                userUserdata: {
