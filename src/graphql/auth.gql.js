@@ -19,9 +19,28 @@ export const LoginGQL = gql`
    }
 `;
 
+export const LoginAdminGQL = gql`
+   query ($email: String!, $password: String!) {
+      loginAdmin(email: $email, password: $password) {
+         _id
+         email
+         emailType
+         username
+         firstName
+         lastName
+         phone
+         accessToken
+         avatar {
+            _id
+            avatarUrl
+         }
+      }
+   }
+`
+
 export const GetMeUserGQL = gql`
    query {
-      getMeUser {
+      getMe {
          _id
          email
          emailType

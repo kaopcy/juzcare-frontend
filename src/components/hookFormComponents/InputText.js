@@ -23,7 +23,7 @@ const InputText = ({ name, label, type = 'text', ...other }) => {
                      type={type}
                      {...other}
                      {...field}
-                     className="h-full w-full text-sm md:text-base placeholder:text-text-lighter"
+                     className="h-full w-full text-sm md:text-base placeholder:text-text-lighter disabled:text-text-lighter "
                   />
                   {error && (
                      <span className="flex-end  absolute top-[110%] right-0 text-xs text-error">{error.message}</span>

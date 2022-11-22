@@ -7,17 +7,19 @@ import {
    signOut,
    startSignIn,
    startRegister,
+   startSignInAdmin,
 } from '../slices/user';
 
 // utils
 import { getStoredToken, removeStoredToken, setStoredToken } from '@/utils/storageUtils';
 // services
 
-import { getUser, signIn, register } from '@/services/auth.services';
+import { getUser, loginAdmin, loginUser, register } from '@/services/auth.services';
 
 function* initialUsers() {
    yield take(initialRequest.type);
    const accessToken = yield call(getStoredToken);
+   console.log(accessToken);
    if (accessToken) {
       try {
          const getUserResponse = yield call(getUser);
@@ -43,12 +45,14 @@ export function* authorizationFlow() {
    while (true) {
       if (!initialUserResponse?.accessToken) {
          try {
-            const { payload, type } = yield take([startSignIn.type, startRegister.type]);
+            const { payload, type } = yield take([startSignIn.type, startSignInAdmin.type, startRegister.type]);
             let authResponse = null;
             if (type === startSignIn.type) {
-               authResponse = yield call(signIn, payload);
+               authResponse = yield call(loginUser, payload);
             } else if (type === startRegister.type) {
                authResponse = yield call(register, payload);
+            } else if (type === startSignInAdmin.type) {
+               authResponse = yield call(loginAdmin, payload);
             }
             console.log('error not catched by saga');
             if (!authResponse.accessToken) throw new Error('No accesseToken provided');

@@ -75,7 +75,7 @@ function ReportsOptions() {
    return (
       <div className="hidden flex-col md:flex">
          <div ref={sidebarBlockRef} className="mt-0" />
-         <aside ref={sidebarRef} className="sticky flex min-h-[1000px] flex-col items-start self-start py-10 pr-5 ">
+         <aside ref={sidebarRef} className="sticky flex min-h-[1200px] flex-col items-start self-start py-10 pr-5 ">
             <ReportOptionsSearchBar />
             <ReportOptionsTagSelector />
             <ReportOptionsFilter />

@@ -8,7 +8,7 @@ const initialState = {
    error: null,
    sort: SORT_BY_TIME,
    order: DESCENDING,
-   filter: UNVERIFIED,
+   filter: "",
    activeTags: [],
    page: 0,
    nextPage: -1,
