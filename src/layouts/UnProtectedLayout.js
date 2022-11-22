@@ -1,13 +1,15 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 // components
 import NavBar from '@/components/navbar';
 import FloatingToolbar from '@/components/floatingToolbar';
 import LoadingScreen from '@/components/LoadingScreen';
-
-
+import ImageGallery from '@/components/ImageGallery';
 
 const UnProtectedLayout = ({ children }) => (
    <>
+      
+         <ImageGallery />
       <LoadingScreen />
       <NavBar />
       <FloatingToolbar />

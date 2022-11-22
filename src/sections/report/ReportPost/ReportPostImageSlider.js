@@ -48,7 +48,7 @@ function ReportPostImageSlider({ report }) {
          {report?.medias?.map((media) => (
             <SwiperSlide key={media._id} className="relative aspect-[4/3] h-[200px]">
                <div data-cropped="true" data-pswp-width={800} data-pswp-height={450} href={media.imageUrl}>
-                  <Image alt="test" layout="fill" objectFit="cover" src={media.imageUrl} />
+                  <Image gallery alt="test" layout="fill" objectFit="cover" src={media.imageUrl} />
                </div>
             </SwiperSlide>
          ))}

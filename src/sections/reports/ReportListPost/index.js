@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 // components
 import Icon from '@/components/Icon';
 import Image from '@/components/Image';
+import UserIconWithTooltip from '@/components/commons/UserIconWithTooltip';
 // sections
 import ReportListPostHeader from './ReportListPostHeader';
 import ReportListPostImageSlider from './ReportListPostImageSlider';
@@ -15,12 +16,12 @@ ReportListPost.propTypes = {
    report: PropTypes.object,
 };
 
-function ReportListPost({ report }) {
+function ReportListPost({ report , index }) {
    return (
       <ReportContextProvider initVal={report}>
          <article className="flex w-full items-start  text-text ">
             <div className="relative mr-3 h-16 w-16 shrink-0 overflow-hidden rounded-[50%]">
-               <Image alt="bird" src={report.user.avatar.avatarUrl} objectFit="cover" layout="fill" />
+               <UserIconWithTooltip alt="bird" index={index} src={report.user.avatar.avatarUrl} user={report.user} />
             </div>
             <div className="flex w-full  min-w-0  flex-col gap-y-5">
                <ReportListPostHeader />

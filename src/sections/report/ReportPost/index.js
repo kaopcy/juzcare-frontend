@@ -1,6 +1,7 @@
 // components
 import Icon from '@/components/Icon';
 import Image from '@/components/Image';
+import UserIconWithTooltip from '@/components/commons/UserIconWithTooltip';
 // sections
 import ReportPostHeader from './ReportPostHeader';
 import ReportPostImageSlider from './ReportPostImageSlider';
@@ -17,7 +18,7 @@ function ReportPost() {
       <ReportContextProvider initVal={report}>
          <article className="flex w-full items-start  text-text ">
             <div className="relative mr-3 h-16 w-16 shrink-0 overflow-hidden rounded-[50%]">
-               <Image alt="bird" src={report.user.avatar.avatarUrl} objectFit="cover" layout="fill" />
+               <UserIconWithTooltip alt="bird" user={report.user} src={report.user.avatar.avatarUrl} />
             </div>
             <div className="flex w-full  min-w-0  flex-col gap-y-5">
                <ReportPostHeader />

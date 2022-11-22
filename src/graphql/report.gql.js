@@ -60,6 +60,8 @@ export const GetReportsGQL = gql`
                avatar {
                   avatarUrl
                }
+               firstName
+               lastName
             }
             detail
             title
@@ -113,6 +115,8 @@ export const GetReportGQL = gql`
             avatar {
                avatarUrl
             }
+            firstName
+            lastName
          }
          detail
          title
@@ -172,6 +176,22 @@ export const CreateReportProgressGQL = gql`
    mutation ($createProgressReportData: CreateProgressInput!) {
       createProgressReport(createProgressReportData: $createProgressReportData) {
          _id
+         progresses {
+            createdAt
+            _id
+            user {
+               avatar {
+                  avatarUrl
+               }
+               firstName
+               lastName
+            }
+            detail
+            medias {
+               _id
+               imageUrl
+            }
+         }
       }
    }
 `;

@@ -5,29 +5,45 @@ import { useEffect, useState } from 'react';
 import NextImage from 'next/image';
 import { classname } from '@/utils/getClassName';
 
+// stores
+import { useDispatch } from '@/redux/store';
+import { open } from '@/slices/ImageGallery';
+
 import Loader from '@/svg/Loader';
 
 Image.propTypes = {
    src: PropTypes.string,
    alt: PropTypes.string,
    loadingRender: PropTypes.node,
+   lazy: PropTypes.bool,
+   gallery: PropTypes.bool,
 };
 
-function Image({ src, alt, loadingRender, ...rest }) {
+function Image({ src, alt, gallery = false, lazy = true, ...rest }) {
+   const dispatch = useDispatch();
+   const onClick = () => {
+      if (!gallery) return;
+      console.log('open');
+      dispatch(open({ src }));
+   };
    return (
       <>
-         <div className="absolute inset-0 flex  h-full w-full items-center justify-center">
-            <Blurhash
-               className=""
-               hash="LSG@[N.mt,=|ACVYs9XS%MxukCM|"
-               width={'100%'}
-               height={'100%'}
-               style={{ position: 'absolute', top: 0, left: 0 }}
-               punch={1}
-            />
-         </div>
+         {lazy && (
+            <div className="absolute inset-0 flex  h-full w-full items-center justify-center">
+               <Blurhash
+                  className=""
+                  hash="LSG@[N.mt,=|ACVYs9XS%MxukCM|"
+                  width={'100%'}
+                  height={'100%'}
+                  style={{ position: 'absolute', top: 0, left: 0 }}
+                  punch={1}
+               />
+            </div>
+         )}
+         
          <NextImage
-            className={classname('z-0 border-none outline-none', rest.className ?? '')}
+            onClick={onClick}
+            className={classname('z-0 border-none outline-none', gallery && 'cursor-pointer', rest.className ?? '')}
             placeholder={() => <LoadingIndicator {...rest} />}
             alt={alt}
             layout="fill"

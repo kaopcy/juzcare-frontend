@@ -23,8 +23,8 @@ function ReportsList() {
                </motion.div>
             )}
          </AnimatePresence>
-         {reports?.map((report) => (
-            <ReportListPost key={report._id} report={report} />
+         {reports?.map((report , index) => (
+            <ReportListPost index={index} key={report._id} report={report} />
          ))}
          {reports?.length === 0 && !isLoading && (
             <div className="flex w-full justify-center items-center gap-x-2">
