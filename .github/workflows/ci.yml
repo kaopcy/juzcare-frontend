@@ -13,6 +13,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: clean docker 
         run: docker-compose rm -f
-      - name: 
       - name: deploy to docker
         run: docker-compose up --no-cache --force-recreate --build --detach && docker image prune -a -f
