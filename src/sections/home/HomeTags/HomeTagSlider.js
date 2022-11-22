@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useState } from 'react';
 // sections
 import Tag from '@/components/commons/Tag';
 import { Icon } from '@iconify/react';
