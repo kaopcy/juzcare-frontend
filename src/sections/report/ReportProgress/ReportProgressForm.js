@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { stopLoading } from '@/redux/slices/loading';
 import { createProgressReport } from '@/services/report.service';
 import useReport from '@/hooks/useReport';
+import { ACTION } from '@/contexts/ReportContext';
 
 ReportProgressForm.propTypes = {
    isAdd: PropTypes.bool,
@@ -19,7 +20,7 @@ ReportProgressForm.propTypes = {
 };
 
 function ReportProgressForm({ isAdd, setIsAdd }) {
-   const { report } = useReport();
+   const { report, dispatch: reportDispatch } = useReport();
    const defaultValues = {
       media: [],
       body: '',
@@ -52,7 +53,7 @@ function ReportProgressForm({ isAdd, setIsAdd }) {
    });
 
    const dispatch = useDispatch();
-   const { response, error, isLoading, upload } = useUploadFiles();
+   const { upload } = useUploadFiles();
    const onSubmit = async (value) => {
       try {
          const imageLinks = await upload(value.media);
@@ -63,7 +64,9 @@ function ReportProgressForm({ isAdd, setIsAdd }) {
                imageUrl: link,
             })),
          };
-         const res = await createProgressReport(shapedInput);
+         const progresses = await createProgressReport(shapedInput);
+         console.log(progresses);
+         reportDispatch({ type: ACTION.UPDATE_PROGRESS, payload: { progresses } });
          dispatch(stopLoading());
          // router.replace('/reports');
       } catch (error) {

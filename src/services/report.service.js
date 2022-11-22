@@ -27,6 +27,5 @@ export const createProgressReport = async ({ reportId, detail, medias }) => {
          },
       },
    });
-   console.log(data.createCommentReport);
-   return data.createCommentReport;
+   return data?.createProgressReport?.progresses;
 };
