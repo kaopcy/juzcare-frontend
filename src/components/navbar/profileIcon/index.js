@@ -1,17 +1,13 @@
-import { Fragment, useEffect } from 'react';
-import Image from 'next/image';
+import { Fragment } from 'react';
 // hooks
 import useUser from '@/hooks/useUser';
 // components
-import { Popover, Transition } from '@headlessui/react';
-import Icon from '@/components/Icon';
 import UserProfileIcon from '@/components/UserProfileIcon';
+import { Popover, Transition } from '@headlessui/react';
 // sections
 import ProfileIconDropdown from './ProfileIconDropdown';
 
 function ProfileIcon() {
-   const { user, isAuthenticated } = useUser();
-
    return (
       <Popover className="relative flex items-center">
          {({ open }) => (

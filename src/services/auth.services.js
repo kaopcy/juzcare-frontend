@@ -1,15 +1,6 @@
-import { fakeAuthPayload } from '@/_mock/index';
 import client from '@/graphql/apollo-client';
 
-import { RegisterGQL, LoginGQL, GetMeUserGQL, LoginAdminGQL } from '@/graphql/auth.gql';
-
-const NETWORK_DELAY = 1000;
-
-const combineParamsUrl = (paramsObject) =>
-   Object.entries(paramsObject).reduce(
-      (acc, [k, v], index) => (v ? `${acc}${index === 0 ? '?' : '&'}${k}=${v}` : acc),
-      'http://localhost:3001/reports',
-   );
+import { GetMeUserGQL, LoginAdminGQL, LoginGQL, RegisterGQL } from '@/graphql/auth.gql';
 
 export const getUser = async () => {
    const { data } = await client.query({

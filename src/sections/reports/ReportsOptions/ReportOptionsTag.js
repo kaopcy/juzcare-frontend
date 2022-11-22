@@ -1,11 +1,8 @@
 import PropTypes from 'prop-types';
-import { useEffect, useMemo } from 'react';
-// framer
-import { motion } from 'framer-motion';
 // utils
 import { classname } from '@/utils/getClassName';
 // store
-import { useSelector, useDispatch } from '@/redux/store';
+import { useDispatch } from '@/redux/store';
 import { updateActiveTags } from '@/slices/reportOptions';
 // components
 import Icon from '@/components/Icon';

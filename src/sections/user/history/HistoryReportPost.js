@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import Icon from '@/components/Icon';
+import Link from '@/components/Link';
+import 'moment/locale/th';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
-import 'moment/locale/th';
-import Link from '@/components/Link';
-import Icon from '@/components/Icon';
 import HistoryReportStatusTimeline from './HistoryReportStatusTimeline';
-import { useEffect } from 'react';
 
 HistoryReportPost.propTypes = {
    report: PropTypes.object,
