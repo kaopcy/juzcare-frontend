@@ -5,6 +5,7 @@ import HomeContentProgressBar from './HomeContentProgressBar';
 import { useReports } from '@/contexts/Home/ReportsContext';
 import { memo, useEffect, useRef, useState } from 'react';
 import Icon from '@/components/Icon';
+import Link from '@/components/Link';
 
 const SLIDER_AUTOSCROLL_TIMEOUT = 3000;
 
@@ -81,35 +82,37 @@ function HomeContents() {
    }, [reports, currentReport]);
 
    return (
-      <section className="relative w-full">
-         <div ref={sliderRef} className=" mb-16 w-full overflow-hidden">
-            <div className=" flex">
-               {reports.map((report, index) => (
-                  <HomeContent report={report} key={report.id} active={currentReport === index} />
-               ))}
+         <section className="relative w-full">
+            <div ref={sliderRef} className=" mb-16 w-full overflow-hidden">
+               <div className=" flex">
+                  {reports?.map((report, index) => (
+                     <HomeContent report={report} key={report._id} active={currentReport === index} />
+                  ))}
+               </div>
             </div>
-         </div>
-         <button
-            onClick={() => setCurrentReport((old) => (old - 1 < 0 ? reports.length - 1 : (old - 1) % reports.length))}
-            className="group absolute bottom-0 right-full w-1/2  translate-x-full -translate-y-1/2 "
-         >
-            <Icon
-               className=" mr-auto h-5 w-5 text-text-light/70 group-hover:text-text"
-               icon="akar-icons:chevron-left"
-            />
-         </button>
+            <button
+               onClick={() =>
+                  setCurrentReport((old) => (old - 1 < 0 ? reports?.length - 1 : (old - 1) % reports.length))
+               }
+               className="group absolute bottom-0 right-full w-1/2  translate-x-full -translate-y-1/2 "
+            >
+               <Icon
+                  className=" mr-auto h-5 w-5 text-text-light/70 group-hover:text-text"
+                  icon="akar-icons:chevron-left"
+               />
+            </button>
 
-         <button
-            onClick={() => setCurrentReport((old) => (old + 1) % reports.length)}
-            className="group absolute bottom-0 left-full w-1/2 -translate-x-full -translate-y-1/2"
-         >
-            <Icon
-               className=" ml-auto h-5 w-5 text-text-light/70 group-hover:text-text"
-               icon="akar-icons:chevron-right"
-            />
-         </button>
-         <HomeContentProgressBar currentReport={currentReport} reportLength={reports.length} />
-      </section>
+            <button
+               onClick={() => setCurrentReport((old) => (old + 1) % reports?.length)}
+               className="group absolute bottom-0 left-full w-1/2 -translate-x-full -translate-y-1/2"
+            >
+               <Icon
+                  className=" ml-auto h-5 w-5 text-text-light/70 group-hover:text-text"
+                  icon="akar-icons:chevron-right"
+               />
+            </button>
+            <HomeContentProgressBar currentReport={currentReport} reportLength={reports?.length} />
+         </section>
    );
 }
 

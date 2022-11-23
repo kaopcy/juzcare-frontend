@@ -13,6 +13,7 @@ export const NotificationContextProvider = ({ children }) => {
       stopPolling,
    } = useQuery(GetNotificationGQL, {
       pollInterval: 5000,
+      fetchPolicy: 'no-cache',
    });
    useEffect(() => {
       startPolling(5000);

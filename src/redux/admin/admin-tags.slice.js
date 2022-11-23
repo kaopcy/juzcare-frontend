@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAction, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
    tags: null,
@@ -27,6 +27,9 @@ const adminTagsSlice = createSlice({
       },
    },
 });
+
+export const acceptTag = createAction('acceptTag')
+export const rejectTag = createAction('rejectTag')
 
 export const adminTagsReducer = adminTagsSlice.reducer;
 export const { fetchTagsFailed, fetchTagsSuccess, startFetchTags, updateTags } = adminTagsSlice.actions;

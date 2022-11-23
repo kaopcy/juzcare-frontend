@@ -1,5 +1,11 @@
 import client from '@/graphql/apollo-client';
-import { DeleteReportGQL, GetAllReportsGQL, GetAllTagsGQL, UpdateStatusReportGQL } from '@/graphql/admin.gql';
+import {
+   DeleteReportGQL,
+   GetAllReportsGQL,
+   GetAllTagsGQL,
+   UpdateStatusReportGQL,
+   UpdateStatusTagGQL,
+} from '@/graphql/admin.gql';
 
 export const getAllReports = async () => {
    const { data } = await client.query({
@@ -23,6 +29,18 @@ export const updateStatusReport = async ({ reportId, type }) => {
       mutation: UpdateStatusReportGQL,
       variables: {
          updateStatusReportData: { reportId, type },
+      },
+   });
+   return data.updateStatusReport;
+};
+
+export const updateStatusTag = async ({ _id, status }) => {
+   console.log(_id, status);
+   const { data } = await client.mutate({
+      fetchPolicy: 'no-cache',
+      mutation: UpdateStatusTagGQL,
+      variables: {
+         updateStatusTag: { _id, status },
       },
    });
    return data.updateStatusReport;

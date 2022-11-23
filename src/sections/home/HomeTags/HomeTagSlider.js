@@ -2,60 +2,17 @@ import { useRef, useState } from 'react';
 // sections
 import Tag from '@/components/commons/Tag';
 import { Icon } from '@iconify/react';
+import { GetPopularTagGQL } from '@/graphql/report.gql'
+import { useQuery } from '@apollo/client';
 
 const SLIDE_AMOUNT = 400;
 
 function HomeTagSlider() {
-   const [tags] = useState([
-      {
-         id: '1234',
-         name: 'โรงอาหารพระเทพ',
+   const { data } = useQuery(GetPopularTagGQL, {
+      variables: {
+         tagsQuery: "",
       },
-      {
-         id: '12345',
-         name: 'คุคุควย',
-      },
-      {
-         id: '12346',
-         name: 'หิวข้าว',
-      },
-      {
-         id: '2234',
-         name: 'โรงอาหารพระเทพ',
-      },
-      {
-         id: '22345',
-         name: 'คุคุควย',
-      },
-      {
-         id: '22346',
-         name: 'หิวข้าว',
-      },
-      {
-         id: '11234',
-         name: 'โรงอาหารพระเทพ',
-      },
-      {
-         id: '112345',
-         name: 'คุคุควย',
-      },
-      {
-         id: '112346',
-         name: 'หิวข้าว',
-      },
-      {
-         id: '12234',
-         name: 'โรงอาหารพระเทพ',
-      },
-      {
-         id: '122345',
-         name: 'คุคุควย',
-      },
-      {
-         id: '122346',
-         name: 'หิวข้าว',
-      },
-   ]);
+   });
 
    const sliderRef = useRef();
    const sliderContainerRef = useRef();
@@ -93,8 +50,8 @@ function HomeTagSlider() {
             className="test-scroll relative h-[40px] w-full overflow-x-hidden overflow-y-hidden"
          >
             <div ref={sliderRef} className="absolute flex flex-nowrap gap-x-3  transition-all duration-500">
-               {tags.map((tag) => (
-                  <Tag key={tag.id} tag={tag} />
+               {data?.getPopularTags?.map((tag) => (
+                  <Tag key={tag._id} tag={tag} />
                ))}
             </div>
          </div>

@@ -52,6 +52,7 @@ export function* authorizationFlow() {
             } else if (type === startSignInAdmin.type) {
                authResponse = yield call(loginAdmin, payload);
             }
+            console.log(authResponse.accessToken)
             if (!authResponse.accessToken) throw new Error('No accesseToken provided');
             yield put(signInSuccess({ user: authResponse }));
             yield call(setStoredToken, authResponse.accessToken);
