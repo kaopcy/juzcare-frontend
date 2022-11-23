@@ -1,10 +1,28 @@
 import { useCallback, useState } from 'react';
 import { classname } from '@/utils/getClassName';
+import { useDispatch } from '@/redux/store';
+import useSearchQuery from '@/hooks/useSearchQuery';
+import { toggleOrder, updateSort } from '@/redux/slices/reportOptions';
+import { DESCENDING } from '@/configs/reportConfig/reportSortOrder.config';
 
 function ReportsTypesSelector() {
    const [_mockSeletor, set_mockSeletor] = useState('latest');
+   const { replaceSort, replaceOrder } = useSearchQuery();
+   const dispatch = useDispatch();
+
    const onClick = (e) => {
       e.preventDefault();
+      if (e.target.value === 'popular') {
+         replaceSort('SORT_BY_LIKE');
+         dispatch(updateSort({ sort: 'SORT_BY_LIKE' }));
+         replaceOrder(DESCENDING);
+         dispatch(toggleOrder());
+      } else {
+         replaceSort('SORT_BY_TIME');
+         dispatch(updateSort({ sort: 'SORT_BY_TIME' }));
+         replaceOrder(DESCENDING);
+         dispatch(toggleOrder());
+      }
       set_mockSeletor(e.target.value);
    };
 

@@ -7,7 +7,7 @@ import { useSelector } from '@/redux/store';
 // services
 import { getAllTags } from '@/services/admin.service';
 // utils
-import { getStatusTHLabel } from '@/configs/reportConfig/reportStatus.config';
+import { getStatusTHLabel, UNVERIFIED, VERIFIED } from '@/configs/reportConfig/reportStatus.config';
 import AdminTagStatusControl from '@/sections/admin/AdminTagsStatusControl';
 
 AdminTags.propTypes = {
@@ -30,18 +30,22 @@ function AdminTags({ tags: initTags }) {
    return (
       <div className="py-10">
          <div className="flex flex-col items-start gap-y-7 border bg-[#FBFBFB] py-10  px-6">
-            {Object.entries(classifiedTags).map(([type, tags]) => (
-               <div key={type} className="flex w-full flex-col ">
-                  <div className="mb-2 text-lg font-bold">
-                     {getStatusTHLabel(type)} - {tags.length}
-                  </div>
-                  <div className="flex flex-wrap gap-x-3 gap-y-2.5">
-                     {tags.map((tag) => (
-                        <AdminTagStatusControl key={tag._id} tag={tag} type={type} />
-                     ))}
-                  </div>
-               </div>
-            ))}
+            <div className="mb-2 text-lg font-bold">
+               {getStatusTHLabel(UNVERIFIED)} - {classifiedTags[UNVERIFIED].length}
+            </div>
+            <div className="flex flex-wrap gap-x-3 gap-y-2">
+               {classifiedTags[UNVERIFIED].map((tag) => (
+                  <AdminTagStatusControl key={tag._id} tag={tag} type={UNVERIFIED} />
+               ))}
+            </div>
+            <div className="mb-2 text-lg font-bold">
+               {getStatusTHLabel(VERIFIED)} - {classifiedTags[VERIFIED].length}
+            </div>
+            <div className="flex flex-wrap gap-x-3 gap-y-2">
+               {classifiedTags[VERIFIED].map((tag) => (
+                  <AdminTagStatusControl key={tag._id} tag={tag} type={VERIFIED} />
+               ))}
+            </div>
          </div>
       </div>
    );

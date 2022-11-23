@@ -18,7 +18,7 @@ function AdminTagsStatusReject({ tag }) {
 
    return (
       <button onClick={onReject} className="">
-         <Icon className="text-red-500" icon="ion:close-circle" />
+         <span className="text-sm font-normal text-red-500 underline hover:text-red-600">ยกเลิก</span>
       </button>
    );
 }

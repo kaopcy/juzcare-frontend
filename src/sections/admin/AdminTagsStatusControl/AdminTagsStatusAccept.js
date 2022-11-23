@@ -11,14 +11,14 @@ AdminTagsStatusAccept.propTypes = {
 
 function AdminTagsStatusAccept({ tag }) {
    const dispatch = useDispatch();
-   
+
    const onAccept = () => {
       dispatch(acceptTag({ _id: tag._id }));
    };
 
    return (
       <button onClick={onAccept} className="">
-         <Icon className="text-green-500" icon="material-symbols:check-circle-rounded" />
+         <span className="text-sm font-normal text-green-500 underline hover:text-green-600">อนุมัติ</span>
       </button>
    );
 }

@@ -5,6 +5,7 @@ import { useIntersection } from 'react-use';
 // stores
 import { useDispatch, useSelector } from '@/redux/store';
 import { fetchMoreReports } from '@/slices/reports';
+import Loader from '@/svg/Loader';
 
 function ReportsFetchObserver() {
    const dispatch = useDispatch();
@@ -25,13 +26,19 @@ function ReportsFetchObserver() {
 
    return (
       <div ref={observerRef} className="flex h-20 w-full flex-col items-center justify-center">
-         <AnimatePresence>
+         {/* <AnimatePresence>
             {isLoading && (
-               <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}>
-                  กำลังโหลด
-               </motion.h1>
+               <motion.div
+                  className="flex items-center gap-x-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+               >
+                  <h1>กำลังโหลด</h1>
+                  <Loader className="h-12 w-12" />
+               </motion.div>
             )}
-         </AnimatePresence>
+         </AnimatePresence> */}
       </div>
    );
 }

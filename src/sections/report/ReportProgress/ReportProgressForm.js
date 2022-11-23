@@ -13,6 +13,8 @@ import { stopLoading } from '@/redux/slices/loading';
 import { createProgressReport } from '@/services/report.service';
 import useReport from '@/hooks/useReport';
 import { ACTION } from '@/contexts/ReportContext';
+import useUser from '@/hooks/useUser';
+import Link from '@/components/Link';
 
 ReportProgressForm.propTypes = {
    isAdd: PropTypes.bool,
@@ -20,6 +22,8 @@ ReportProgressForm.propTypes = {
 };
 
 function ReportProgressForm({ isAdd, setIsAdd }) {
+   const { isAuthenticated } = useUser();
+
    const { report, dispatch: reportDispatch } = useReport();
    const defaultValues = {
       media: [],
@@ -66,7 +70,7 @@ function ReportProgressForm({ isAdd, setIsAdd }) {
          };
          const progresses = await createProgressReport(shapedInput);
          reportDispatch({ type: ACTION.UPDATE_PROGRESS, payload: { progresses } });
-         setIsAdd(false)
+         setIsAdd(false);
          dispatch(stopLoading());
          // router.replace('/reports');
       } catch (error) {
@@ -92,18 +96,31 @@ function ReportProgressForm({ isAdd, setIsAdd }) {
                      animate={{ y: 0, scale: 1 }}
                      exit={{ y: 40, scale: 0.9 }}
                      transition={{ ease: 'easeInOut', duration: 0.2 }}
-                     className="z-10 flex w-full max-w-[500px] flex-col gap-y-4 rounded-md bg-paper px-8 py-10 shadow-xl "
+                     className="relative z-10 flex w-full max-w-[500px] flex-col gap-y-4 rounded-md bg-paper px-8 py-10 shadow-xl "
                      onSubmit={methods.handleSubmit(onSubmit)}
                   >
                      <div className="flex justify-between">
                         <h3 className="self-center text-primary underline">อัปเดตความคืบหน้า</h3>
                         <Icon />
                      </div>
-                     <TextField label="รายละเอียด" name="body" />
+                     <TextField disabled={!isAuthenticated} label="รายละเอียด" name="body" />
                      <CreateReportAddFile methods={methods} />
-                     <button className="ml-auto mt-4 rounded-lg bg-primary px-8 py-2 text-paper shadow-md">
+                     <button
+                        disabled={!isAuthenticated}
+                        className="ml-auto mt-4 rounded-lg bg-primary px-8 py-2 text-paper shadow-md"
+                     >
                         ยืนยัน
                      </button>
+                     {!isAuthenticated && (
+                        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/30 !text-3xl font-bold text-paper">
+                           <h1>กรุณาเข้าสู่ระบบ</h1>
+                           <Link href="/auth/login">
+                              <a className="mt-6 rounded-lg bg-primary px-3 py-2 text-base font-medium shadow-md ">
+                                 เข้าสู่ระบบ
+                              </a>
+                           </Link>
+                        </div>
+                     )}
                   </motion.form>
                </FormProvider>
             </motion.div>
