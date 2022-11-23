@@ -1,3 +1,5 @@
+import { motion, AnimatePresence } from 'framer-motion';
+
 import { useEffect, useRef } from 'react';
 import { useIntersection } from 'react-use';
 // stores
@@ -23,7 +25,13 @@ function ReportsFetchObserver() {
 
    return (
       <div ref={observerRef} className="flex h-20 w-full flex-col items-center justify-center">
-         {isLoading && <h1>กำลังโหลด</h1>}
+         <AnimatePresence>
+            {isLoading && (
+               <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}>
+                  กำลังโหลด
+               </motion.h1>
+            )}
+         </AnimatePresence>
       </div>
    );
 }

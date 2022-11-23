@@ -32,7 +32,7 @@ function HomeContentImageSlider({ report , active }) {
             <Slider {...settings}>
                {report?.medias?.map((media) => (
                   <div
-                     key={media.id}
+                     key={media._id}
                      className="relative aspect-square h-[200px] w-full  shrink-0 cursor-grab overflow-hidden rounded-md"
                   >
                      <NextImage objectFit="cover" layout="fill" src={media.imageUrl} />

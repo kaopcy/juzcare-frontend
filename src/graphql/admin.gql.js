@@ -78,3 +78,11 @@ export const DeleteReportGQL = gql`
       }
    }
 `;
+
+export const UpdateStatusTagGQL = gql`
+   mutation($updateStatusTag: UpdateTagInput!) {
+      updateStatusTag(updateTagData: $updateStatusTag) {
+         _id
+      }
+   }
+`;

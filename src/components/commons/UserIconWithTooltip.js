@@ -32,7 +32,7 @@ function UserIconWithTooltip({ src, alt, user, index }) {
                   {/* <div className="relative h-20 w-20 overflow-hidden rounded-full mr-2">
                      <Image lazy={false} alt={alt} src={src} objectFit="cover" layout="fill" />
                   </div> */}
-                  <div className="mr-3 text-base font-bold text-text">{user.firstName}awdawd</div>
+                  <div className="mr-3 text-base font-bold text-text">{user.firstName}</div>
                   <div className="text-base font-bold text-text">{user.lastName}</div>
                </div>
             )}

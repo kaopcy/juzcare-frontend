@@ -1,5 +1,4 @@
 import React from 'react';
-import Layout from '@/layouts/index';
 import ErrorPageSvg from '@/sections/errorPage/ErrorPageSvg';
 import Link from 'next/link';
 import { PATH } from '@/routes/index';
@@ -15,7 +14,6 @@ const ErrorPage = () => (
                </button>
             </Link>
          </div>
-         
       </section>
    );
 export default ErrorPage;

@@ -28,6 +28,23 @@ export const getReports = async ({ sort = '', order = '', filter = '', activeTag
    return data.reports;
 };
 
+export const getHomePage = async () => {
+   const { data } = await client.query({
+      query: GetReportsGQL,
+      fetchPolicy: 'no-cache',
+      variables: {
+         sort: 'SORT_BY_LIKE',
+         filter: [],
+         order: 'DESCENDING',
+         tags: [],
+         page: 0,
+         pageAmount: 5,
+      },
+   });
+
+   return data.reports.reports;
+};
+
 export const getReport = async ({ _id }) => {
    const { data } = await client.query({
       query: GetReportGQL,
