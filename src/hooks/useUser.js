@@ -5,7 +5,8 @@ const useUser = () => {
    return {
       user: user.user,
       isAuthenticated: !!user?.user?._id && user.isAuthenticated,
-      isInitialized: user.isInitialized
+      isInitialized: user.isInitialized,
+      isUser: user.role === 'user'
    };
 };
 
