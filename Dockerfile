@@ -1,11 +1,11 @@
-FROM node:16-alpine AS deps
+FROM node:14.21.3-alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN npm install --force
 
 
-FROM node:16-alpine AS builder
+FROM node:14.21.3-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 
@@ -14,7 +14,7 @@ RUN npm run bundle-icon
 RUN npm run build
 
 # Production image, copy all the files and run next
-FROM node:16-alpine AS runner
+FROM node:14.21.3-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
