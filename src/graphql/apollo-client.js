@@ -16,7 +16,7 @@ const authLink = setContext((_, { headers }) => {
 
 const httpLink = new HttpLink({
    credentials: 'same-origin',
-   uri: 'https://api-juzcare.celab.network/graphql',
+   uri: 'https://api.juzcare.ce.kmitl.cloud/graphql',
 });
 
 const client = new ApolloClient({

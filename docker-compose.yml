@@ -5,7 +5,7 @@ services:
     restart: always
     ports:
       - 3000:3000
-      - 4000:3000
-      - 5000:3000
-    # env_file:
-    #   - .env.production
+    stdin_open:
+      true
+    env_file:
+      - .env.production
